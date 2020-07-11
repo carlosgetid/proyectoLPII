@@ -8,8 +8,7 @@ public class Informe {
 		private String analisis;
 		private String conclusiones;
 		private String recomendaciones;
-		private String esta;
-		
+		private String estado;
 		public int getCodigo() {
 			return codigo;
 		}
@@ -46,11 +45,11 @@ public class Informe {
 		public void setRecomendaciones(String recomendaciones) {
 			this.recomendaciones = recomendaciones;
 		}
-		public String getEsta() {
-			return esta;
+		public String getEstado() {
+			return estado;
 		}
-		public void setEsta(String esta) {
-			this.esta = esta;
+		public void setEstado(String estado) {
+			this.estado = estado;
 		}
 		
 		

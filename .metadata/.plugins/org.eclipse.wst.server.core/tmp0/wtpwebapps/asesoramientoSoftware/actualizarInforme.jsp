@@ -20,30 +20,30 @@
 	</c:if>
 	<div class="container">
   		<form method="post" action="" method="post" id="id_registrar">
-  		 <input type="hidden" id="idEstado" value="${requerimiento.estado}">
+  		 <input type="hidden" id="idEstado" value="${informe.estado}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${informe.codigo}" placeholder="Ingresar descripcion" rows="3" >
 			  </div>
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Introduccion</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="introduccion" value="${requerimiento.introduccion}" placeholder="Ingresar introduccion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="introduccion" value="${informe.introduccion}" placeholder="Ingresar introduccion" rows="3" >
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Antecedentes</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="antecedentes" placeholder="Ingresar antecedentes" rows="3" value="${requerimiento.antecedentes}">
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="antecedentes" placeholder="Ingresar antecedentes" rows="3" value="${informe.antecedentes}">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Analisis</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="analisis" placeholder="Ingresar analisis" rows="3" value="${requerimiento.analisis}">
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="analisis" placeholder="Ingresar analisis" rows="3" value="${informe.analisis}">
 			  </div>
 			   <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Conclusiones</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="conclusiones" value="${requerimiento.conclusiones}" placeholder="Ingresar descripcion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="conclusiones" value="${informe.conclusiones}" placeholder="Ingresar descripcion" rows="3" >
 			  </div>
 			   <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Recomendaciones</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" value="${requerimiento.recomendaciones}" placeholder="Ingresar descripcion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" value="${informe.recomendaciones}" placeholder="Ingresar descripcion" rows="3" >
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Estado</label>

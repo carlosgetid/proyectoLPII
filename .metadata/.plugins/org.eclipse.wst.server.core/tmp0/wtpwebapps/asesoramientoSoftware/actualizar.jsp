@@ -60,7 +60,7 @@
 				</div>
 				
 		  <button type="button" class="btn btn-primary">Actualizar</button>
-		  <button type="button" class="btn btn-warning">Eliminarr</button>
+		  <button type="button" class="btn btn-warning">Eliminar</button>
 		  <button type="button" class="btn btn-success">Listar</button>
 		</form>
 	</div>		

@@ -32,7 +32,7 @@ public class MySqlInformeDAO implements InformeDAO {
 				bean.setAnalisis(rs.getString(4));
 				bean.setConclusiones(rs.getString(5));
 				bean.setRecomendaciones(rs.getString(6));
-				bean.setEsta(rs.getString(7));
+				bean.setEstado(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class MySqlInformeDAO implements InformeDAO {
 				bean.setAnalisis(rs.getString(4));
 				bean.setConclusiones(rs.getString(5));
 				bean.setRecomendaciones(rs.getString(6));
-				bean.setEsta(rs.getString(7));
+				bean.setEstado(rs.getString(7));
 				
 				lista.add(bean);
 			}
@@ -102,7 +102,7 @@ public class MySqlInformeDAO implements InformeDAO {
 			pstm.setString(3, bean.getAnalisis());
 			pstm.setString(4, bean.getConclusiones());
 			pstm.setString(5, bean.getRecomendaciones());
-			pstm.setString(6, bean.getEsta());
+			pstm.setString(6, bean.getEstado());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,14 +125,14 @@ public class MySqlInformeDAO implements InformeDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="update tb_informe set introduccion_inf=?,antecedentes_inf=?,analisis_inf=?,conclusiones_inf=?.recomendaciones_inf=?,estado_inf=? where cod_inf=?";
+			String sql="update tb_informe set introduccion_inf=?,antecedentes_inf=?,analisis_inf=?,conclusiones_inf=?,recomendaciones_inf=?,estado_inf=? where cod_inf=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getIntroduccion());
 			pstm.setString(2, bean.getAntecedentes());
 			pstm.setString(3, bean.getAnalisis());
 			pstm.setString(4, bean.getConclusiones());
 			pstm.setString(5, bean.getRecomendaciones());
-			pstm.setString(6, bean.getEsta());
+			pstm.setString(6, bean.getEstado());
 			pstm.setInt(7, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
