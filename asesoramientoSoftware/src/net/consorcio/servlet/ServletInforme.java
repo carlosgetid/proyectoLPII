@@ -60,7 +60,7 @@ public class ServletInforme extends HttpServlet {
 															  add("analisis", bean.getAnalisis()).
 															  add("conclusiones", bean.getConclusiones()).
 															  add("recomendaciones", bean.getRecomendaciones()).
-															  add("estado", bean.getEsta()) .build();
+															  add("estado", bean.getEstado()) .build();
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
 				}
@@ -71,20 +71,64 @@ public class ServletInforme extends HttpServlet {
 	}
 
 
-	private void buscar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Informe bean;
+		String cod;
+		cod=request.getParameter("codigo");
+		bean=servicioInforme.buscar(Integer.parseInt(cod));
+		request.setAttribute("informe", bean);
+		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
 
 
-	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod;
+		cod=request.getParameter("codigo");
+		
+		int salida=servicioInforme.eliminar(Integer.parseInt(cod));
+		
+		if(salida!=-1)
+			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
+		else
+			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
+		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
 
 
-	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
+				String cod,intr,ant,ana,con,rec,est;
+				cod=request.getParameter("codigo");
+				intr=request.getParameter("introduccion");
+				ant=request.getParameter("antecedentes");
+				ana=request.getParameter("analisis");
+				con=request.getParameter("conclusiones");
+				rec=request.getParameter("recomendaciones");
+				est=request.getParameter("estado");
+				//crear un objeto de la clase Docente
+				Informe bean=new Informe();
+				//setear los atributos del objeto "bean"
+				bean.setCodigo(Integer.parseInt(cod));
+				bean.setIntroduccion(intr);
+				bean.setAntecedentes(ant);
+				bean.setAnalisis(ana);
+				bean.setConclusiones(con);
+				bean.setRecomendaciones(rec);
+				bean.setEstado(est);
+				
+				//invocar al mètodo registrarDocente
+				int salida=servicioInforme.actualizar(bean);
+				if(salida!=-1)
+					request.setAttribute("MENSAJE", "Registro actualizado correctamente");
+				else
+					request.setAttribute("MENSAJE", "Error al actualizar el registro");
+				//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+				request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
+				
 		
 	}
 
@@ -106,7 +150,7 @@ public class ServletInforme extends HttpServlet {
 		bean.setAnalisis(ana);
 		bean.setConclusiones(con);
 		bean.setRecomendaciones(rec);
-		bean.setEsta(est);
+		bean.setEstado(est);
 		
 		//invocar al mètodo registrarDocente
 		int salida=servicioInforme.registrar(bean);
