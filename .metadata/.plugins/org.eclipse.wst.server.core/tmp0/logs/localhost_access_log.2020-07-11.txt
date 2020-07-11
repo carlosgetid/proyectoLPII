@@ -1,8 +1,0 @@
-127.0.0.1 - - [11/Jul/2020:14:20:35 -0500] "GET / HTTP/1.1" 404 1074
-127.0.0.1 - - [11/Jul/2020:14:20:40 -0500] "GET /asesoramientoSoftware/lista.jsp HTTP/1.1" 200 3733
-127.0.0.1 - - [11/Jul/2020:14:20:40 -0500] "GET /asesoramientoSoftware/js/jquery.dataTables.min.js HTTP/1.1" 200 82355
-127.0.0.1 - - [11/Jul/2020:14:20:43 -0500] "GET /asesoramientoSoftware/ServletRequerimiento?accion=LISTAR HTTP/1.1" 200 239
-127.0.0.1 - - [11/Jul/2020:14:22:23 -0500] "GET /asesoramientoSoftware/lista.jsp HTTP/1.1" 200 3733
-127.0.0.1 - - [11/Jul/2020:14:22:24 -0500] "GET /asesoramientoSoftware/js/jquery.dataTables.min.js HTTP/1.1" 200 82355
-127.0.0.1 - - [11/Jul/2020:14:22:24 -0500] "GET /favicon.ico HTTP/1.1" 404 1085
-127.0.0.1 - - [11/Jul/2020:14:22:24 -0500] "GET /asesoramientoSoftware/ServletRequerimiento?accion=LISTAR HTTP/1.1" 200 239
