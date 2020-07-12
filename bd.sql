@@ -18,6 +18,9 @@ CREATE TABLE `tb_usuario` (
   `ape_usu` varchar(50) DEFAULT NULL,
   `eda_usu` smallint(6) DEFAULT NULL,
   `est_usu` char(1) DEFAULT NULL,
+  dni_usu char(8),
+  depa_usu varchar(50),
+  cargo_usu varchar(50),
   PRIMARY KEY (`cod_usu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -39,6 +42,7 @@ CREATE TABLE `tb_requerimiento` (
   `area_req` varchar(25) DEFAULT NULL,
   `criticidad_req` varchar(25) DEFAULT NULL,
   `estado_req` varchar(25) DEFAULT NULL,
+  fec_hor_req timestamp default current_timestamp,
   PRIMARY KEY (`cod_req`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
@@ -51,10 +55,34 @@ CREATE TABLE `tb_informe` (
   `conclusiones_inf` varchar(200) DEFAULT NULL,
   `recomendaciones_inf` varchar(200) DEFAULT NULL,
   `estado_inf` varchar(25) DEFAULT NULL,
+  file_info_tec mediumblob,
   PRIMARY KEY (`cod_inf`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
+create table tb_proveedor
+(
+	ruc_prov int primary key,
+    rs_prov varchar(100),
+    dir_prov varchar(200)
+);
 
+
+create table tb_cotizacion
+(
+	cod_coti int primary key auto_increment,
+    cali_coti char(1),
+    file_coti mediumblob
+);
+
+
+create table tb_detalle_coti_prov
+(
+	cod_coti int not null,
+    ruc_prov int not null,
+    primary key (cod_coti, ruc_prov),
+	constraint foreign key fk_tb_det_cod_coti (cod_coti) references tb_cotizacion (cod_coti),
+	constraint foreign key fk_tb_det_ruc_prov (ruc_prov) references tb_proveedor (ruc_prov)
+);
 
 create table tb_sol_certificado
 (
@@ -62,7 +90,8 @@ create table tb_sol_certificado
     fec_sol_cert timestamp default current_timestamp,
     obj_sol_cert varchar(200),
     monto_sol_cert decimal(8,2),
-    area_so_cert varchar(50)
+    area_sol_cert varchar(50),
+    file_sol_cert mediumblob
 );
 
 
@@ -82,7 +111,7 @@ create table tb_software
 	cod_soft int primary key auto_increment,
     nom_soft varchar(35),
     ver_soft varchar(45),
-    desc_soft varchar(200)
+    file_soft mediumblob
 );
 
 create table tb_informe_instalacion
@@ -95,6 +124,8 @@ create table tb_informe_instalacion
     lug_insta varchar(150),
     area_lab_ varchar(150),
     fec_insta timestamp default current_timestamp,
-    hora_insta timestamp default current_timestamp
+    hora_insta timestamp default current_timestamp,
+    est_info_insta char(1) default 0,
+    file_info_insta mediumblob
 );
 
