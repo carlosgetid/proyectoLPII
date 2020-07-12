@@ -3,9 +3,7 @@ package net.consorcio.entidad;
 public class Usuario {
 
 	private int codigo;
-	private String nombres,apellidos;
-	
-	
+	private String nombres,apellidos,dni,telefono,departamento,cargo;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -24,6 +22,31 @@ public class Usuario {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public String getDepartamento() {
+		return departamento;
+	}
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	
 	
 	
 	

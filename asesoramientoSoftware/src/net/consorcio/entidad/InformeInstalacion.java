@@ -8,8 +8,11 @@ public class InformeInstalacion {
 	private int codigo;
 	private String lugar;
 	private String nombreArea;
+	
+//	datos ingresados por el usuario
 	private Date fechaInstalacion;
 	private Date horaInstalacion;
+	
 	private int calificacion;
 	private InputStream documento;
 	

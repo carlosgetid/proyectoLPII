@@ -1,5 +1,7 @@
 package net.consorcio.entidad;
 
+import java.io.InputStream;
+
 public class Informe {
 
 		private int codigo;
@@ -9,6 +11,8 @@ public class Informe {
 		private String conclusiones;
 		private String recomendaciones;
 		private String estado;
+		private InputStream documento;
+		
 		public int getCodigo() {
 			return codigo;
 		}
@@ -50,6 +54,12 @@ public class Informe {
 		}
 		public void setEstado(String estado) {
 			this.estado = estado;
+		}
+		public InputStream getDocumento() {
+			return documento;
+		}
+		public void setDocumento(InputStream documento) {
+			this.documento = documento;
 		}
 		
 		

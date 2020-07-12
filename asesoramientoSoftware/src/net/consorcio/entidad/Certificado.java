@@ -5,7 +5,10 @@ import java.sql.Date;
 
 public class Certificado {
 	private int codigo;
+	
+//	fecha generada al subir el archivo
 	private Date fechaHora;
+	
 	private String url;
 	private String nombreArchivo;
 	private InputStream documento;
