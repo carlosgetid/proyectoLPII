@@ -63,12 +63,15 @@ CREATE TABLE `tb_informe` (
   PRIMARY KEY (`cod_inf`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
-create table tb_proveedor
-(
-	ruc_prov int primary key,
-    rs_prov varchar(100),
-    dir_prov varchar(200)
-);
+CREATE TABLE `tb_proveedor` (
+  `ruc_prov` int(11) NOT NULL,
+  `nom_prov` varchar(25) DEFAULT NULL,
+  `ape_prov` varchar(25) DEFAULT NULL,
+  `tel_prov` varchar(9) DEFAULT NULL,
+  `ema_prov` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ruc_prov`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 create table tb_cotizacion
