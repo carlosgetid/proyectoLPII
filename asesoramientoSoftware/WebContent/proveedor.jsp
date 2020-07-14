@@ -1,3 +1,4 @@
+<jsp:include page="menu.jsp"/>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -19,51 +20,32 @@
 		</div>
 	</c:if>
 	<div class="container">
-  		<form method="post" action="" method="post" id="id_registrar">
-  		 <input type="hidden" id="idCriticidad" value="${requerimiento.criticidad}">
+  		<form method="post" action="ServletProveedor?accion=REGISTRAR" method="post" id="id_registrar">
 		  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Codigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" >
-			  </div>
-		  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Descripcion</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="descripcion" value="${requerimiento.descripcion}" placeholder="Ingresar descripcion" rows="3" >
-			  </div>
-			 <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Origen</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="origen" placeholder="Ingresar origen" rows="3" value="${requerimiento.origen}">
+			    <label for="exampleFormControlTextarea1">Ruc</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" placeholder="Ingresar ruc" rows="3">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Area</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="area" placeholder="Ingresar area" rows="3" value="${requerimiento.area}">
+			    <label for="exampleFormControlTextarea1">Nombre</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="nombre" placeholder="Ingresar nombre" rows="3">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Criticidad</label>
-			    <select class="form-control" name="criticidad" id="idcriticidad">
-			      <option>[Seleccione]</option>
-			      <option value="Necesario">Necesario</option>
-			      <option value="Importante">Importante</option>
-			       <option value="Deseado">Deseado</option>
-			    </select>
+			    <label for="exampleFormControlTextarea1">Apellido</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="apellido" placeholder="Ingresar apellido" rows="3">
 			  </div>
-			  <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio1" value="${requerimiento.estado}" >
-				  <label class="form-check-label" for="inlineRadio1">Terminado</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio2" value="${requerimiento.estado}">
-				  <label class="form-check-label" for="inlineRadio2">En proceso</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio3" value="${requerimiento.estado}">
-				  <label class="form-check-label" for="inlineRadio3">Pendiente</label>
-				</div>
+			   <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Telefono</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="telefono" placeholder="Ingresar telefono" rows="3">
+			  </div>
+			   <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Email</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="email" placeholder="Ingresar email" rows="3">
+			  </div>
 				
-		  <button type="button" class="btn btn-primary">Actualizar</button>
-		  <button type="button" class="btn btn-warning">Eliminar</button>
+		  <button type="submit" class="btn btn-primary">Grabar</button>
 		  <button type="button" class="btn btn-success">Listar</button>
 		</form>
-	</div>		
+	</div>	
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -78,71 +60,52 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
 	
 	<script>
-	$(".btn-primary").click(function(){
-		$("#id_registrar").attr("action","ServletRequerimiento?accion=ACTUALIZAR");
-		id_registrar.submit();
-	})
-	$(".btn-warning").click(function(){
-		$("#id_registrar").attr("action","ServletRequerimiento?accion=ELIMINAR");
-		id_registrar.submit();
-	})
 	$(".btn-success").click(function(){
 		window.location.href='lista.jsp';
 	})
-	
-	$("#idcriticidad").val($("#idCriticidad").val());
 	</script>
-	
   	
-  <script>    
+  	<script>    
 	  $('#id_registrar').validate({
 	    rules: {
 	    	codigo:{
 	    		required:true,
 	    	},
-	    	descripcion:{
+	    	nombre:{
 	    		required:true,
 	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
 	    	},
-	    	origen:{
+	    	apellido:{
 	    		required:true,
 	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
 	    	},
-	    	area:{
-	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	criticidad:{
+	    	telefono:{
 	    		required:true
 	    	},
-	    	estado:{
+	    	email:{
 	    		required:true
 	    		
 	    	}
 	    },
 	    messages:{
-	    	
 	    	codigo:{
-	    		required:'Ingresar nombre',
-	    	},
-	    	descripcion:{
-	    		required:'Ingresar nombre',
+	    		required:'Ingresar codigo',
 	    		pattern:'Campo descripcion solo letras'
 	    	},
-	    	origen:{
-	    		required:'ingresar apellido',
+	    	nombre:{
+	    		required:'ingresar nombre',
 	    		pattern:'Campo origen solo letras'
 	    	},
-	    	area:{
-	    		required:'ingresar edad',
+	    	apellido:{
+	    		required:'ingresar apellido',
 	    		pattern:'Campo area solo letras'
 	    	
 	    	},
-	    	criticidad:{
-	    		required:'ingresar criticidad'
+	    	telefono:{
+	    		required:'ingresar telefono'
 	    	},
-	    	estado:{
-	    		required:'ingresar estado'
+	    	email:{
+	    		required:'ingresar email'
 	    	}
 	    },
 	    errorElement: 'span',
@@ -157,6 +120,6 @@
 	        $(element).removeClass('is-invalid');
 	    },
 	})
-	</script>				
+	</script>		
 </body>
 </html>

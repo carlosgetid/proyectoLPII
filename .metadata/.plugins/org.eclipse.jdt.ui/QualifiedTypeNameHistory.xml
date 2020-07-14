@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="net.consorcio.entidad.Informe"/>
+<fullyQualifiedTypeName name="net.consorcio.fabrica.DAOFactory"/>
+<fullyQualifiedTypeName name="net.consorcio.interfaces.ProveedorDAO"/>
+<fullyQualifiedTypeName name="net.consorcio.service.ProveedorService"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="net.consorcio.entidad.Proveedor"/>
 </qualifiedTypeNameHistroy>

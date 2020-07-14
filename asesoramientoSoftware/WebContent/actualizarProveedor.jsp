@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -20,44 +21,27 @@
 	</c:if>
 	<div class="container">
   		<form method="post" action="" method="post" id="id_registrar">
-  		 <input type="hidden" id="idCriticidad" value="${requerimiento.criticidad}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${proveedor.codigo}" placeholder="Ingresar RUC" rows="3" >
 			  </div>
 		  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Descripcion</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="descripcion" value="${requerimiento.descripcion}" placeholder="Ingresar descripcion" rows="3" >
-			  </div>
-			 <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Origen</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="origen" placeholder="Ingresar origen" rows="3" value="${requerimiento.origen}">
+			    <label for="exampleFormControlTextarea1">Nombre</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="nombre" value="${proveedor.nombre}" placeholder="Ingresar nombre" rows="3" >
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Area</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="area" placeholder="Ingresar area" rows="3" value="${requerimiento.area}">
+			    <label for="exampleFormControlTextarea1">Apellido</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="apellido" placeholder="Ingresar apellido" rows="3" value="${proveedor.apellido}">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Criticidad</label>
-			    <select class="form-control" name="criticidad" id="idcriticidad">
-			      <option>[Seleccione]</option>
-			      <option value="Necesario">Necesario</option>
-			      <option value="Importante">Importante</option>
-			       <option value="Deseado">Deseado</option>
-			    </select>
+			    <label for="exampleFormControlTextarea1">Telefono</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="telefono" placeholder="Ingresar telefono" rows="3" value="${proveedor.telefono}">
 			  </div>
-			  <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio1" value="${requerimiento.estado}" >
-				  <label class="form-check-label" for="inlineRadio1">Terminado</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio2" value="${requerimiento.estado}">
-				  <label class="form-check-label" for="inlineRadio2">En proceso</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="estado" id="inlineRadio3" value="${requerimiento.estado}">
-				  <label class="form-check-label" for="inlineRadio3">Pendiente</label>
-				</div>
+			    <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Email</label>
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="email" placeholder="Ingresar email" rows="3" value="${proveedor.email}">
+			  </div>
+			  
 				
 		  <button type="button" class="btn btn-primary">Actualizar</button>
 		  <button type="button" class="btn btn-warning">Eliminar</button>
@@ -90,10 +74,6 @@
 		window.location.href='lista.jsp';
 	})
 	
-	$("#idcriticidad").val($("#idCriticidad").val());
-	</script>
-	
-  	
   <script>    
 	  $('#id_registrar').validate({
 	    rules: {

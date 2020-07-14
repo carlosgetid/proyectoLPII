@@ -1,9 +1,11 @@
 package net.consorcio.fabrica;
 
 import net.consorcio.dao.MySqlInformeDAO;
+import net.consorcio.dao.MySqlProveedorDAO;
 import net.consorcio.dao.MySqlRequerimientoDAO;
 import net.consorcio.dao.MySqlUsuarioDAO;
 import net.consorcio.interfaces.InformeDAO;
+import net.consorcio.interfaces.ProveedorDAO;
 import net.consorcio.interfaces.RequerimientoDAO;
 import net.consorcio.interfaces.UsuarioDAO;
 
@@ -25,6 +27,12 @@ public class MySqlDAOFactory extends DAOFactory {
 	public InformeDAO getInformeDAO() {
 		// TODO Auto-generated method stub
 		return new MySqlInformeDAO();
+	}
+
+	@Override
+	public ProveedorDAO getProveedorDAO() {
+		// TODO Auto-generated method stub
+		return new MySqlProveedorDAO();
 	}
 
 }

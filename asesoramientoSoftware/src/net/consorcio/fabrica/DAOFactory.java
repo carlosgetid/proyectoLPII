@@ -1,6 +1,7 @@
 package net.consorcio.fabrica;
 
 import net.consorcio.interfaces.InformeDAO;
+import net.consorcio.interfaces.ProveedorDAO;
 import net.consorcio.interfaces.RequerimientoDAO;
 import net.consorcio.interfaces.UsuarioDAO;
 
@@ -18,6 +19,7 @@ public abstract class DAOFactory {
     public abstract RequerimientoDAO getRequerimientoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
     public abstract InformeDAO getInformeDAO();
+    public abstract ProveedorDAO getProveedorDAO();
    
    
     public static DAOFactory getDAOFactory(int whichFactory){
