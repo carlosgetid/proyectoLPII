@@ -13,9 +13,8 @@ public class InformeInstalacion {
 	private Date fechaInstalacion;
 	private Date horaInstalacion;
 	
-	private int calificacion;
+	private int estado;
 	private InputStream documento;
-	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -46,17 +45,18 @@ public class InformeInstalacion {
 	public void setHoraInstalacion(Date horaInstalacion) {
 		this.horaInstalacion = horaInstalacion;
 	}
+	public int getEstado() {
+		return estado;
+	}
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
 	public InputStream getDocumento() {
 		return documento;
 	}
 	public void setDocumento(InputStream documento) {
 		this.documento = documento;
 	}
-	public int getCalificacion() {
-		return calificacion;
-	}
-	public void setCalificacion(int calificacion) {
-		this.calificacion = calificacion;
-	}
+	
 	
 }
