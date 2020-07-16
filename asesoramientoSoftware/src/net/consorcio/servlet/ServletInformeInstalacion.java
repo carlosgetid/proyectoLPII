@@ -1,11 +1,17 @@
 package net.consorcio.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonValue;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +27,8 @@ public class ServletInformeInstalacion extends HttpServlet {
 
 	private InformeInstalacionService servicioInformeInstalacion;
 
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
 
 	public ServletInformeInstalacion() {
 		super();
@@ -46,23 +54,47 @@ public class ServletInformeInstalacion extends HttpServlet {
 			listar(request, response);
 	}
 
-	private void listar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		List<InformeInstalacion> lista = servicioInformeInstalacion.listar();
+		
+		JsonArrayBuilder arreglo = Json.createArrayBuilder();
+		
+		for(InformeInstalacion bean:lista) {
+			JsonObject obj = Json.createObjectBuilder().add("codigo", bean.getCodigo()).
+														add("lugar", bean.getLugar()).
+														add("area", bean.getNombreArea()).
+														add("fechaInstalacion", sdf.format(bean.getFechaInstalacion())).
+														add("horaInstalacion", sdf.format(bean.getHoraInstalacion())).
+														add("estado", bean.getEstado()).build();
+			arreglo.add(obj);
+		}
+		
+		response.setContentType("application/json;charset=UTF-8");
+		
+		PrintWriter salida = response.getWriter();
+		salida.println(arreglo.build());
 	}
 
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+		InformeInstalacion bean;
+		String cod;
+		cod = request.getParameter("codigo");
+		bean = servicioInformeInstalacion.buscar(Integer.parseInt(cod));
+		request.setAttribute("InformeInstalacion", bean);
 	}
 
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+//		String cod, lug, area, fecIn, horIn;
+//		cod = request.getParameter("codigo");
+//		lug = request.getParameter("lugar");
+//		area = request.getParameter("area");
+//		fecIn = request.getParameter("fechaInstalacion");
+//		horIn = request.getParameter("horaInstalacion");
+//		
 	}
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response)
@@ -74,8 +106,6 @@ public class ServletInformeInstalacion extends HttpServlet {
 		fecIn = request.getParameter("fechaInstalacion");
 		horIn = request.getParameter("horaInstalacion");
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
 
 //		Convertir una cadena a Date.util y luego lo convierte Date.sql
 		Date sqlFecIn = new Date(sdf.parse(fecIn).getTime());
