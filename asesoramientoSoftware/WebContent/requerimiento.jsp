@@ -27,7 +27,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Origen</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="origen" placeholder="Ingresar origen" rows="3">
+			    <textarea class="form-control" id="exampleFormControlTextarea1" name="origen" placeholder="Ingresar origen" rows="3"></textarea>
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Area</label>
