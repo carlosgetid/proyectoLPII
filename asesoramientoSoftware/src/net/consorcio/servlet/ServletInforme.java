@@ -77,7 +77,7 @@ public class ServletInforme extends HttpServlet {
 		cod=request.getParameter("codigo");
 		bean=servicioInforme.buscar(Integer.parseInt(cod));
 		request.setAttribute("informe", bean);
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
@@ -93,7 +93,7 @@ public class ServletInforme extends HttpServlet {
 			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
@@ -120,13 +120,13 @@ public class ServletInforme extends HttpServlet {
 				bean.setRecomendaciones(rec);
 				bean.setEstado(est);
 				
-				//invocar al mètodo registrarDocente
+				//invocar al mï¿½todo registrarDocente
 				int salida=servicioInforme.actualizar(bean);
 				if(salida!=-1)
 					request.setAttribute("MENSAJE", "Registro actualizado correctamente");
 				else
 					request.setAttribute("MENSAJE", "Error al actualizar el registro");
-				//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+				//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 				request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 				
 		
@@ -152,13 +152,13 @@ public class ServletInforme extends HttpServlet {
 		bean.setRecomendaciones(rec);
 		bean.setEstado(est);
 		
-		//invocar al mètodo registrarDocente
+		//invocar al mï¿½todo registrarDocente
 		int salida=servicioInforme.registrar(bean);
 		if(salida!=-1)
 			request.setAttribute("MENSAJE", "Se registro correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en el registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/informe.jsp").forward(request, response);
 		
 	}

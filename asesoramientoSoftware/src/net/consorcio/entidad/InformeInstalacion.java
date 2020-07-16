@@ -2,6 +2,7 @@ package net.consorcio.entidad;
 
 import java.io.InputStream;
 import java.sql.Date;
+import java.sql.Time;
 
 public class InformeInstalacion {
 	
@@ -11,7 +12,7 @@ public class InformeInstalacion {
 	
 //	datos ingresados por el usuario
 	private Date fechaInstalacion;
-	private Date horaInstalacion;
+	private Time horaInstalacion;
 	
 	private int estado;
 	private InputStream documento;
@@ -39,10 +40,10 @@ public class InformeInstalacion {
 	public void setFechaInstalacion(Date fechaInstalacion) {
 		this.fechaInstalacion = fechaInstalacion;
 	}
-	public Date getHoraInstalacion() {
+	public Time getHoraInstalacion() {
 		return horaInstalacion;
 	}
-	public void setHoraInstalacion(Date horaInstalacion) {
+	public void setHoraInstalacion(Time horaInstalacion) {
 		this.horaInstalacion = horaInstalacion;
 	}
 	public int getEstado() {
@@ -57,6 +58,5 @@ public class InformeInstalacion {
 	public void setDocumento(InputStream documento) {
 		this.documento = documento;
 	}
-	
 	
 }

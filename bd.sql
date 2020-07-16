@@ -129,7 +129,7 @@ create table tb_informe_instalacion
     lug_insta varchar(150),
     area_lab varchar(150),
     fec_insta date,#fecha del momento de la instalacion
-    hora_insta date,#hora del momento de la instalacion
+    hora_insta time,#hora del momento de la instalacion
     fec_info_insta timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
     est_info_insta char(1) default 0,
     file_info_insta mediumblob

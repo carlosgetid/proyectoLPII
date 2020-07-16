@@ -31,7 +31,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 				bean.setLugar(rs.getString(2));
 				bean.setNombreArea(rs.getString(3));
 				bean.setFechaInstalacion(rs.getDate(4));
-				bean.setHoraInstalacion(rs.getDate(5));
+				bean.setHoraInstalacion(rs.getTime(5));
 				bean.setEstado(rs.getInt(6));
 			}
 		} catch (Exception e) {
@@ -67,7 +67,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 				bean.setLugar(rs.getString(2));
 				bean.setNombreArea(rs.getString(3));
 				bean.setFechaInstalacion(rs.getDate(4));
-				bean.setHoraInstalacion(rs.getDate(5));
+				bean.setHoraInstalacion(rs.getTime(5));
 				bean.setEstado(rs.getInt(6));
 				bean.setDocumento((InputStream) rs.getBlob(7));
 				
@@ -102,7 +102,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 			pstm.setString(1, bean.getLugar());
 			pstm.setString(2, bean.getNombreArea());
 			pstm.setDate(3, bean.getFechaInstalacion());
-			pstm.setDate(4, bean.getHoraInstalacion());
+			pstm.setTime(4, bean.getHoraInstalacion());
 			pstm.setInt(5, bean.getEstado());
 			pstm.setBlob(6, bean.getDocumento());
 			estado=pstm.executeUpdate();
@@ -135,7 +135,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 			pstm.setString(1, bean.getLugar());
 			pstm.setString(2, bean.getNombreArea());
 			pstm.setDate(3, bean.getFechaInstalacion());
-			pstm.setDate(4, bean.getHoraInstalacion());
+			pstm.setTime(4, bean.getHoraInstalacion());
 			pstm.setInt(5, bean.getEstado());
 			pstm.setBlob(5, bean.getDocumento());
 			pstm.setInt(6, bean.getCodigo());
