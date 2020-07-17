@@ -2,13 +2,19 @@ package net.consorcio.entidad;
 
 public class Usuario {
 
-	private int codigo;
+	private int codigo, edad;
 	private String nombres,apellidos,dni,telefono,departamento,cargo;
 	public int getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 	public String getNombres() {
 		return nombres;
@@ -46,8 +52,6 @@ public class Usuario {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	
-	
 	
 	
 }
