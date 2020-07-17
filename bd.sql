@@ -5,10 +5,10 @@ use asesoramiento_ml;
 
 CREATE TABLE `tb_menu` (
   `cod_men` int(11) NOT NULL AUTO_INCREMENT,
-  `des_men` varchar(30) DEFAULT NULL,
+  `des_men` varchar(50) DEFAULT NULL,
   `url_men` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`cod_men`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+);
 
 
 CREATE TABLE `tb_usuario` (
@@ -24,7 +24,7 @@ CREATE TABLE `tb_usuario` (
   depa_usu varchar(50),
   cargo_usu varchar(50),
   PRIMARY KEY (`cod_usu`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+);
 
 
 CREATE TABLE `tb_acceso` (
@@ -34,7 +34,7 @@ CREATE TABLE `tb_acceso` (
   KEY `cod_usu` (`cod_usu`),
   CONSTRAINT `tb_acceso_ibfk_1` FOREIGN KEY (`cod_men`) REFERENCES `tb_menu` (`cod_men`),
   CONSTRAINT `tb_acceso_ibfk_2` FOREIGN KEY (`cod_usu`) REFERENCES `tb_usuario` (`cod_usu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 
 CREATE TABLE `tb_requerimiento` (
@@ -47,7 +47,7 @@ CREATE TABLE `tb_requerimiento` (
   fec_req timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   file_req mediumblob,#aqui se almacena el pdf
   PRIMARY KEY (`cod_req`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+);
 
 
 CREATE TABLE `tb_informe` (
@@ -61,7 +61,7 @@ CREATE TABLE `tb_informe` (
   fec_info_tec timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   file_info_tec mediumblob,
   PRIMARY KEY (`cod_inf`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `tb_proveedor` (
   `ruc_prov` int(11) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `tb_proveedor` (
   `tel_prov` varchar(9) DEFAULT NULL,
   `ema_prov` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ruc_prov`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 
 
@@ -138,12 +138,31 @@ create table tb_informe_instalacion
 
 
 #Insertando usuarios
-insert into tb_usuario values (null, 'enc001', 'enc001', 'Carlos', 'Gomez', 55, 1, 87654321, 987654321, 'Logistica', 'Encargado');
+insert into tb_usuario values (null, 'enc001', 'enc001', 'Carlos', 'Gomez', 55, 1, 87654321, 987654321, 'Producción', 'Encargado');
 insert into tb_usuario values (null, 'tec001', 'tec001', 'Angelo', 'Abregu', 44, 1, 87234322, 984654333, 'IT', 'Tecnico Especialista');
-insert into tb_usuario values (null, 'sub001', 'sub001', 'Lulio', 'Herrera', 33, 1, 47534321, 945624526, 'IT', 'Subgerente');
+insert into tb_usuario values (null, 'sub001', 'sub001', 'Lulio', 'Herrera', 33, 1, 57544325, 945624536, 'IT', 'Subgerente');
+insert into tb_usuario values (null, 'log001', 'log001', 'Ronald', 'Huaman', 22, 1, 67534528, 945328143, 'SLCP', 'Asistente');
+insert into tb_usuario values (null, 'pre001', 'pre001', 'Ronald', 'Chinchay', 44, 1, 47534327, 985224627, 'GPPDC', 'Gerente');
 
 #menus
-#insert into tb_menu values (null, 'Encargado UO', 'requerimiento.jsp');
-#insert into tb_menu values (null, 'Tecnico', 'listaRequerimiento.jsp');
-#insert into tb_menu values (null, 'Encargado UO', 'listaRequerimiento.jsp');
-#insert into tb_menu values (null, 'Encargado UO', 'listaRequerimiento.jsp');
+insert into tb_menu values (null, 'Generar Solicitud de Requerimiento de Software', 'requerimiento.jsp');
+insert into tb_menu values (null, 'Buscar Informe de Instalación', 'listaInformeInstalacion.jsp');
+insert into tb_menu values (null, 'Generar Informe Técnico', 'listaRequerimiento.jsp');
+insert into tb_menu values (null, 'Generar Informe de Instalación', 'listaSoftware.jsp');#falta crear
+insert into tb_menu values (null, 'Aprobar Informe Técnico Registrado', 'listaInformeTecnico.jsp');
+insert into tb_menu values (null, 'Registrar Cotización', 'listaInformeTecnico.jsp');
+insert into tb_menu values (null, 'Generar Solicitud de Certificación Presupuestal', 'listaCotizacion.jsp');#falta crear
+insert into tb_menu values (null, 'Registrar Software Adquirido', 'listaCertificado.jsp');#falta crear
+insert into tb_menu values (null, 'Registrar Certificado Presupuestal', 'listaSolicitudCertificado.jsp');#falta crear
+
+#accesos
+insert into tb_acceso values (1,1);
+insert into tb_acceso values (2,1);
+insert into tb_acceso values (3,2);
+insert into tb_acceso values (4,2);
+insert into tb_acceso values (5,3);
+insert into tb_acceso values (6,4);
+insert into tb_acceso values (7,4);
+insert into tb_acceso values (8,4);
+insert into tb_acceso values (9,5);
+

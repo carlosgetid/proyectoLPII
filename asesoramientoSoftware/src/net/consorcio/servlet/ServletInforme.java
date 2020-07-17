@@ -142,6 +142,7 @@ public class ServletInforme extends HttpServlet {
 		con=request.getParameter("conclusiones");
 		rec=request.getParameter("recomendaciones");
 		est=request.getParameter("estado");
+		
 		//crear un objeto de la clase Docente
 		Informe bean=new Informe();
 		//setear los atributos del objeto "bean"

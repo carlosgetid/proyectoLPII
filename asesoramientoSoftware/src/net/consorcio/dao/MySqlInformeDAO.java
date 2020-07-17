@@ -95,7 +95,7 @@ public class MySqlInformeDAO implements InformeDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_informe values(null,?,?,?,?,?,?)";
+			String sql="insert into tb_informe values(null,?,?,?,?,?,?,null,null)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getIntroduccion());
 			pstm.setString(2, bean.getAntecedentes());

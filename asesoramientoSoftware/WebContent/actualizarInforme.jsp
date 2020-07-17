@@ -84,7 +84,7 @@
 		id_registrar.submit();
 	})
 	$(".btn-success").click(function(){
-		window.location.href='listaInforme.jsp';
+		window.location.href='listaInformeTecnico.jsp';
 	})
 	
 	$("#idestado").val($("#idEstado").val());
