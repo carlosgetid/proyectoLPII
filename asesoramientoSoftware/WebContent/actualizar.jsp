@@ -119,7 +119,7 @@
 					id_registrar.submit();
 				})
 		$(".btn-success").click(function() {
-			window.location.href = 'lista.jsp';
+			window.location.href = 'listaRequerimiento.jsp';
 		})
 
 		$("#idcriticidad").val($("#idCriticidad").val());

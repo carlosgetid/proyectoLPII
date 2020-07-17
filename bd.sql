@@ -135,3 +135,15 @@ create table tb_informe_instalacion
     file_info_insta mediumblob
 );
 
+
+
+#Insertando usuarios
+insert into tb_usuario values (null, 'enc001', 'enc001', 'Carlos', 'Gomez', 55, 1, 87654321, 987654321, 'Logistica', 'Encargado');
+insert into tb_usuario values (null, 'tec001', 'tec001', 'Angelo', 'Abregu', 44, 1, 87234322, 984654333, 'IT', 'Tecnico Especialista');
+insert into tb_usuario values (null, 'sub001', 'sub001', 'Lulio', 'Herrera', 33, 1, 47534321, 945624526, 'IT', 'Subgerente');
+
+#menus
+#insert into tb_menu values (null, 'Encargado UO', 'requerimiento.jsp');
+#insert into tb_menu values (null, 'Tecnico', 'listaRequerimiento.jsp');
+#insert into tb_menu values (null, 'Encargado UO', 'listaRequerimiento.jsp');
+#insert into tb_menu values (null, 'Encargado UO', 'listaRequerimiento.jsp');
