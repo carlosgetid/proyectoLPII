@@ -1,8 +1,0 @@
-INDEX VERSION 1.131+/home/carlos/Documents/LP_II_T4NN_G0X_WORKSPACE/.metadata/.plugins/org.eclipse.jdt.core
-142768727.index
-681519316.index
-2547434405.index
-2541797842.index
-3455590242.index
-1195994891.index
-352973926.index
