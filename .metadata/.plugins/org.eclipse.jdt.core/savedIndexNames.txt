@@ -1,0 +1,6 @@
+INDEX VERSION 1.130+C:\Users\Dange\OneDrive\Escritorio\proyectito\.metadata\.plugins\org.eclipse.jdt.core
+2230593400.index
+1166579104.index
+2971032082.index
+1867967206.index
+130741908.index
