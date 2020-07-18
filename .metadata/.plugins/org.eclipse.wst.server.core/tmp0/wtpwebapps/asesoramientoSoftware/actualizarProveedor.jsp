@@ -117,7 +117,6 @@
 	    	email:{
 	    		required:'ingresar criticidad'
 	    	}
-	    	
 	    },
 	    errorElement: 'span',
 	    errorPlacement: function (error, element) {

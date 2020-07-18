@@ -8,18 +8,9 @@ public class Certificado {
 	
 //	fecha generada al subir el archivo
 	private Date fechaHora;
-<<<<<<< HEAD
 	private String url;
 	private String nombreArchivo;
 	private InputStream documento;
-	
-	
-=======
-	
-	private String url;
-	private String nombreArchivo;
-	private InputStream documento;
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	public int getCodigo() {
 		return codigo;
 	}

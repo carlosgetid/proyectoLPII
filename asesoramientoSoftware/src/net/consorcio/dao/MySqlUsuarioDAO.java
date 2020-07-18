@@ -26,15 +26,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			pstm.setString(1, login);
 			pstm.setString(2, clave);
 			rs=pstm.executeQuery();
-<<<<<<< HEAD
-			if(rs.next()) {
-				bean=new Usuario();
-=======
 //			if porque devolvera una sola fila
 			if(rs.next()) {
 				bean=new Usuario();
 //				el orden del select influye en este orden
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				bean.setCodigo(rs.getInt(1));
 				bean.setApellidos(rs.getString(2));
 				bean.setNombres(rs.getString(3));	

@@ -61,11 +61,7 @@
 	
 	<script>
 	$(".btn-success").click(function(){
-<<<<<<< HEAD
 		window.location.href='listaProveedor.jsp';
-=======
-		window.location.href='lista.jsp';
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	})
 	</script>
   	
@@ -94,11 +90,7 @@
 	    messages:{
 	    	codigo:{
 	    		required:'Ingresar codigo',
-<<<<<<< HEAD
-	    		
-=======
 	    		pattern:'Campo descripcion solo letras'
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	    	},
 	    	nombre:{
 	    		required:'ingresar nombre',

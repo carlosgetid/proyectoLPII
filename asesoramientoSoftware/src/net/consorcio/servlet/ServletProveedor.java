@@ -59,11 +59,7 @@ public class ServletProveedor extends HttpServlet {
 		//getDescripcion()
 		for(Proveedor bean: lista) {
 			//crear cada fila
-<<<<<<< HEAD
 			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
-=======
-			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getRuc()).
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 													  add("nombre",bean.getNombre()).
 													  add("apellido", bean.getApellido()).
 													  add("telefono", bean.getTelefono()).
@@ -85,7 +81,7 @@ public class ServletProveedor extends HttpServlet {
 		cod=request.getParameter("codigo");
 		bean=servicioProveedor.buscar(Integer.parseInt(cod));
 		request.setAttribute("proveedor", bean);
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizarProveedor.jsp").forward(request, response);
 		
 	}
@@ -101,7 +97,7 @@ public class ServletProveedor extends HttpServlet {
 			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizarProveedor.jsp").forward(request, response);
 		
 	}
@@ -118,23 +114,19 @@ public class ServletProveedor extends HttpServlet {
 				//crear un objeto de la clase Docente
 				Proveedor bean=new Proveedor();
 				//setear los atributos del objeto "bean"
-<<<<<<< HEAD
 				bean.setCodigo(Integer.parseInt(cod));
-=======
-				bean.setRuc(Integer.parseInt(cod));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				bean.setNombre(nom);
 				bean.setApellido(ape);
 				bean.setTelefono(tel);
 				bean.setEmail(ema);
 				
-				//invocar al mètodo registrarDocente
+				//invocar al mï¿½todo registrarDocente
 				int salida=servicioProveedor.actualizar(bean);
 				if(salida!=-1)
 					request.setAttribute("MENSAJE", "Registro actualizado correctamente");
 				else
 					request.setAttribute("MENSAJE", "Error al actualizar el registro");
-				//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+				//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 				request.getRequestDispatcher("/actualizarProveedor.jsp").forward(request, response);
 		
 	}
@@ -151,23 +143,19 @@ public class ServletProveedor extends HttpServlet {
 		//crear un objeto de la clase Docente
 		Proveedor bean=new Proveedor();
 		//setear los atributos del objeto "bean"
-<<<<<<< HEAD
 		bean.setCodigo(Integer.parseInt(cod));
-=======
-		bean.setRuc(Integer.parseInt(cod));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		bean.setNombre(nom);
 		bean.setApellido(ape);
 		bean.setTelefono(tel);
 		bean.setEmail(ema);
 		
-		//invocar al mètodo registrarDocente
+		//invocar al mï¿½todo registrarDocente
 		int salida=servicioProveedor.registrar(bean);
 		if(salida!=-1)
 			request.setAttribute("MENSAJE", "Se registro correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en el registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/proveedor.jsp").forward(request, response);
 		
 	}

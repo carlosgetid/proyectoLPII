@@ -63,7 +63,6 @@
 	
 	<script>
 	$(".btn-primary").click(function(){
-<<<<<<< HEAD
 		$("#id_registrar").attr("action","ServletProveedor?accion=ACTUALIZAR");
 		id_registrar.submit();
 	})
@@ -73,17 +72,6 @@
 	})
 	$(".btn-success").click(function(){
 		window.location.href='listaProveedor.jsp';
-=======
-		$("#id_registrar").attr("action","ServletRequerimiento?accion=ACTUALIZAR");
-		id_registrar.submit();
-	})
-	$(".btn-warning").click(function(){
-		$("#id_registrar").attr("action","ServletRequerimiento?accion=ELIMINAR");
-		id_registrar.submit();
-	})
-	$(".btn-success").click(function(){
-		window.location.href='lista.jsp';
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	})
 	
   <script>    
@@ -92,7 +80,6 @@
 	    	codigo:{
 	    		required:true,
 	    	},
-<<<<<<< HEAD
 	    	nombre:{
 	    		required:true,
 	    		
@@ -107,26 +94,6 @@
 	    	},
 	    	email:{
 	    		required:true
-=======
-	    	descripcion:{
-	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	origen:{
-	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	area:{
-	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	criticidad:{
-	    		required:true
-	    	},
-	    	estado:{
-	    		required:true
-	    		
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	    	}
 	    },
 	    messages:{
@@ -134,7 +101,6 @@
 	    	codigo:{
 	    		required:'Ingresar nombre',
 	    	},
-<<<<<<< HEAD
 	    	nombre:{
 	    		required:'Ingresar nombre',
 	    		
@@ -151,28 +117,6 @@
 	    	email:{
 	    		required:'ingresar criticidad'
 	    	}
-	    	
-=======
-	    	descripcion:{
-	    		required:'Ingresar nombre',
-	    		pattern:'Campo descripcion solo letras'
-	    	},
-	    	origen:{
-	    		required:'ingresar apellido',
-	    		pattern:'Campo origen solo letras'
-	    	},
-	    	area:{
-	    		required:'ingresar edad',
-	    		pattern:'Campo area solo letras'
-	    	
-	    	},
-	    	criticidad:{
-	    		required:'ingresar criticidad'
-	    	},
-	    	estado:{
-	    		required:'ingresar estado'
-	    	}
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	    },
 	    errorElement: 'span',
 	    errorPlacement: function (error, element) {

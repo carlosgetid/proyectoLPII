@@ -23,7 +23,6 @@
   		 <input type="hidden" id="idEstado" value="${informe.estado}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
-<<<<<<< HEAD
 			    <input class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${informe.codigo}" placeholder="Ingresar descripcion" rows="3" >
 			  </div>
 		  <div class="form-group">
@@ -45,43 +44,14 @@
 			   <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Recomendaciones</label>
 			    <textarea  class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" placeholder="Ingresar descripcion" rows="3" >${informe.recomendaciones}</textarea>
-=======
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${informe.codigo}" placeholder="Ingresar descripcion" rows="3" >
-			  </div>
-		  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Introduccion</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="introduccion" value="${informe.introduccion}" placeholder="Ingresar introduccion" rows="3" >
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Antecedentes</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="antecedentes" placeholder="Ingresar antecedentes" rows="3" value="${informe.antecedentes}">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Analisis</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="analisis" placeholder="Ingresar analisis" rows="3" value="${informe.analisis}">
-			  </div>
-			   <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Conclusiones</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="conclusiones" value="${informe.conclusiones}" placeholder="Ingresar descripcion" rows="3" >
-			  </div>
-			   <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Recomendaciones</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" value="${informe.recomendaciones}" placeholder="Ingresar descripcion" rows="3" >
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Estado</label>
 			    <select class="form-control" name="estado" id="idestado">
 			      <option>[Seleccione]</option>
-<<<<<<< HEAD
 			      <option value="Pendiente">Pendiente</option>
 			      <option value="Aceptado">Aceptado</option>
 			       <option value="Rechazado">Rechazado</option>
-=======
-			      <option value="Terminado">Terminado</option>
-			      <option value="En proceso">En proceso</option>
-			       <option value="Pendiente">Pendiente</option>
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 			    </select>
 			  </div>
 
@@ -114,11 +84,7 @@
 		id_registrar.submit();
 	})
 	$(".btn-success").click(function(){
-<<<<<<< HEAD
-		window.location.href='listaInforme.jsp';
-=======
 		window.location.href='listaInformeTecnico.jsp';
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 	})
 	
 	$("#idestado").val($("#idEstado").val());

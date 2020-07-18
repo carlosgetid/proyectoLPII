@@ -90,7 +90,7 @@
 	    messages:{
 	    	codigo:{
 	    		required:'Ingresar codigo',
-	    		
+	    		pattern:'Campo descripcion solo letras'
 	    	},
 	    	nombre:{
 	    		required:'ingresar nombre',

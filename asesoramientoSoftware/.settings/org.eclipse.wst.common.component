@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-    <wb-module deploy-name="asesoramientoSoftware">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="asesoramientoSoftware"/>
-        <property name="java-output-path" value="/asesoramientoSoftware/build/classes"/>
-    </wb-module>
-=======
             
     
     <wb-module deploy-name="asesoramientoSoftware">
@@ -25,5 +17,4 @@
     </wb-module>
         
 
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 </project-modules>

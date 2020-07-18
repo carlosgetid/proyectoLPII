@@ -26,11 +26,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			rs=pstm.executeQuery();
 			if(rs.next()) {
 				bean=new Proveedor();
-<<<<<<< HEAD
 				bean.setCodigo(rs.getInt(1));
-=======
-				bean.setRuc(rs.getInt(1));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				bean.setNombre(rs.getString(2));
 				bean.setApellido(rs.getString(3));
 				bean.setTelefono(rs.getString(4));
@@ -65,11 +61,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new Proveedor();
-<<<<<<< HEAD
 				bean.setCodigo(rs.getInt(1));
-=======
-				bean.setRuc(rs.getInt(1));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				bean.setNombre(rs.getString(2));
 				bean.setApellido(rs.getString(3));
 				bean.setTelefono(rs.getString(4));
@@ -103,11 +95,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			cn=MySqlBDConexion.getConexion();
 			String sql="insert into tb_proveedor values(?,?,?,?,?)";
 			pstm=cn.prepareStatement(sql);
-<<<<<<< HEAD
 			pstm.setInt(1, bean.getCodigo());
-=======
-			pstm.setInt(1, bean.getRuc());
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 			pstm.setString(2, bean.getNombre());
 			pstm.setString(3, bean.getApellido());
 			pstm.setString(4, bean.getTelefono());
@@ -140,11 +128,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			pstm.setString(2, bean.getApellido());
 			pstm.setString(3, bean.getTelefono());
 			pstm.setString(4, bean.getEmail());
-<<<<<<< HEAD
 			pstm.setInt(5, bean.getCodigo());
-=======
-			pstm.setInt(5, bean.getRuc());
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
