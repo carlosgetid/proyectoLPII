@@ -1,40 +1,38 @@
 package net.consorcio.dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.consorcio.entidad.Proveedor;
-import net.consorcio.interfaces.ProveedorDAO;
+import net.consorcio.entidad.InformeInstalacion;
+import net.consorcio.interfaces.InformeInstalacionDAO;
 import net.consorcio.utils.MySqlBDConexion;
 
-public class MySqlProveedorDAO implements ProveedorDAO {
+public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 
 	@Override
-	public Proveedor fin(int cod) {
-		Proveedor bean=null;
+	public InformeInstalacion find(int cod) {
+		InformeInstalacion bean=null;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_proveedor where ruc_prov=?";
+			String sql="select *from tb_informe_instalacion where cod_info_insta=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setInt(1, cod);
 			rs=pstm.executeQuery();
 			if(rs.next()) {
-				bean=new Proveedor();
-<<<<<<< HEAD
+				bean=new InformeInstalacion();
 				bean.setCodigo(rs.getInt(1));
-=======
-				bean.setRuc(rs.getInt(1));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
-				bean.setNombre(rs.getString(2));
-				bean.setApellido(rs.getString(3));
-				bean.setTelefono(rs.getString(4));
-				bean.setEmail(rs.getString(5));
+				bean.setLugar(rs.getString(2));
+				bean.setNombreArea(rs.getString(3));
+				bean.setFechaInstalacion(rs.getDate(4));
+				bean.setHoraInstalacion(rs.getTime(5));
+				bean.setEstado(rs.getInt(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,28 +50,26 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public List<Proveedor> listAll() {
-		List<Proveedor> lista=new ArrayList<Proveedor>();
-		Proveedor bean=null;
+	public List<InformeInstalacion> listAll() {
+		List<InformeInstalacion> lista=new ArrayList<InformeInstalacion>();
+		InformeInstalacion bean=null;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_proveedor";
+			String sql="select *from tb_informe_instalacion";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
-				bean=new Proveedor();
-<<<<<<< HEAD
+				bean=new InformeInstalacion();
 				bean.setCodigo(rs.getInt(1));
-=======
-				bean.setRuc(rs.getInt(1));
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
-				bean.setNombre(rs.getString(2));
-				bean.setApellido(rs.getString(3));
-				bean.setTelefono(rs.getString(4));
-				bean.setEmail(rs.getString(5));
+				bean.setLugar(rs.getString(2));
+				bean.setNombreArea(rs.getString(3));
+				bean.setFechaInstalacion(rs.getDate(4));
+				bean.setHoraInstalacion(rs.getTime(5));
+				bean.setEstado(rs.getInt(6));
+				bean.setDocumento((InputStream) rs.getBlob(7));
 				
 				lista.add(bean);
 				
@@ -94,24 +90,21 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public int save(Proveedor bean) {
-	
+	public int save(InformeInstalacion bean) {
+		
 		int estado=-1;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_proveedor values(?,?,?,?,?)";
+			String sql="insert into tb_informe_instalacion values(null,?,?,?,?,null,?,?)";
 			pstm=cn.prepareStatement(sql);
-<<<<<<< HEAD
-			pstm.setInt(1, bean.getCodigo());
-=======
-			pstm.setInt(1, bean.getRuc());
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
-			pstm.setString(2, bean.getNombre());
-			pstm.setString(3, bean.getApellido());
-			pstm.setString(4, bean.getTelefono());
-			pstm.setString(5, bean.getEmail());
+			pstm.setString(1, bean.getLugar());
+			pstm.setString(2, bean.getNombreArea());
+			pstm.setDate(3, bean.getFechaInstalacion());
+			pstm.setTime(4, bean.getHoraInstalacion());
+			pstm.setInt(5, bean.getEstado());
+			pstm.setBlob(6, bean.getDocumento());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,26 +118,27 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			}
 		}
 		return estado;
+
+
 	}
 
 	@Override
-	public int update(Proveedor bean) {
+	public int update(InformeInstalacion bean) {
+		
 		int estado=-1;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="update tb_proveedor set nom_prov=?,ape_prov=?,tel_prov=?,ema_prov=? where ruc_prov=?";
+			String sql="update tb_informe_instalacion set lug_insta=?,area_lab=?,fec_insta=?,hora_insta=?,est_info_insta=?,file_info_insta=? where cod_info_insta=?";
 			pstm=cn.prepareStatement(sql);
-			pstm.setString(1, bean.getNombre());
-			pstm.setString(2, bean.getApellido());
-			pstm.setString(3, bean.getTelefono());
-			pstm.setString(4, bean.getEmail());
-<<<<<<< HEAD
-			pstm.setInt(5, bean.getCodigo());
-=======
-			pstm.setInt(5, bean.getRuc());
->>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
+			pstm.setString(1, bean.getLugar());
+			pstm.setString(2, bean.getNombreArea());
+			pstm.setDate(3, bean.getFechaInstalacion());
+			pstm.setTime(4, bean.getHoraInstalacion());
+			pstm.setInt(5, bean.getEstado());
+			pstm.setBlob(5, bean.getDocumento());
+			pstm.setInt(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,7 +161,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="delete from tb_proveedor where ruc_prov=?";
+			String sql="delete from tb_informe_instalacion where cod_info_insta=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setInt(1,cod);
 			estado=pstm.executeUpdate();

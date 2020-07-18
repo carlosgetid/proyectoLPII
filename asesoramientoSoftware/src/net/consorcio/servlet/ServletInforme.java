@@ -77,7 +77,11 @@ public class ServletInforme extends HttpServlet {
 		cod=request.getParameter("codigo");
 		bean=servicioInforme.buscar(Integer.parseInt(cod));
 		request.setAttribute("informe", bean);
+<<<<<<< HEAD
 		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+=======
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
@@ -93,7 +97,11 @@ public class ServletInforme extends HttpServlet {
 			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
+<<<<<<< HEAD
 		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+=======
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 		
 	}
@@ -120,13 +128,21 @@ public class ServletInforme extends HttpServlet {
 				bean.setRecomendaciones(rec);
 				bean.setEstado(est);
 				
+<<<<<<< HEAD
 				//invocar al mètodo registrarDocente
+=======
+				//invocar al mï¿½todo registrarDocente
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				int salida=servicioInforme.actualizar(bean);
 				if(salida!=-1)
 					request.setAttribute("MENSAJE", "Registro actualizado correctamente");
 				else
 					request.setAttribute("MENSAJE", "Error al actualizar el registro");
+<<<<<<< HEAD
 				//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+=======
+				//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
 				
 		
@@ -142,6 +158,10 @@ public class ServletInforme extends HttpServlet {
 		con=request.getParameter("conclusiones");
 		rec=request.getParameter("recomendaciones");
 		est=request.getParameter("estado");
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		//crear un objeto de la clase Docente
 		Informe bean=new Informe();
 		//setear los atributos del objeto "bean"
@@ -152,13 +172,21 @@ public class ServletInforme extends HttpServlet {
 		bean.setRecomendaciones(rec);
 		bean.setEstado(est);
 		
+<<<<<<< HEAD
 		//invocar al mètodo registrarDocente
+=======
+		//invocar al mï¿½todo registrarDocente
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		int salida=servicioInforme.registrar(bean);
 		if(salida!=-1)
 			request.setAttribute("MENSAJE", "Se registro correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en el registro");
+<<<<<<< HEAD
 		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+=======
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		request.getRequestDispatcher("/informe.jsp").forward(request, response);
 		
 	}

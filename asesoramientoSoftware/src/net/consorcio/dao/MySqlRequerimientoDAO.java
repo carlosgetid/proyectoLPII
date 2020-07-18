@@ -94,7 +94,11 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
+<<<<<<< HEAD
 			String sql="insert into tb_requerimiento values(null,?,?,?,?,?)";
+=======
+			String sql="insert into tb_requerimiento values(null,?,?,?,?,?,null,null)";
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getDescripcion());
 			pstm.setString(2, bean.getOrigen());
@@ -104,6 +108,10 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+<<<<<<< HEAD
+=======
+			System.out.println(e);
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		}
 		finally {
 			try {

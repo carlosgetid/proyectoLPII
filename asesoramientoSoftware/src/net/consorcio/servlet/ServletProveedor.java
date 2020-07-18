@@ -59,7 +59,11 @@ public class ServletProveedor extends HttpServlet {
 		//getDescripcion()
 		for(Proveedor bean: lista) {
 			//crear cada fila
+<<<<<<< HEAD
 			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
+=======
+			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getRuc()).
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 													  add("nombre",bean.getNombre()).
 													  add("apellido", bean.getApellido()).
 													  add("telefono", bean.getTelefono()).
@@ -114,7 +118,11 @@ public class ServletProveedor extends HttpServlet {
 				//crear un objeto de la clase Docente
 				Proveedor bean=new Proveedor();
 				//setear los atributos del objeto "bean"
+<<<<<<< HEAD
 				bean.setCodigo(Integer.parseInt(cod));
+=======
+				bean.setRuc(Integer.parseInt(cod));
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 				bean.setNombre(nom);
 				bean.setApellido(ape);
 				bean.setTelefono(tel);
@@ -143,7 +151,11 @@ public class ServletProveedor extends HttpServlet {
 		//crear un objeto de la clase Docente
 		Proveedor bean=new Proveedor();
 		//setear los atributos del objeto "bean"
+<<<<<<< HEAD
 		bean.setCodigo(Integer.parseInt(cod));
+=======
+		bean.setRuc(Integer.parseInt(cod));
+>>>>>>> 0e7b5ac78a7a07be9c22679d060ca3be0601144d
 		bean.setNombre(nom);
 		bean.setApellido(ape);
 		bean.setTelefono(tel);
