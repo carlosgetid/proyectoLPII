@@ -20,31 +20,17 @@
 		</div>
 	</c:if>
 	<div class="container">
-  		<form method="post" action="ServletRequerimiento?accion=REGISTRAR" method="post" id="id_registrar">
-		  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Descripcion</label>
-			    <textarea  class="form-control" id="exampleFormControlTextarea1" name="descripcion" placeholder="Ingresar descripcion" rows="3"></textarea>
+  		<form method="post" action="ServletSoftware?accion=REGISTRAR" method="post" id="id_registrar">
+			  <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Nombre</label>
+			    <input  class="form-control" id="exampleFormControlTextarea1" name="nombreSoftware" placeholder="Ingresar nombre" rows="3">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Origen</label>
-			    <input  class="form-control" id="exampleFormControlTextarea1" name="origen" placeholder="Ingresar origen" rows="3">
+			    <label for="exampleFormControlTextarea1">Version</label>
+			    <input  class="form-control" id="exampleFormControlTextarea1" name="version" placeholder="Ingresar version" rows="3">
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Area</label>
-			    <input  class="form-control" id="exampleFormControlTextarea1" name="area" placeholder="Ingresar area" rows="3">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Criticidad</label>
-			    <select class="form-control" name="criticidad">
-			      <option>[Seleccione]</option>
-			      <option value="Necesario">Necesario</option>
-			      <option value="Importante">Importante</option>
-			       <option value="Deseado">Deseado</option>
-			    </select>
-			  </div>  
-			
 				
-		  <button type="submit" class="btn btn-primary">Grabar</button>
+		  <button type="submit" class="btn btn-primary">Registrar</button>
 		  <button type="button" class="btn btn-success">Listar</button>
 		</form>
 	</div>	
@@ -63,7 +49,7 @@
 	
 	<script>
 	$(".btn-success").click(function(){
-		window.location.href='lista.jsp';
+		window.location.href='listaSoftware.jsp';
 	})
 	</script>
   	

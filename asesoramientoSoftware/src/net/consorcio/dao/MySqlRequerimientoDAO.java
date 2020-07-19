@@ -30,7 +30,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 				bean.setOrigen(rs.getString(3));
 				bean.setArea(rs.getString(4));
 				bean.setCriticidad(rs.getString(5));
-				bean.setEstado(rs.getString(6));
+				bean.setEstado(rs.getInt(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 				bean.setOrigen(rs.getString(3));
 				bean.setArea(rs.getString(4));
 				bean.setCriticidad(rs.getString(5));
-				bean.setEstado(rs.getString(6));
+				bean.setEstado(rs.getInt(6));
 				
 				lista.add(bean);
 				
@@ -94,13 +94,12 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_requerimiento values(null,?,?,?,?,?,null,null)";
+			String sql="insert into tb_requerimiento values(null,?,?,?,?,1,null,null)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getDescripcion());
 			pstm.setString(2, bean.getOrigen());
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
-			pstm.setString(5, bean.getEstado());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +131,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 			pstm.setString(2, bean.getOrigen());
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
-			pstm.setString(5, bean.getEstado());
+			pstm.setInt(5, bean.getEstado());
 			pstm.setInt(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {

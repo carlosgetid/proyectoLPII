@@ -36,6 +36,15 @@ CREATE TABLE `tb_acceso` (
   CONSTRAINT `tb_acceso_ibfk_2` FOREIGN KEY (`cod_usu`) REFERENCES `tb_usuario` (`cod_usu`)
 );
 
+create table tb_estado
+(
+	cod_est int primary key,
+    nom_est varchar(20)
+);
+
+insert into tb_estado values (1, 'Emitido');
+insert into tb_estado values (2, 'Aprobado');
+insert into tb_estado values (3, 'Rechazado');
 
 CREATE TABLE `tb_requerimiento` (
   `cod_req` int(11) NOT NULL AUTO_INCREMENT,
@@ -43,12 +52,12 @@ CREATE TABLE `tb_requerimiento` (
   `origen_req` varchar(200) DEFAULT NULL,
   `area_req` varchar(25) DEFAULT NULL,
   `criticidad_req` varchar(25) DEFAULT NULL,
-  `estado_req` varchar(25) DEFAULT NULL,
+  cod_est int DEFAULT 1,
   fec_req timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   file_req mediumblob,#aqui se almacena el pdf
-  PRIMARY KEY (`cod_req`)
+  PRIMARY KEY (`cod_req`),
+  CONSTRAINT `tb_requerimiento_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
 );
-
 
 CREATE TABLE `tb_informe` (
   `cod_inf` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,10 +66,11 @@ CREATE TABLE `tb_informe` (
   `analisis_inf` varchar(200) DEFAULT NULL,
   `conclusiones_inf` varchar(200) DEFAULT NULL,
   `recomendaciones_inf` varchar(200) DEFAULT NULL,
-  `estado_inf` varchar(25) DEFAULT NULL,
+  cod_est int DEFAULT 1,
   fec_info_tec timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   file_info_tec mediumblob,
-  PRIMARY KEY (`cod_inf`)
+  PRIMARY KEY (`cod_inf`),
+  CONSTRAINT `tb_informe_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
 );
 
 CREATE TABLE `tb_proveedor` (
@@ -131,11 +141,10 @@ create table tb_informe_instalacion
     fec_insta date,#fecha del momento de la instalacion
     hora_insta time,#hora del momento de la instalacion
     fec_info_insta timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-    est_info_insta char(1) default 0,
-    file_info_insta mediumblob
+	cod_est int DEFAULT 1,
+    file_info_insta mediumblob,
+	CONSTRAINT `tb_informe_instalacion_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
 );
-
-
 
 #Insertando usuarios
 insert into tb_usuario values (null, 'enc001', 'enc001', 'Carlos', 'Gomez', 55, 1, 87654321, 987654321, 'Producción', 'Encargado');
@@ -148,7 +157,7 @@ insert into tb_usuario values (null, 'pre001', 'pre001', 'Ronald', 'Chinchay', 4
 insert into tb_menu values (null, 'Generar Solicitud de Requerimiento de Software', 'requerimiento.jsp');
 insert into tb_menu values (null, 'Buscar Informe de Instalación', 'listaInformeInstalacion.jsp');
 insert into tb_menu values (null, 'Generar Informe Técnico', 'listaRequerimiento.jsp');
-insert into tb_menu values (null, 'Generar Informe de Instalación', 'listaSoftware.jsp');#falta crear
+insert into tb_menu values (null, 'Generar Informe de Instalación', 'listaSoftware.jsp');
 insert into tb_menu values (null, 'Aprobar Informe Técnico Registrado', 'listaInformeTecnico.jsp');
 insert into tb_menu values (null, 'Registrar Cotización', 'listaInformeTecnico.jsp');
 insert into tb_menu values (null, 'Generar Solicitud de Certificación Presupuestal', 'listaCotizacion.jsp');#falta crear
@@ -165,4 +174,3 @@ insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
 insert into tb_acceso values (9,5);
-

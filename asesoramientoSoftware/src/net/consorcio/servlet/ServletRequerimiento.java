@@ -58,8 +58,7 @@ public class ServletRequerimiento extends HttpServlet {
 															  add("descripcion",bean.getDescripcion()).
 															  add("origen", bean.getOrigen()).
 															  add("area", bean.getArea()).
-															  add("criticidad", bean.getCriticidad()).
-															  add("estado", bean.getEstado()).build();
+															  add("criticidad", bean.getCriticidad()).build();
 															  
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
@@ -77,7 +76,7 @@ public class ServletRequerimiento extends HttpServlet {
 		cod=request.getParameter("codigo");
 		bean=servicioRequerimiento.buscar(Integer.parseInt(cod));
 		request.setAttribute("requerimiento", bean);
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
 		
 	}
@@ -94,7 +93,7 @@ public class ServletRequerimiento extends HttpServlet {
 			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
 		
 	}
@@ -108,7 +107,7 @@ public class ServletRequerimiento extends HttpServlet {
 		ori=request.getParameter("origen");
 		are=request.getParameter("area");
 		cri=request.getParameter("criticidad");
-		est=request.getParameter("estado");
+//		est=request.getParameter("estado");
 		//crear un objeto de la clase Docente
 		Requerimiento bean=new Requerimiento();
 		//setear los atributos del objeto "bean"
@@ -117,15 +116,15 @@ public class ServletRequerimiento extends HttpServlet {
 		bean.setOrigen(ori);
 		bean.setArea(are);
 		bean.setCriticidad(cri);
-		bean.setEstado(est);
+//		bean.setEstado(est);
 		
-		//invocar al mètodo registrarDocente
+		//invocar al mï¿½todo registrarDocente
 		int salida=servicioRequerimiento.actualizar(bean);
 		if(salida!=-1)
 			request.setAttribute("MENSAJE", "Registro actualizado correctamente");
 		else
 			request.setAttribute("MENSAJE", "Error al actualizar el registro");
-		//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+		//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
 		
 	}
@@ -133,12 +132,11 @@ public class ServletRequerimiento extends HttpServlet {
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
-				String des,ori,are,cri,est;
+				String des,ori,are,cri;
 				des=request.getParameter("descripcion");
 				ori=request.getParameter("origen");
 				are=request.getParameter("area");
 				cri=request.getParameter("criticidad");
-				est=request.getParameter("estado");
 				//crear un objeto de la clase Docente
 				Requerimiento bean=new Requerimiento();
 				//setear los atributos del objeto "bean"
@@ -146,15 +144,14 @@ public class ServletRequerimiento extends HttpServlet {
 				bean.setOrigen(ori);
 				bean.setArea(are);
 				bean.setCriticidad(cri);
-				bean.setEstado(est);
 				
-				//invocar al mètodo registrarDocente
+				//invocar al mï¿½todo registrarDocente
 				int salida=servicioRequerimiento.registrar(bean);
 				if(salida!=-1)
 					request.setAttribute("MENSAJE", "Se registro correctamente");
 				else
 					request.setAttribute("MENSAJE", "Error en el registro");
-				//direccionar a la pàgina docente.jsp y enviar el atributo MENSAJE 
+				//direccionar a la pï¿½gina docente.jsp y enviar el atributo MENSAJE 
 				request.getRequestDispatcher("/requerimiento.jsp").forward(request, response);
 		
 	}

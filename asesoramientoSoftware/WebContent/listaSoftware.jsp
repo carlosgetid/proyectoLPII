@@ -47,21 +47,18 @@ $(document).ready( function () {
     //$('#table_id').DataTable();
 } );
 $(".btn-primary").click(function(){
-	window.location.href="requerimiento.jsp";
+	window.location.href="informeInstalacion.jsp";
 })
 
 function tabla(){
-		$.getJSON("ServletRequerimiento",{accion:"LISTAR"},function(response){
+		$.getJSON("ServletSoftware",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
+				var editar= "<a href='ServletSoftware?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
-												item.descripcion+"</td><td>"+
-												item.origen +"</td><td>"+
-												item.area +"</td><td>"+
-												item.criticidad +"</td><td>"+
-												item.estado +"</td><td>"+editar+"</td></tr>")
+												item.nombre+"</td><td>"+
+												item.version +"</td><td>"+editar+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		
