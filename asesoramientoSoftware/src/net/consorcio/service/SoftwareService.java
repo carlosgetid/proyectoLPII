@@ -14,8 +14,8 @@ public class SoftwareService {
 	public Software buscar(int cod) {
 		return daoSoftware.find(cod);
 	}
-	public List<Software> listar(){
-		return daoSoftware.listAll();
+	public List<Software> listar(String nom){
+		return daoSoftware.listSoftwareXNombre(nom);
 	}
 	public int registrar(Software bean) {
 		return daoSoftware.save(bean);

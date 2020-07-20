@@ -169,4 +169,47 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return estado;
 	}
 
+	@Override
+	public List<Proveedor> listProveedorXApellidos(String ape) {
+		List<Proveedor> lista=new ArrayList<Proveedor>();
+		Proveedor bean=null;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		ResultSet rs=null;
+		try {
+			cn=MySqlBDConexion.getConexion();
+			String sql="select *from tb_proveedor where ape_prov like ?";
+			pstm=cn.prepareStatement(sql);
+			pstm.setString(1, ape+"%");
+			rs=pstm.executeQuery();
+			while(rs.next()) {
+				bean=new Proveedor();
+				bean.setCodigo(rs.getInt(1));
+				bean.setNombre(rs.getString(2));
+				bean.setApellido(rs.getString(3));
+				bean.setTelefono(rs.getString(4));
+				bean.setEmail(rs.getString(5));
+				
+				lista.add(bean);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return lista;
+	}
+	
+
+	
+	
+
 }

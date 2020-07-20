@@ -1,11 +1,15 @@
 package net.consorcio.fabrica;
 
+import net.consorcio.dao.MySqlCertificadoDAO;
+import net.consorcio.dao.MySqlCotizacionDAO;
 import net.consorcio.dao.MySqlInformeDAO;
 import net.consorcio.dao.MySqlInformeInstalacionDAO;
 import net.consorcio.dao.MySqlRequerimientoDAO;
 import net.consorcio.dao.MySqlSoftwareDAO;
 import net.consorcio.dao.MySqlUsuarioDAO;
 import net.consorcio.dao.MySqlProveedorDAO;
+import net.consorcio.interfaces.CertificadoDAO;
+import net.consorcio.interfaces.CotizacionDAO;
 import net.consorcio.interfaces.InformeDAO;
 import net.consorcio.interfaces.InformeInstalacionDAO;
 import net.consorcio.interfaces.ProveedorDAO;
@@ -48,6 +52,18 @@ public class MySqlDAOFactory extends DAOFactory {
 	public SoftwareDAO getSoftwareDAO() {
 		// TODO Auto-generated method stub
 		return new MySqlSoftwareDAO();
+	}
+
+	@Override
+	public CotizacionDAO getCotizacionDAO() {
+		// TODO Auto-generated method stub
+		return new MySqlCotizacionDAO();
+	}
+
+	@Override
+	public CertificadoDAO getCertificadoDAO() {
+		// TODO Auto-generated method stub
+		return new MySqlCertificadoDAO();
 	}
 
 }

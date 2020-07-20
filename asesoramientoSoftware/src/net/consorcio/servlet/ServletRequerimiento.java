@@ -2,19 +2,31 @@ package net.consorcio.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.consorcio.entidad.Requerimiento;
+import net.consorcio.entidad.Usuario;
 import net.consorcio.service.RequerimientoService;
+import net.consorcio.utils.MySqlBDConexion;
+
+import java.io.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 @WebServlet("/ServletRequerimiento")
@@ -42,6 +54,43 @@ public class ServletRequerimiento extends HttpServlet {
 			buscar(request,response);
 		else if(tipo.equals("LISTAR"))
 			listar(request,response);
+		else if(tipo.equals("CONSULTAR"))
+			try {
+				consultar(request,response);
+			} catch (JRException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+
+	private void consultar(HttpServletRequest request, HttpServletResponse response) throws JRException, IOException {		
+		ServletContext application=request.getServletContext();
+		
+		File reportfile = new File (application.getRealPath("requerimiento.jasper"));
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		
+		String valor = request.getParameter("codigo");
+		
+		int nvalor = Integer.parseInt(valor);
+		
+		parameter.put("cod",nvalor);
+		
+		Connection cn=MySqlBDConexion.getConexion();
+		
+		
+		
+		byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter, cn);
+		
+//	 	indicar que la salida sera en formato pdf
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(bytes,0,bytes.length);
+		
+//	 	limpiar flujos de salida
+		outputStream.flush();
+		outputStream.close();
 	}
 
 
@@ -58,7 +107,8 @@ public class ServletRequerimiento extends HttpServlet {
 															  add("descripcion",bean.getDescripcion()).
 															  add("origen", bean.getOrigen()).
 															  add("area", bean.getArea()).
-															  add("criticidad", bean.getCriticidad()).build();
+															  add("criticidad", bean.getCriticidad()).
+															  add("estado", bean.getEstado()).build();
 															  
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
@@ -133,6 +183,13 @@ public class ServletRequerimiento extends HttpServlet {
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
 				String des,ori,are,cri;
+				
+				//objeto tipo sesion
+		        HttpSession session=request.getSession();
+				
+				//recuperar el atributo usuario
+		        Usuario usu=(Usuario) session.getAttribute("usuario");
+				
 				des=request.getParameter("descripcion");
 				ori=request.getParameter("origen");
 				are=request.getParameter("area");
@@ -144,6 +201,7 @@ public class ServletRequerimiento extends HttpServlet {
 				bean.setOrigen(ori);
 				bean.setArea(are);
 				bean.setCriticidad(cri);
+				bean.setCodigoUsuario(usu.getCodigo());
 				
 				//invocar al m�todo registrarDocente
 				int salida=servicioRequerimiento.registrar(bean);

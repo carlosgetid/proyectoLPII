@@ -1,6 +1,5 @@
 package net.consorcio.dao;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +28,6 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 				bean=new Software();
 				bean.setCodigo(rs.getInt(1));
 				bean.setNombre(rs.getString(2));
-				bean.setVersion(rs.getString(3));
 //				bean.setDocumento((InputStream) rs.getBlob(4));
 			}
 		} catch (Exception e) {
@@ -47,8 +45,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 		return bean;
 	}
 
-	@Override
-	public List<Software> listAll() {
+	public List<Software> listSoftwareXNombre(String nom) {
 		List<Software> lista=new ArrayList<Software>();
 		Software bean=null;
 		Connection cn=null;
@@ -56,17 +53,19 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_software";
+			String sql="select *from tb_software where nom_soft like ?";
 			pstm=cn.prepareStatement(sql);
+			pstm.setString(1, nom+"%");
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new Software();
 				bean.setCodigo(rs.getInt(1));
 				bean.setNombre(rs.getString(2));
-				bean.setVersion(rs.getString(3));
-//				bean.setDocumento((InputStream) rs.getBlob(4));
+				bean.setPrecio(rs.getDouble(3));
+				
 				
 				lista.add(bean);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,7 +92,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 			String sql="insert into tb_software values(null,?,?,null,null)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getNombre());
-			pstm.setString(2, bean.getVersion());
+			pstm.setDouble(2, bean.getPrecio());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +118,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 			String sql="update tb_software set nom_soft=?,ver_soft=? where cod_soft=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getNombre());
-			pstm.setString(2, bean.getVersion());
+			pstm.setDouble(2, bean.getPrecio());
 			pstm.setInt(7, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {

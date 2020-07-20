@@ -1,5 +1,7 @@
 package net.consorcio.fabrica;
 
+import net.consorcio.interfaces.CertificadoDAO;
+import net.consorcio.interfaces.CotizacionDAO;
 import net.consorcio.interfaces.InformeDAO;
 import net.consorcio.interfaces.InformeInstalacionDAO;
 import net.consorcio.interfaces.ProveedorDAO;
@@ -21,13 +23,14 @@ public abstract class DAOFactory {
     public abstract RequerimientoDAO getRequerimientoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
     public abstract InformeDAO getInformeDAO();
-   
-   
+
     public abstract InformeInstalacionDAO getInformeInstalacionDAO();
     public abstract ProveedorDAO getProveedorDAO();
     public abstract SoftwareDAO getSoftwareDAO();
+    public abstract CotizacionDAO getCotizacionDAO();
+    public abstract CertificadoDAO getCertificadoDAO();
     
-    
+
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){
        	case MYSQL:

@@ -5,8 +5,9 @@ import java.io.InputStream;
 public class Software {
 	private int codigo;
 	private String nombre;
-	private String version;
+	private double precio;
 	private InputStream documento;
+	
 	
 	public int getCodigo() {
 		return codigo;
@@ -20,11 +21,11 @@ public class Software {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getVersion() {
-		return version;
+	public double getPrecio() {
+		return precio;
 	}
-	public void setVersion(String version) {
-		this.version = version;
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	public InputStream getDocumento() {
 		return documento;
@@ -32,5 +33,7 @@ public class Software {
 	public void setDocumento(InputStream documento) {
 		this.documento = documento;
 	}
+	
+	
 	
 }

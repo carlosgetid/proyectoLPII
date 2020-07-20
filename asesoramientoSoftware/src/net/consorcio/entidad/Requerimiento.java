@@ -1,6 +1,5 @@
 package net.consorcio.entidad;
 
-import java.io.InputStream;
 
 public class Requerimiento {
 
@@ -9,8 +8,8 @@ public class Requerimiento {
 	private String origen;
 	private String area;
 	private String criticidad;
-	private int estado;
-	private InputStream documento;
+	private String estado;
+	private int codigoUsuario;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -41,17 +40,17 @@ public class Requerimiento {
 	public void setCriticidad(String criticidad) {
 		this.criticidad = criticidad;
 	}
-	public int getEstado() {
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(int estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public InputStream getDocumento() {
-		return documento;
+	public int getCodigoUsuario() {
+		return codigoUsuario;
 	}
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
+	public void setCodigoUsuario(int codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
 	}
-
+	
 }

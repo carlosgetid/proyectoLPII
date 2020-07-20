@@ -30,7 +30,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 				bean.setOrigen(rs.getString(3));
 				bean.setArea(rs.getString(4));
 				bean.setCriticidad(rs.getString(5));
-				bean.setEstado(rs.getInt(6));
+				bean.setEstado(rs.getString(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_requerimiento";
+			String sql="select r.cod_req, r.descripcion_req, r.origen_req, r.area_req, r.criticidad_req, e.nom_est from tb_requerimiento r inner join tb_estado e on r.cod_est=e.cod_est;";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
@@ -66,7 +66,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 				bean.setOrigen(rs.getString(3));
 				bean.setArea(rs.getString(4));
 				bean.setCriticidad(rs.getString(5));
-				bean.setEstado(rs.getInt(6));
+				bean.setEstado(rs.getString(6));
 				
 				lista.add(bean);
 				
@@ -94,12 +94,13 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_requerimiento values(null,?,?,?,?,1,null,null)";
+			String sql="insert into tb_requerimiento values(null,?,?,?,?,1,null,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getDescripcion());
 			pstm.setString(2, bean.getOrigen());
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
+			pstm.setInt(5, bean.getCodigoUsuario());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,7 +132,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 			pstm.setString(2, bean.getOrigen());
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
-			pstm.setInt(5, bean.getEstado());
+			pstm.setString(5, bean.getEstado());
 			pstm.setInt(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {

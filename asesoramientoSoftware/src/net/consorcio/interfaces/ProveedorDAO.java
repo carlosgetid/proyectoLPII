@@ -12,5 +12,5 @@ public interface ProveedorDAO {
 	public int save(Proveedor bean);
 	public int update(Proveedor bean);
 	public int delete(int cod);
-	
+	public List<Proveedor> listProveedorXApellidos(String ape);
 }

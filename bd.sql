@@ -52,11 +52,12 @@ CREATE TABLE `tb_requerimiento` (
   `origen_req` varchar(200) DEFAULT NULL,
   `area_req` varchar(25) DEFAULT NULL,
   `criticidad_req` varchar(25) DEFAULT NULL,
-  cod_est int DEFAULT 1,
+  cod_est int,
   fec_req timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-  file_req mediumblob,#aqui se almacena el pdf
+	cod_usu int(11) NOT NULL,
   PRIMARY KEY (`cod_req`),
-  CONSTRAINT `tb_requerimiento_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
+  CONSTRAINT `tb_requerimiento_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
+  CONSTRAINT `tb_requerimiento_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
 
 CREATE TABLE `tb_informe` (
@@ -66,7 +67,7 @@ CREATE TABLE `tb_informe` (
   `analisis_inf` varchar(200) DEFAULT NULL,
   `conclusiones_inf` varchar(200) DEFAULT NULL,
   `recomendaciones_inf` varchar(200) DEFAULT NULL,
-  cod_est int DEFAULT 1,
+  cod_est int,
   fec_info_tec timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   file_info_tec mediumblob,
   PRIMARY KEY (`cod_inf`),
@@ -141,7 +142,7 @@ create table tb_informe_instalacion
     fec_insta date,#fecha del momento de la instalacion
     hora_insta time,#hora del momento de la instalacion
     fec_info_insta timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-	cod_est int DEFAULT 1,
+	cod_est int,
     file_info_insta mediumblob,
 	CONSTRAINT `tb_informe_instalacion_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
 );
@@ -161,7 +162,7 @@ insert into tb_menu values (null, 'Generar Informe de Instalación', 'listaSoftw
 insert into tb_menu values (null, 'Aprobar Informe Técnico Registrado', 'listaInformeTecnico.jsp');
 insert into tb_menu values (null, 'Registrar Cotización', 'listaInformeTecnico.jsp');
 insert into tb_menu values (null, 'Generar Solicitud de Certificación Presupuestal', 'listaCotizacion.jsp');#falta crear
-insert into tb_menu values (null, 'Registrar Software Adquirido', 'listaCertificado.jsp');#falta crear
+insert into tb_menu values (null, 'Registrar Software Adquirido', 'listaCertificado.jsp');#f alta crear
 insert into tb_menu values (null, 'Registrar Certificado Presupuestal', 'listaSolicitudCertificado.jsp');#falta crear
 
 #accesos

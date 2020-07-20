@@ -49,7 +49,7 @@ public class ServletSoftware extends HttpServlet {
 		for(Software bean:lista) {
 			JsonObject obj = Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 														add("nombre", bean.getNombre()).
-														add("version", bean.getVersion()).build();
+														add("version", bean.getPrecio()).build();
 			arreglo.add(obj);
 		}
 		
@@ -78,14 +78,14 @@ public class ServletSoftware extends HttpServlet {
 	}
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom, ver;
+		String nom, pre;
 		nom = request.getParameter("nombreSoftware");
-		ver = request.getParameter("version");
+		pre = request.getParameter("precio");
 		
 		Software bean = new Software();
 		
 		bean.setNombre(nom);
-		bean.setVersion(ver);
+		bean.setPrecio(Double.parseDouble(pre));
 		
 		int salida = servicioSoftware.registrar(bean);
 		if (salida != -1)
