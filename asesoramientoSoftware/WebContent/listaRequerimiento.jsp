@@ -32,6 +32,7 @@
 			            <th>Estado</th>
 			            <th></th>
 			            <th></th>
+			            <th></th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -54,13 +55,15 @@ $(document).ready(function() {
 	//$('#table_id').DataTable();
 });
 $(".btn-primary").click(function() {
-	window.location.href = "informe.jsp";
+	window.location.href = "informeTecnico.jsp";
 })
 
 function tabla(){
 		$.getJSON("ServletRequerimiento",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
+				
+					
 				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
 				var consultar= "<a href='ServletRequerimiento?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
 				

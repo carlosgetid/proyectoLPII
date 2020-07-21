@@ -67,7 +67,7 @@
 	
 	<script>
 	$(".btn-success").click(function(){
-		window.location.href='lista.jsp';
+		window.location.href='listaRequerimiento.jsp';
 	})
 	</script>
   	
