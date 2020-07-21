@@ -108,7 +108,7 @@ public class ServletRequerimiento extends HttpServlet {
 															  add("origen", bean.getOrigen()).
 															  add("area", bean.getArea()).
 															  add("criticidad", bean.getCriticidad()).
-															  add("estado", bean.getEstado()).build();
+															  add("nombreEstado", bean.getNombreEstado()).build();
 															  
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
@@ -157,7 +157,10 @@ public class ServletRequerimiento extends HttpServlet {
 		ori=request.getParameter("origen");
 		are=request.getParameter("area");
 		cri=request.getParameter("criticidad");
-		est=request.getParameter("estado");
+		est=request.getParameter("nombreEstado");
+		
+		int nest = Integer.parseInt(est);
+		
 		//crear un objeto de la clase Docente
 		Requerimiento bean=new Requerimiento();
 		//setear los atributos del objeto "bean"
@@ -166,7 +169,7 @@ public class ServletRequerimiento extends HttpServlet {
 		bean.setOrigen(ori);
 		bean.setArea(are);
 		bean.setCriticidad(cri);
-		bean.setEstado(2);
+		bean.setCodigoEstado(nest);
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioRequerimiento.actualizar(bean);

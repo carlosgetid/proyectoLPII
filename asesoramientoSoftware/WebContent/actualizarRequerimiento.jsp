@@ -22,7 +22,7 @@
 	<div class="container">
   		<form method="post" action="" method="post" id="id_registrar">
   		 <input type="hidden" id="idCriticidad" value="${requerimiento.criticidad}">
-  		 <input type="hidden" id="idEstado" value="${requerimiento.estado}">
+  		 <input type="hidden" id="idEstado" value="${requerimiento.codigoEstado}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
 			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" readonly>
@@ -50,11 +50,11 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Estado</label>
-			    <select class="form-control" name="estado" id="idestado">
+			    <select class="form-control" name="nombreEstado" id="idestado">
 			      <option>[Seleccione]</option>
-			      <option value="Pendiente">Pendiente</option>
-			      <option value="Aceptado">Aceptado</option>
-			       <option value="Rechazado">Rechazado</option>
+			      <option value=1>Pendiente</option>
+			      <option value=2>Aceptado</option>
+			       <option value=3>Rechazado</option>
 			    </select>
 			  </div>
 			  

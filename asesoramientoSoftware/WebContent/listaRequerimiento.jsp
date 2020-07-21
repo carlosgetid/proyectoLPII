@@ -69,7 +69,7 @@ function tabla(){
 												item.origen +"</td><td>"+
 												item.area +"</td><td>"+
 												item.criticidad +"</td><td>"+
-												item.estado +"</td><td>"+editar+"</td><td>"+consultar+"</td></tr>")
+												item.nombreEstado +"</td><td>"+editar+"</td><td>"+consultar+"</td></tr>")
 			});
 		
 			
