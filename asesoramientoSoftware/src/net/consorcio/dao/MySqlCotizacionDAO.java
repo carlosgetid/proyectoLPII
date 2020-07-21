@@ -32,7 +32,7 @@ public class MySqlCotizacionDAO implements CotizacionDAO {
 			
 			//detalle
 			
-			String sql2="insert into tb_detalle_coti values(?,?,?)";
+			String sql2="insert into tb_detalle_coti values(?,?,?,null)";
 			//bucle para realizar recorrido sobre lista
 			for(Detalle det:lista) {
 				//

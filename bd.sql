@@ -85,24 +85,23 @@ CREATE TABLE `tb_proveedor` (
 
 
 
-create table tb_cotizacion
-(
-	cod_coti int primary key auto_increment,
-    cali_coti char(1),
-    fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-    file_coti mediumblob
-);
+CREATE TABLE tb_cotizacion (
+  cod_coti int(11) NOT NULL,
+  ruc_prov int(11) DEFAULT NULL,
+  cod_usu int(11) DEFAULT NULL,
+  fecha date DEFAULT NULL,
+  monto double DEFAULT NULL,
+  fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
+  PRIMARY KEY (cod_coti)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-create table tb_detalle_coti_prov
-(
-	cod_coti int not null,
-    ruc_prov int not null,
-    fec_sub_det date,#fecha de la subida del documento
-    primary key (cod_coti, ruc_prov),
-	constraint foreign key fk_tb_det_cod_coti (cod_coti) references tb_cotizacion (cod_coti),
-	constraint foreign key fk_tb_det_ruc_prov (ruc_prov) references tb_proveedor (ruc_prov)
-);
+CREATE TABLE tb_detalle_coti (
+  cod_coti int(11) DEFAULT NULL,
+  cod_soft int(11) DEFAULT NULL,
+  cant int(11) DEFAULT NULL,
+  fec_soft timestamp default current_timestamp#fecha y hora del sistema cuando se envia a la BD
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 create table tb_sol_certificado
 (
@@ -121,18 +120,17 @@ create table tb_certificado
     fec_sub_cert date,#fecha y hora de la subida del documento
     url_cert varchar(250),
     nom_cert varchar(50),
-    file_cert mediumblob
+    fec_soft timestamp default current_timestamp#fecha y hora del sistema cuando se envia a la BD
 );
 
+CREATE TABLE tb_software (
+  cod_soft int(11) NOT NULL AUTO_INCREMENT,
+  nom_soft varchar(35) DEFAULT NULL,
+  pre_soft double DEFAULT NULL,
+  fec_soft timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
+  PRIMARY KEY (cod_soft)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
-create table tb_software
-(
-	cod_soft int primary key auto_increment,
-    nom_soft varchar(35),
-    ver_soft varchar(45),
-    fec_soft timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-    file_soft mediumblob
-);
 
 create table tb_informe_instalacion
 (

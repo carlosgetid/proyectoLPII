@@ -26,8 +26,8 @@
 			    <input  class="form-control" id="exampleFormControlTextarea1" name="nombreSoftware" placeholder="Ingresar nombre" rows="3">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Version</label>
-			    <input  class="form-control" id="exampleFormControlTextarea1" name="version" placeholder="Ingresar version" rows="3">
+			    <label for="exampleFormControlTextarea1">Precio</label>
+			    <input  class="form-control" id="exampleFormControlTextarea1" name="precio" placeholder="Ingresar precio" rows="3">
 			  </div>
 				
 		  <button type="submit" class="btn btn-primary">Registrar</button>

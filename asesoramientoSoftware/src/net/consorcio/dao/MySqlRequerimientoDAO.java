@@ -66,7 +66,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 				bean.setOrigen(rs.getString(3));
 				bean.setArea(rs.getString(4));
 				bean.setCriticidad(rs.getString(5));
-				bean.setEstado(rs.getString(6));
+				bean.setEstado(rs.getInt(6));
 				
 				lista.add(bean);
 				
@@ -126,13 +126,13 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="update tb_requerimiento set descripcion_req=?,origen_req=?,area_req=?,criticidad_req=?,estado_req=? where cod_req=?";
+			String sql="update tb_requerimiento set descripcion_req=?,origen_req=?,area_req=?,criticidad_req=?,cod_est=? where cod_req=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getDescripcion());
 			pstm.setString(2, bean.getOrigen());
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
-			pstm.setString(5, bean.getEstado());
+			pstm.setInt(5, bean.getEstado());
 			pstm.setInt(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {

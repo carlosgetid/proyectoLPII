@@ -1,3 +1,4 @@
+<jsp:include page="menu.jsp"/>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -24,7 +25,7 @@
   		 <input type="hidden" id="idEstado" value="${requerimiento.estado}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
-			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" >
+			    <input type="text" class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${requerimiento.codigo}" placeholder="Ingresar descripcion" rows="3" readonly>
 			  </div>
 		  <div class="form-group">		
 			    <label for="exampleFormControlTextarea1">Descripcion</label>
@@ -59,9 +60,9 @@
 			  
 				
 		  <button type="button" class="btn btn-primary">Actualizar</button>
-		  <button type="button" class="btn btn-warning">Eliminar</button>
-		  <button type="button" class="btn btn-success">Listar</button>
-		  <button type="button" class="btn btn-success">Nuevo Informe</button>
+<!-- 		  <button type="button" class="btn btn-warning">Eliminar</button> -->
+		  <button type="button" class="btn btn-success">Regresar</button>
+<!-- 		  <button type="button" class="btn btn-success">Nuevo Informe</button> -->
 		</form>
 	</div>		
 	
@@ -82,17 +83,17 @@
 		$("#id_registrar").attr("action","ServletRequerimiento?accion=ACTUALIZAR");
 		id_registrar.submit();
 	})
-	$(".btn-warning").click(function(){
-		$("#id_registrar").attr("action","ServletRequerimiento?accion=ELIMINAR");
-		id_registrar.submit();
-	})
+// 	$(".btn-warning").click(function(){
+// 		$("#id_registrar").attr("action","ServletRequerimiento?accion=ELIMINAR");
+// 		id_registrar.submit();
+// 	})
 	$(".btn-success").click(function(){
-		window.location.href='lista.jsp';
+		window.location.href='listaRequerimiento.jsp';
 	})
 	
-	$(".btn-success").click(function(){
-		window.location.href='informe.jsp';
-	})
+// 	$(".btn-success").click(function(){
+// 		window.location.href='informe.jsp';
+// 	})
 	
 	$("#idcriticidad").val($("#idCriticidad").val());
 	$("#idestado").val($("#idEstado").val());

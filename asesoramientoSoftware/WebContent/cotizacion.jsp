@@ -220,7 +220,7 @@
 			                                    <div class="form-group">
 			                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Nombre</label>
 			                                        <div class="col-lg-5">
-														<input class="form-control" id="idNombreConcepto"/>
+														<input class="form-control" id="idNombreConcepto" name="nombreSoftware"/>
 			                                        </div>
 			                                    </div>
 			                                

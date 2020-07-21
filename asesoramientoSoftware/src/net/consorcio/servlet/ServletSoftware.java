@@ -42,14 +42,18 @@ public class ServletSoftware extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		List<Software> lista = servicioSoftware.listar();
+		String nom;
+		
+		nom=request.getParameter("nombreSoftware");
+		
+		List<Software> lista = servicioSoftware.listSoftwareXNombre(nom);
 		
 		JsonArrayBuilder arreglo = Json.createArrayBuilder();
 		
 		for(Software bean:lista) {
 			JsonObject obj = Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 														add("nombre", bean.getNombre()).
-														add("version", bean.getPrecio()).build();
+														add("precio", bean.getPrecio()).build();
 			arreglo.add(obj);
 		}
 		

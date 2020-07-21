@@ -8,7 +8,7 @@ public class Requerimiento {
 	private String origen;
 	private String area;
 	private String criticidad;
-	private String estado;
+	private int estado;
 	private int codigoUsuario;
 	public int getCodigo() {
 		return codigo;
@@ -40,10 +40,10 @@ public class Requerimiento {
 	public void setCriticidad(String criticidad) {
 		this.criticidad = criticidad;
 	}
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 	public int getCodigoUsuario() {
@@ -52,5 +52,5 @@ public class Requerimiento {
 	public void setCodigoUsuario(int codigoUsuario) {
 		this.codigoUsuario = codigoUsuario;
 	}
-	
+
 }

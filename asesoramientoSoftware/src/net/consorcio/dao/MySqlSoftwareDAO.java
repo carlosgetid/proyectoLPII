@@ -28,6 +28,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 				bean=new Software();
 				bean.setCodigo(rs.getInt(1));
 				bean.setNombre(rs.getString(2));
+				bean.setPrecio(rs.getDouble(3));
 //				bean.setDocumento((InputStream) rs.getBlob(4));
 			}
 		} catch (Exception e) {
@@ -46,40 +47,40 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 	}
 
 	public List<Software> listSoftwareXNombre(String nom) {
-		List<Software> lista=new ArrayList<Software>();
-		Software bean=null;
-		Connection cn=null;
-		PreparedStatement pstm=null;
-		ResultSet rs=null;
-		try {
-			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_software where nom_soft like ?";
-			pstm=cn.prepareStatement(sql);
-			pstm.setString(1, nom+"%");
-			rs=pstm.executeQuery();
-			while(rs.next()) {
-				bean=new Software();
-				bean.setCodigo(rs.getInt(1));
-				bean.setNombre(rs.getString(2));
-				bean.setPrecio(rs.getDouble(3));
-				
-				
-				lista.add(bean);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				if(rs!=null) rs.close();
-				if(pstm!=null) pstm.close();
-				if(cn!=null) cn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return lista;
+		 List<Software> lista=new ArrayList<Software>();
+	        Software bean=null;
+	        Connection cn=null;
+	        PreparedStatement pstm=null;
+	        ResultSet rs=null;
+	        try {
+	            cn=MySqlBDConexion.getConexion();
+	            String sql="select *from tb_software where nom_soft like ?";
+	            pstm=cn.prepareStatement(sql);
+	            pstm.setString(1, nom+"%");
+	            rs=pstm.executeQuery();
+	            while(rs.next()) {
+	                bean=new Software();
+	                bean.setCodigo(rs.getInt(1));
+	                bean.setNombre(rs.getString(2));
+	                bean.setPrecio(rs.getDouble(3));
+
+
+	                lista.add(bean);
+
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        finally {
+	            try {
+	                if(rs!=null) rs.close();
+	                if(pstm!=null) pstm.close();
+	                if(cn!=null) cn.close();
+	            } catch (Exception e2) {
+	                e2.printStackTrace();
+	            }
+	        }
+	        return lista;
 	}
 
 	@Override
@@ -119,7 +120,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getNombre());
 			pstm.setDouble(2, bean.getPrecio());
-			pstm.setInt(7, bean.getCodigo());
+			pstm.setInt(3, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

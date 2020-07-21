@@ -127,7 +127,7 @@ public class ServletRequerimiento extends HttpServlet {
 		bean=servicioRequerimiento.buscar(Integer.parseInt(cod));
 		request.setAttribute("requerimiento", bean);
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
+		request.getRequestDispatcher("/actualizarRequerimiento.jsp").forward(request, response);
 		
 	}
 
@@ -157,7 +157,7 @@ public class ServletRequerimiento extends HttpServlet {
 		ori=request.getParameter("origen");
 		are=request.getParameter("area");
 		cri=request.getParameter("criticidad");
-//		est=request.getParameter("estado");
+		est=request.getParameter("estado");
 		//crear un objeto de la clase Docente
 		Requerimiento bean=new Requerimiento();
 		//setear los atributos del objeto "bean"
@@ -166,7 +166,7 @@ public class ServletRequerimiento extends HttpServlet {
 		bean.setOrigen(ori);
 		bean.setArea(are);
 		bean.setCriticidad(cri);
-//		bean.setEstado(est);
+		bean.setEstado(2);
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioRequerimiento.actualizar(bean);
@@ -175,7 +175,7 @@ public class ServletRequerimiento extends HttpServlet {
 		else
 			request.setAttribute("MENSAJE", "Error al actualizar el registro");
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
+		request.getRequestDispatcher("/actualizarRequerimiento.jsp").forward(request, response);
 		
 	}
 
