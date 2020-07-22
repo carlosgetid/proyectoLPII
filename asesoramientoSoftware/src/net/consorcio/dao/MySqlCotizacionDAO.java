@@ -22,7 +22,7 @@ public class MySqlCotizacionDAO implements CotizacionDAO {
 			//bloquear el commit del metodo executeUpdate
 			cn.setAutoCommit(false);
 			
-			String sql1="insert into tb_cotizacion values(?,?,?,curdate(),?,1,curdate(),?)";
+			String sql1="insert into tb_cotizacion values(?,?,?,?,1,null,?)";
 			pstm1=cn.prepareStatement(sql1);
 			pstm1.setInt(1, bean.getCodigo());
 			pstm1.setLong(2, bean.getRucPro());
