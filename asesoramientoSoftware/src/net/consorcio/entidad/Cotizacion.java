@@ -5,53 +5,59 @@ import java.util.Date;
 
 public class Cotizacion {
 	private int codigo;
-	private int rucPro;
+	private long rucPro;
 	private int codUsu;
 	private Date fecha;
 	private double monto;
-	private InputStream documento;
-	
-	
-	
+    private int codigoInforme;
+    
 	public int getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public int getRucPro() {
-		return rucPro;
-	}
-	public void setRucPro(int rucPro) {
-		this.rucPro = rucPro;
-	}
+
 	public int getCodUsu() {
 		return codUsu;
 	}
+
+	public long getRucPro() {
+		return rucPro;
+	}
+
+	public void setRucPro(long rucPro) {
+		this.rucPro = rucPro;
+	}
+
 	public void setCodUsu(int codUsu) {
 		this.codUsu = codUsu;
 	}
+
 	public Date getFecha() {
 		return fecha;
 	}
+
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
 	public double getMonto() {
 		return monto;
 	}
+
 	public void setMonto(double monto) {
 		this.monto = monto;
 	}
-	public InputStream getDocumento() {
-		return documento;
+
+	public int getCodigoInforme() {
+		return codigoInforme;
 	}
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
+
+	public void setCodigoInforme(int codigoInforme) {
+		this.codigoInforme = codigoInforme;
 	}
-	
-		
-	
-	
+
 	
 }

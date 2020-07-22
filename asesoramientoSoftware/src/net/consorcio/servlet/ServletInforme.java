@@ -62,7 +62,7 @@ public class ServletInforme extends HttpServlet {
 															  add("analisis", bean.getAnalisis()).
 															  add("conclusiones", bean.getConclusiones()).
 															  add("recomendaciones", bean.getRecomendaciones()).
-															  add("estado", bean.getEstado()) .build();
+															  add("nombreEstado", bean.getNombreEstado()) .build();
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
 				}
