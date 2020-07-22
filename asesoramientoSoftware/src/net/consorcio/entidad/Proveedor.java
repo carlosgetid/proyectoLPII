@@ -4,17 +4,17 @@ public class Proveedor {
 	
 	
 	
-	private int codigo;
+	private long codigo;
 	private String nombre;
 	private String apellido;
 	private String telefono;
 	private String email;
 	
 	
-	public int getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 	public String getNombre() {
@@ -41,6 +41,10 @@ public class Proveedor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	
+	
 	
 	
 }

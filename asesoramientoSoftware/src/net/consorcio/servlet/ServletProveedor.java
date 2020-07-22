@@ -79,7 +79,7 @@ public class ServletProveedor extends HttpServlet {
 		Proveedor bean;
 		String cod;
 		cod=request.getParameter("codigo");
-		bean=servicioProveedor.buscar(Integer.parseInt(cod));
+		bean=servicioProveedor.buscar(Long.parseLong(cod));
 		request.setAttribute("proveedor", bean);
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
 		request.getRequestDispatcher("/actualizarProveedor.jsp").forward(request, response);
@@ -91,7 +91,7 @@ public class ServletProveedor extends HttpServlet {
 		String cod;
 		cod=request.getParameter("codigo");
 		
-		int salida=servicioProveedor.eliminar(Integer.parseInt(cod));
+		int salida=servicioProveedor.eliminar(Long.parseLong(cod));
 		
 		if(salida!=-1)
 			request.setAttribute("MENSAJE", "Registro eliminado correctamente");
@@ -114,7 +114,7 @@ public class ServletProveedor extends HttpServlet {
 				//crear un objeto de la clase Docente
 				Proveedor bean=new Proveedor();
 				//setear los atributos del objeto "bean"
-				bean.setCodigo(Integer.parseInt(cod));
+				bean.setCodigo(Long.parseLong(cod));
 				bean.setNombre(nom);
 				bean.setApellido(ape);
 				bean.setTelefono(tel);
@@ -143,7 +143,8 @@ public class ServletProveedor extends HttpServlet {
 		//crear un objeto de la clase Docente
 		Proveedor bean=new Proveedor();
 		//setear los atributos del objeto "bean"
-		bean.setCodigo(Integer.parseInt(cod));
+		
+		bean.setCodigo(Long.parseLong(cod));
 		bean.setNombre(nom);
 		bean.setApellido(ape);
 		bean.setTelefono(tel);

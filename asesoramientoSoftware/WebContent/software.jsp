@@ -56,45 +56,23 @@
   	<script>    
 	  $('#id_registrar').validate({
 	    rules: {
-	    	descripcion:{
+	    	nombreSoftware:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ\\á\\é\\í\\ó\\ú\\Á\\É\\Í\\Ó\\Ú]{1,50}'
 	    	},
-	    	origen:{
+	    	precio:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	area:{
-	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
-	    	},
-	    	criticidad:{
-	    		required:true
-	    	},
-	    	estado:{
-	    		required:true
-	    		
-	    	}
+	    		pattern:'[\\d]{1,5}[.][\\d]{1,2}'
+	    	}	
 	    },
 	    messages:{
-	    	descripcion:{
-	    		required:'Ingresar nombre',
-	    		pattern:'Campo descripcion solo letras'
+	    	nombreSoftware:{
+	    		required:'Ingresar nombre del software',
+	    		pattern:'Campo descripcion solo letras con un maximo de 50 caracteres'
 	    	},
-	    	origen:{
-	    		required:'ingresar apellido',
-	    		pattern:'Campo origen solo letras'
-	    	},
-	    	area:{
-	    		required:'ingresar edad',
-	    		pattern:'Campo area solo letras'
-	    	
-	    	},
-	    	criticidad:{
-	    		required:'ingresar criticidad'
-	    	},
-	    	estado:{
-	    		required:'ingresar estado'
+	    	precio:{
+	    		required:'ingresar precio',
+	    		pattern:'Solo puede ingresar un maximo de 5 enteros y 2 decimales #####.##'
 	    	}
 	    },
 	    errorElement: 'span',

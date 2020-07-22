@@ -76,43 +76,36 @@
 	    rules: {
 	    	descripcion:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ\\á\\é\\í\\ó\\ú\\Á\\É\\Í\\Ó\\Ú]{1,200}'
 	    	},
 	    	origen:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ\\á\\é\\í\\ó\\ú\\Á\\É\\Í\\Ó\\Ú]{1,50}'
 	    	},
 	    	area:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ\\á\\é\\í\\ó\\ú\\Á\\É\\Í\\Ó\\Ú]{1,30}'
 	    	},
 	    	criticidad:{
 	    		required:true
-	    	},
-	    	estado:{
-	    		required:true
-	    		
 	    	}
 	    },
 	    messages:{
 	    	descripcion:{
-	    		required:'Ingresar nombre',
-	    		pattern:'Campo descripcion solo letras'
+	    		required:'Ingresar descripcion',
+	    		pattern:'Campo "descripcion" solo letras con un maximo de 200 caracteres'
 	    	},
 	    	origen:{
-	    		required:'ingresar apellido',
-	    		pattern:'Campo origen solo letras'
+	    		required:'Ingresar origen',
+	    		pattern:'Campo "origen" solo letras con un maximo de 50 caracteres'
 	    	},
 	    	area:{
-	    		required:'ingresar edad',
-	    		pattern:'Campo area solo letras'
+	    		required:'Ingresar area',
+	    		pattern:'Campo area solo letras con un maximo de 30 caracteres'
 	    	
 	    	},
 	    	criticidad:{
-	    		required:'ingresar criticidad'
-	    	},
-	    	estado:{
-	    		required:'ingresar estado'
+	    		required:'Ingresar criticidad'
 	    	}
 	    },
 	    errorElement: 'span',
