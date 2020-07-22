@@ -21,10 +21,7 @@
 			        <tr>
 			            <th>Código</th>
 			            <th>Introduccion</th>
-			            <th>Antecedentes</th>
-			            <th>Analisis</th>
-			            <th>Conclusiones</th>
-			            <th>Recomendaciones</th>
+			            <th>Fecha</th>
 			            <th>Estado</th>
 			            <th></th>
 			            <th></th>
@@ -62,14 +59,15 @@ function tabla(){
 			$.each(response,function(index,item){
 				var editar= "<a href='ServletInforme?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
 				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
-				
+				var nuevo= "<a href='ServletInforme?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
+						
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.introduccion+"</td><td>"+
-												item.antecedentes +"</td><td>"+
-												item.analisis +"</td><td>"+
-												item.conclusiones +"</td><td>"+
-												item.recomendaciones +"</td><td>"+
-												item.nombreEstado +"</td><td>"+editar+"</td><td>"+consultar+"</td></tr>")
+												item.fecha +"</td><td>"+
+												item.nombreEstado +"</td><td>"+
+												editar+"</td><td>"+
+												consultar+"</td><td>"+
+												nuevo+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		

@@ -2,11 +2,14 @@ package net.consorcio.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.json.JsonValue;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import net.consorcio.entidad.InformeTecnico;
 import net.consorcio.entidad.Usuario;
 import net.consorcio.service.InformeService;
+import net.sf.jasperreports.engine.JRException;
 
 
 @WebServlet("/ServletInforme")
@@ -24,6 +28,8 @@ public class ServletInforme extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        //
 	private InformeService servicioInforme;
+	
+	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	
    
     public ServletInforme() {
@@ -46,6 +52,19 @@ public class ServletInforme extends HttpServlet {
 			buscar(request,response); 
 		else if(tipo.equals("LISTAR"))
 			listar(request,response);
+		else if(tipo.equals("CONSULTAR"))
+			try {
+				consultar(request,response);
+			} catch (JRException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+
+	private void consultar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
@@ -66,10 +85,7 @@ public class ServletInforme extends HttpServlet {
 					//crear cada fila
 					JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 															  add("introduccion", bean.getIntroduccion()).
-															  add("antecedentes", bean.getAntecedentes()).
-															  add("analisis", bean.getAnalisis()).
-															  add("conclusiones", bean.getConclusiones()).
-															  add("recomendaciones", bean.getRecomendaciones()).
+															  add("fecha", formatter.format(bean.getFecha())).
 															  add("nombreEstado", bean.getNombreEstado()) .build();
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
