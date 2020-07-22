@@ -1,7 +1,5 @@
 package net.consorcio.service;
 
-
-
 import java.util.List;
 
 import net.consorcio.entidad.Cotizacion;
@@ -14,22 +12,26 @@ import net.consorcio.interfaces.ProveedorDAO;
 import net.consorcio.interfaces.SoftwareDAO;
 
 public class CotizacionService {
-	
-	DAOFactory dao=DAOFactory.getDAOFactory(1);
-	ProveedorDAO daoProveedor=dao.getProveedorDAO();
-	SoftwareDAO daoSoftware=dao.getSoftwareDAO();
-	CotizacionDAO daoCotizacion=dao.getCotizacionDAO();
-	
+
+	DAOFactory dao = DAOFactory.getDAOFactory(1);
+	ProveedorDAO daoProveedor = dao.getProveedorDAO();
+	SoftwareDAO daoSoftware = dao.getSoftwareDAO();
+	CotizacionDAO daoCotizacion = dao.getCotizacionDAO();
+
 	public List<Proveedor> listarProveedorXApellido(String ape) {
 		return daoProveedor.listProveedorXApellidos(ape);
 	}
 
-	public List<Software> listarSoftwareXNombre(String nom){
+	public List<Software> listarSoftwareXNombre(String nom) {
 		return daoSoftware.listSoftwareXNombre(nom);
 	}
-	
-	public int adicionarCotizacion(Cotizacion bean,List<Detalle> lista) {
+
+	public int adicionarCotizacion(Cotizacion bean, List<Detalle> lista) {
 		return daoCotizacion.registrarCotizacion(bean, lista);
-		
+
+	}
+
+	public List<Cotizacion> listAll() {
+		return daoCotizacion.listAll();
 	}
 }

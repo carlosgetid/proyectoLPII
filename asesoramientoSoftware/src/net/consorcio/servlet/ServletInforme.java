@@ -120,7 +120,8 @@ ServletContext application=request.getServletContext();
 					JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 															  add("introduccion", bean.getIntroduccion()).
 															  add("fecha", formatter.format(bean.getFecha())).
-															  add("nombreEstado", bean.getNombreEstado()) .build();
+															  add("nombreEstado", bean.getNombreEstado()) .
+															  add("codEst", bean.getCodigoEstado()).build();
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
 				}

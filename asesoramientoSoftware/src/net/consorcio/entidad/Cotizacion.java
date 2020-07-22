@@ -10,7 +10,17 @@ public class Cotizacion {
 	private Date fecha;
 	private double monto;
     private int codigoInforme;
+    private int cod_est;
+
     
+	public int getCod_est() {
+		return cod_est;
+	}
+
+	public void setCod_est(int cod_est) {
+		this.cod_est = cod_est;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}
