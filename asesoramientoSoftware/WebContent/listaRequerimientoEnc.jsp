@@ -13,7 +13,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </head>
@@ -30,6 +29,7 @@
 			            <th>Area</th>
 			            <th>Criticidad</th>
 			            <th>Estado</th>
+			            <th></th>
 			            <th></th>
 			            <th></th>
 			        </tr>
@@ -63,15 +63,19 @@ function tabla(){
 			$.each(response,function(index,item){
 				
 					
+				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Actualizar</a>"
+				var consultar= "<a href='ServletRequerimiento?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
 				var eliminar= "<a href='ServletRequerimiento?accion=ELIMINAR&codigo="+item.codigo+"'>Eliminar</a>"
-				var consultar= "<a href='ServletRequerimiento?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.descripcion+"</td><td>"+
 												item.origen +"</td><td>"+
 												item.area +"</td><td>"+
 												item.criticidad +"</td><td>"+
-												item.nombreEstado +"</td><td>"+eliminar+"</td><td>"+consultar+"</td></tr>")
+												item.nombreEstado +"</td><td>"+
+												editar+"</td><td>"+
+												consultar+"</td><td>"+
+												eliminar+"</td><td>")
 			});
 		
 			

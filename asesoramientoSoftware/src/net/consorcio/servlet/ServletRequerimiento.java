@@ -144,7 +144,7 @@ public class ServletRequerimiento extends HttpServlet {
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
+		request.getRequestDispatcher("/listaRequerimientoEnc.jsp").forward(request, response);
 		
 	}
 
