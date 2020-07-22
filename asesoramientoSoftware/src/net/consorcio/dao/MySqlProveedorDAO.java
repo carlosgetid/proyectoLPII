@@ -13,7 +13,7 @@ import net.consorcio.utils.MySqlBDConexion;
 public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
-	public Proveedor fin(int cod) {
+	public Proveedor fin(long cod) {
 		Proveedor bean=null;
 		Connection cn=null;
 		PreparedStatement pstm=null;
@@ -22,11 +22,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			cn=MySqlBDConexion.getConexion();
 			String sql="select *from tb_proveedor where ruc_prov=?";
 			pstm=cn.prepareStatement(sql);
-			pstm.setInt(1, cod);
+			pstm.setLong(1, cod);
 			rs=pstm.executeQuery();
 			if(rs.next()) {
 				bean=new Proveedor();
-				bean.setCodigo(rs.getInt(1));
+				bean.setCodigo(rs.getLong(1));
 				bean.setNombre(rs.getString(2));
 				bean.setApellido(rs.getString(3));
 				bean.setTelefono(rs.getString(4));
@@ -61,7 +61,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new Proveedor();
-				bean.setCodigo(rs.getInt(1));
+				bean.setCodigo(rs.getLong(1));
 				bean.setNombre(rs.getString(2));
 				bean.setApellido(rs.getString(3));
 				bean.setTelefono(rs.getString(4));
@@ -95,7 +95,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			cn=MySqlBDConexion.getConexion();
 			String sql="insert into tb_proveedor values(?,?,?,?,?)";
 			pstm=cn.prepareStatement(sql);
-			pstm.setInt(1, bean.getCodigo());
+			pstm.setLong(1, bean.getCodigo());
 			pstm.setString(2, bean.getNombre());
 			pstm.setString(3, bean.getApellido());
 			pstm.setString(4, bean.getTelefono());
@@ -128,7 +128,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			pstm.setString(2, bean.getApellido());
 			pstm.setString(3, bean.getTelefono());
 			pstm.setString(4, bean.getEmail());
-			pstm.setInt(5, bean.getCodigo());
+			pstm.setLong(5, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public int delete(int cod) {
+	public int delete(long cod) {
 		int estado=-1;
 		Connection cn=null;
 		PreparedStatement pstm=null;
@@ -153,7 +153,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			cn=MySqlBDConexion.getConexion();
 			String sql="delete from tb_proveedor where ruc_prov=?";
 			pstm=cn.prepareStatement(sql);
-			pstm.setInt(1,cod);
+			pstm.setLong(1,cod);
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -184,7 +184,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new Proveedor();
-				bean.setCodigo(rs.getInt(1));
+				bean.setCodigo(rs.getLong(1));
 				bean.setNombre(rs.getString(2));
 				bean.setApellido(rs.getString(3));
 				bean.setTelefono(rs.getString(4));
