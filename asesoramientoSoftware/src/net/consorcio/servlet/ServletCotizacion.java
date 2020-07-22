@@ -55,14 +55,14 @@ public class ServletCotizacion extends HttpServlet {
 
 	private void nuevoCoti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod=request.getParameter("codigo");
-		request.setAttribute("codigoRequerimiento", cod);
+		request.setAttribute("codigoInformeTecnico", cod);
 		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
 		
 	}
 
 
 	private void registrarCotizacion(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String cod,rucPro,codUsu;
+		String cod,rucPro,codUsu, codInf;
 		double monto=0;
 		//objeto tipo sesion
 		HttpSession session=request.getSession();
@@ -70,13 +70,16 @@ public class ServletCotizacion extends HttpServlet {
 		Usuario usu=(Usuario) session.getAttribute("usuario");
 		cod=request.getParameter("numero");
 		rucPro=request.getParameter("codigo"); 
+		
 	
 		
 		//crear un objeto de la clase boleta "CABECERA"
+		codInf=request.getParameter("codigoInformeTecnico");
 		Cotizacion cot=new Cotizacion();
 		cot.setCodigo(Integer.parseInt(cod));
 		cot.setRucPro(Long.parseLong(rucPro));
 		cot.setCodUsu(usu.getCodigo());	
+		cot.setCodigoInforme(Integer.parseInt(codInf));
 		
 		
 		//obtener la suma de importes   

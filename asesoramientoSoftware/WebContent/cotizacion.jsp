@@ -22,6 +22,7 @@
 			<div class="modal-dialog" style="width: 100%">
 			<form id="idRegistra" accept-charset="UTF-8" class="form-inline" method="post" action="ServletCotizacion?accion=REGISTRAR_COTIZACION" style="width: 100%">	
 				<div class="modal-content">
+				  		 <input type="hidden" value="${requestScope.codigoInformeTecnico}" name="codigoInformeTecnico">
 					<div class="modal-header" style="padding: 5px 20px">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4>Cotizacion</h4>
