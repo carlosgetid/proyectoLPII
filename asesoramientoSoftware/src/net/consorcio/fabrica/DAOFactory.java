@@ -7,6 +7,7 @@ import net.consorcio.interfaces.InformeInstalacionDAO;
 import net.consorcio.interfaces.ProveedorDAO;
 import net.consorcio.interfaces.RequerimientoDAO;
 import net.consorcio.interfaces.SoftwareDAO;
+import net.consorcio.interfaces.SolicitudDAO;
 import net.consorcio.interfaces.UsuarioDAO;
 
 public abstract class DAOFactory {
@@ -29,6 +30,7 @@ public abstract class DAOFactory {
     public abstract SoftwareDAO getSoftwareDAO();
     public abstract CotizacionDAO getCotizacionDAO();
     public abstract CertificadoDAO getCertificadoDAO();
+    public abstract SolicitudDAO getSolicitudDAO();
     
 
     public static DAOFactory getDAOFactory(int whichFactory){
