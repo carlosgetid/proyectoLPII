@@ -20,10 +20,10 @@
 	</c:if>
 	<div class="container">
   		<form method="post" action="" method="post" id="id_registrar">
-  		 <input type="hidden" id="idEstado" value="${informe.estado}">
+  		 <input type="hidden" id="idEstado" value="${informe.codigoEstado}">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Codigo</label>
-			    <input class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${informe.codigo}" placeholder="Ingresar descripcion" rows="3" >
+			    <input class="form-control" id="exampleFormControlTextarea1" name="codigo" value="${informe.codigo}" placeholder="Ingresar descripcion" rows="3" readonly>
 			  </div>
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Introduccion</label>
@@ -46,19 +46,20 @@
 			    <textarea  class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" placeholder="Ingresar descripcion" rows="3" >${informe.recomendaciones}</textarea>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Estado</label>
-			    <select class="form-control" name="estado" id="idestado">
+			    <label for="exampleFormControlSelect1">¿Desea aprobar el documento?</label>
+			    <select class="form-control" name="nombreEstado" id="idestado">
 			      <option>[Seleccione]</option>
-			      <option value="Pendiente">Pendiente</option>
-			      <option value="Aceptado">Aceptado</option>
-			       <option value="Rechazado">Rechazado</option>
+			      <option value=1>Postergar</option>
+			      <option value=2>Si</option>
+			       <option value=3>No, rechazar</option>
 			    </select>
 			  </div>
 
 				
 		  <button type="button" class="btn btn-primary">Actualizar</button>
-		  <button type="button" class="btn btn-warning">Eliminar</button>
-		  <button type="button" class="btn btn-success">Listar</button>
+<!-- 		  <button type="button" class="btn btn-warning">Eliminar</button> -->
+		  <button type="button" class="btn btn-success">Regresar</button>
+<!-- 		  <button type="button" class="btn btn-success">Nuevo Informe</button> -->
 		</form>
 	</div>		
 	
@@ -79,10 +80,10 @@
 		$("#id_registrar").attr("action","ServletInforme?accion=ACTUALIZAR");
 		id_registrar.submit();
 	})
-	$(".btn-warning").click(function(){
-		$("#id_registrar").attr("action","ServletInforme?accion=ELIMINAR");
-		id_registrar.submit();
-	})
+// 	$(".btn-warning").click(function(){
+// 		$("#id_registrar").attr("action","ServletInforme?accion=ELIMINAR");
+// 		id_registrar.submit();
+// 	})
 	$(".btn-success").click(function(){
 		window.location.href='listaInformeTecnico.jsp';
 	})
