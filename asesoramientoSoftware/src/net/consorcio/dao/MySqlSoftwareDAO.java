@@ -90,7 +90,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_software values(null,?,?,curdate())";
+			String sql="insert into tb_software values(null,?,?,curdate(),null)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getNombre());
 			pstm.setDouble(2, bean.getPrecio());

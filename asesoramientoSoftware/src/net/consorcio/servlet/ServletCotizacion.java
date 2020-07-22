@@ -65,7 +65,7 @@ public class ServletCotizacion extends HttpServlet {
 		//crear un objeto de la clase boleta "CABECERA"
 		Cotizacion cot=new Cotizacion();
 		cot.setCodigo(Integer.parseInt(cod));
-		cot.setRucPro(Integer.parseInt(rucPro));
+		cot.setRucPro(Long.parseLong(rucPro));
 		cot.setCodUsu(usu.getCodigo());	
 		
 		

@@ -1,3 +1,5 @@
+drop database asesoramiento_ml;
+
 create database asesoramiento_ml;
 
 use asesoramiento_ml;
@@ -88,7 +90,7 @@ CREATE TABLE `tb_proveedor` (
 
 
 ######################### añadi llave foranea
-CREATE TABLE tb_cotizacion (
+CREATE TABLE `tb_cotizacion` (
   cod_coti int(11) NOT NULL,
   ruc_prov bigint(11) DEFAULT NULL,
   cod_usu int(11) DEFAULT NULL,
