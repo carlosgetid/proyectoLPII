@@ -9,6 +9,8 @@ public class MySqlBDConexion {
 			cn=DriverManager.getConnection("jdbc:mysql://localhost/asesoramiento_ml","root","mysql");
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println(e);
+			
 		}
 		return cn;	
 	}
