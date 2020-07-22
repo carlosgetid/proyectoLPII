@@ -66,12 +66,13 @@ public class MySqlSolicitudDAO implements SolicitudDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_sol_certificado values(null,?,?,?,null,?)";
+			String sql="insert into tb_sol_certificado values(null,?,?,?,null,?,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getObjetivo());
 			pstm.setDouble(2, bean.getMonto());
 			pstm.setString(3, bean.getArea());
 			pstm.setInt(4, bean.getCodigoUsuario());
+			pstm.setLong(5, bean.getCodigoCotizacion());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

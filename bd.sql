@@ -187,6 +187,7 @@ insert into tb_menu values (null, 'Registrar Cotización', 'listaInformeTecnico.
 insert into tb_menu values (null, 'Generar Solicitud de Certificación Presupuestal', 'listaCotizacion.jsp');#falta crear
 insert into tb_menu values (null, 'Registrar Software Adquirido', 'listaCertificado.jsp');#f alta crear
 insert into tb_menu values (null, 'Registrar Certificado Presupuestal', 'listaSolicitudCertificado.jsp');#falta crear
+insert into tb_menu values (null, 'Generar Solicitud de Certificado', 'SolicitudCertificado.jsp');#creado hoy22/07/20 16:09
 
 #accesos
 insert into tb_acceso values (1,1);
@@ -198,6 +199,7 @@ insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
 insert into tb_acceso values (9,5);
+insert into tb_acceso values (11,4);
 
 
 INSERT INTO `asesoramiento_ml`.`tb_menu` (`cod_men`, `des_men`, `url_men`) VALUES ('10', 'Registrar Cotización', 'listaInformeTecnicoLog.jsp');
