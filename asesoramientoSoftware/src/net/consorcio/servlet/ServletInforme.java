@@ -1,13 +1,22 @@
 package net.consorcio.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.json.JsonValue;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +26,9 @@ import javax.servlet.http.HttpSession;
 import net.consorcio.entidad.InformeTecnico;
 import net.consorcio.entidad.Usuario;
 import net.consorcio.service.InformeService;
+import net.consorcio.utils.MySqlBDConexion;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 
 @WebServlet("/ServletInforme")
@@ -24,6 +36,8 @@ public class ServletInforme extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        //
 	private InformeService servicioInforme;
+	
+	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	
    
     public ServletInforme() {
@@ -46,13 +60,51 @@ public class ServletInforme extends HttpServlet {
 			buscar(request,response); 
 		else if(tipo.equals("LISTAR"))
 			listar(request,response);
+		else if(tipo.equals("CONSULTAR"))
+			try {
+				consultar(request,response);
+			} catch (JRException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+
+	private void consultar(HttpServletRequest request, HttpServletResponse response) throws JRException, IOException {
+ServletContext application=request.getServletContext();
+		
+		File reportfile = new File (application.getRealPath("informeTecnico.jasper"));
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		
+		String valor = request.getParameter("codigo");
+		
+		int nvalor = Integer.parseInt(valor);
+		
+		parameter.put("cod",nvalor);
+		
+		Connection cn=MySqlBDConexion.getConexion();
+		
+		
+		
+		byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter, cn);
+		
+//	 	indicar que la salida sera en formato pdf
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(bytes,0,bytes.length);
+		
+//	 	limpiar flujos de salida
+		outputStream.flush();
+		outputStream.close();
+		
 	}
 
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod=request.getParameter("codigo");
-		request.setAttribute("codigoRequerimiento", cod);
-		request.getRequestDispatcher("/informeTecnico.jsp").forward(request, response);
+		request.setAttribute("codigoInformeTecnico", cod);
+		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
 	}
 
 
@@ -66,10 +118,7 @@ public class ServletInforme extends HttpServlet {
 					//crear cada fila
 					JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 															  add("introduccion", bean.getIntroduccion()).
-															  add("antecedentes", bean.getAntecedentes()).
-															  add("analisis", bean.getAnalisis()).
-															  add("conclusiones", bean.getConclusiones()).
-															  add("recomendaciones", bean.getRecomendaciones()).
+															  add("fecha", formatter.format(bean.getFecha())).
 															  add("nombreEstado", bean.getNombreEstado()) .build();
 					//enviar el objeto "obj" al arreglo
 					arreglo.add(obj);
@@ -118,7 +167,10 @@ public class ServletInforme extends HttpServlet {
 				ana=request.getParameter("analisis");
 				con=request.getParameter("conclusiones");
 				rec=request.getParameter("recomendaciones");
-				est=request.getParameter("estado");
+				est=request.getParameter("nombreEstado");
+				
+				int nest = Integer.parseInt(est);
+				
 				//crear un objeto de la clase Docente
 				InformeTecnico bean=new InformeTecnico();
 				//setear los atributos del objeto "bean"
@@ -128,7 +180,7 @@ public class ServletInforme extends HttpServlet {
 				bean.setAnalisis(ana);
 				bean.setConclusiones(con);
 				bean.setRecomendaciones(rec);
-				bean.setEstado(est);
+				bean.setCodigoEstado(nest);
 				
 				//invocar al m�todo registrarDocente
 				int salida=servicioInforme.actualizar(bean);
@@ -168,7 +220,7 @@ public class ServletInforme extends HttpServlet {
 		bean.setConclusiones(con);
 		bean.setRecomendaciones(rec);
 		bean.setCodigoUsuario(usu.getCodigo());
-		bean.setCodigoRequerimiento(Long.parseLong(codReq));
+		bean.setCodigoRequerimiento(Integer.parseInt(codReq));
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioInforme.registrar(bean);

@@ -1,5 +1,6 @@
 package net.consorcio.entidad;
 
+import java.sql.Timestamp;
 
 public class InformeTecnico {
 
@@ -11,6 +12,7 @@ public class InformeTecnico {
 		private String recomendaciones;
 		private int codigoEstado;
 		private String nombreEstado;
+		private Timestamp fecha;
 		private int codigoUsuario;
 		private int codigoRequerimiento;
 		public int getCodigo() {
@@ -61,6 +63,12 @@ public class InformeTecnico {
 		public void setNombreEstado(String nombreEstado) {
 			this.nombreEstado = nombreEstado;
 		}
+		public Timestamp getFecha() {
+			return fecha;
+		}
+		public void setFecha(Timestamp fecha) {
+			this.fecha = fecha;
+		}
 		public int getCodigoUsuario() {
 			return codigoUsuario;
 		}
@@ -73,7 +81,5 @@ public class InformeTecnico {
 		public void setCodigoRequerimiento(int codigoRequerimiento) {
 			this.codigoRequerimiento = codigoRequerimiento;
 		}
-		
 				
-		
 }

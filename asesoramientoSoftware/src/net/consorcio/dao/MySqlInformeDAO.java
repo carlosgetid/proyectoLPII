@@ -32,7 +32,7 @@ public class MySqlInformeDAO implements InformeDAO {
 				bean.setAnalisis(rs.getString(4));
 				bean.setConclusiones(rs.getString(5));
 				bean.setRecomendaciones(rs.getString(6));
-				bean.setEstado(rs.getString(7));
+				bean.setCodigoEstado(rs.getInt(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,18 +58,15 @@ public class MySqlInformeDAO implements InformeDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select t.cod_inf, t.introduccion_inf, t.antecedentes_inf, t.analisis_inf, t.conclusiones_inf, t.recomendaciones_inf, e.nom_est from tb_informe t inner join tb_estado e on t.cod_est=e.cod_est";
+			String sql="select t.cod_inf, t.introduccion_inf, t.fec_info_tec, e.nom_est from tb_informe t inner join tb_estado e on t.cod_est=e.cod_est";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new InformeTecnico();
 				bean.setCodigo(rs.getInt(1));
 				bean.setIntroduccion(rs.getString(2));
-				bean.setAntecedentes(rs.getString(3));
-				bean.setAnalisis(rs.getString(4));
-				bean.setConclusiones(rs.getString(5));
-				bean.setRecomendaciones(rs.getString(6));
-				bean.setNombreEstado(rs.getString(6));
+				bean.setFecha(rs.getTimestamp(3));
+				bean.setNombreEstado(rs.getString(4));
 				
 				lista.add(bean);
 			}
@@ -126,14 +123,14 @@ public class MySqlInformeDAO implements InformeDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="update tb_informe set introduccion_inf=?,antecedentes_inf=?,analisis_inf=?,conclusiones_inf=?,recomendaciones_inf=?,estado_inf=? where cod_inf=?";
+			String sql="update tb_informe set introduccion_inf=?,antecedentes_inf=?,analisis_inf=?,conclusiones_inf=?,recomendaciones_inf=?,cod_est=? where cod_inf=?";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getIntroduccion());
 			pstm.setString(2, bean.getAntecedentes());
 			pstm.setString(3, bean.getAnalisis());
 			pstm.setString(4, bean.getConclusiones());
 			pstm.setString(5, bean.getRecomendaciones());
-			pstm.setString(6, bean.getEstado());
+			pstm.setInt(6, bean.getCodigoEstado());
 			pstm.setInt(7, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
