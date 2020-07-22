@@ -49,12 +49,12 @@
 			    </select>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Estado</label>
+			    <label for="exampleFormControlSelect1">¿Desea aprobar el documento?</label>
 			    <select class="form-control" name="nombreEstado" id="idestado">
 			      <option>[Seleccione]</option>
-			      <option value=1>Pendiente</option>
-			      <option value=2>Aceptado</option>
-			       <option value=3>Rechazado</option>
+			      <option value=1>Postergar</option>
+			      <option value=2>Si</option>
+			       <option value=3>No, rechazar</option>
 			    </select>
 			  </div>
 			  

@@ -94,7 +94,6 @@ CREATE TABLE `tb_cotizacion` (
   cod_coti int(11) NOT NULL,
   ruc_prov bigint(11) DEFAULT NULL,
   cod_usu int(11) DEFAULT NULL,
-  fecha date DEFAULT NULL,
   monto double DEFAULT NULL,
   cod_est int,
   fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD

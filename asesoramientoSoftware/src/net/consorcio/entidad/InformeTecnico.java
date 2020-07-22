@@ -12,6 +12,7 @@ public class InformeTecnico {
 		private int codigoEstado;
 		private String nombreEstado;
 		private int codigoUsuario;
+		private int codigoRequerimiento;
 		public int getCodigo() {
 			return codigo;
 		}
@@ -66,6 +67,13 @@ public class InformeTecnico {
 		public void setCodigoUsuario(int codigoUsuario) {
 			this.codigoUsuario = codigoUsuario;
 		}
+		public int getCodigoRequerimiento() {
+			return codigoRequerimiento;
+		}
+		public void setCodigoRequerimiento(int codigoRequerimiento) {
+			this.codigoRequerimiento = codigoRequerimiento;
+		}
 		
+				
 		
 }

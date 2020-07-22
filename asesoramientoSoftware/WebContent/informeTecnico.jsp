@@ -21,6 +21,7 @@
 	</c:if>
 	<div class="container">
   		<form method="post" action="ServletInforme?accion=REGISTRAR" method="post" id="id_registrar">
+  		 <input type="hidden" value="${requestScope.codigoRequerimiento}" name="codigoRequerimiento">
 		  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Introduccion</label>
 			    <textarea  class="form-control" id="exampleFormControlTextarea1" name="introduccion" placeholder="Ingresar introduccion" rows="3"></textarea>
