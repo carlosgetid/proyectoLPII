@@ -1,13 +1,19 @@
 package net.consorcio.entidad;
 
-import java.io.InputStream;
+import java.sql.Timestamp;
 
 public class SolicitudCertificado {
 	private int codigo;
 	private String objetivo;
 	private double monto;
 	private String area;
-	private InputStream documento;
+	private Timestamp fecha;
+	private int codigoEstado;
+	private String nombreEstado;
+	private int codigoUsuario;
+	
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -32,12 +38,34 @@ public class SolicitudCertificado {
 	public void setArea(String area) {
 		this.area = area;
 	}
-	public InputStream getDocumento() {
-		return documento;
+	public Timestamp getFecha() {
+		return fecha;
 	}
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
+	public void setFecha(Timestamp fecha) {
+		this.fecha = fecha;
+	}
+	public int getCodigoEstado() {
+		return codigoEstado;
+	}
+	public void setCodigoEstado(int codigoEstado) {
+		this.codigoEstado = codigoEstado;
+	}
+	public String getNombreEstado() {
+		return nombreEstado;
+	}
+	public void setNombreEstado(String nombreEstado) {
+		this.nombreEstado = nombreEstado;
+	}
+	public int getCodigoUsuario() {
+		return codigoUsuario;
+	}
+	public void setCodigoUsuario(int codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
 	}
 	
+	
+	
+	
+
 	
 }
