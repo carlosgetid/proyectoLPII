@@ -103,8 +103,8 @@ ServletContext application=request.getServletContext();
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod=request.getParameter("codigo");
-		request.setAttribute("codigoInformeTecnico", cod);
-		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
+		request.setAttribute("codigoRequerimiento", cod);
+		request.getRequestDispatcher("/informeTecnico.jsp").forward(request, response);
 	}
 
 
