@@ -13,7 +13,7 @@ public class ProveedorService {
 	ProveedorDAO daoProveedor=dao.getProveedorDAO();
 	
 	
-	public Proveedor buscar(int cod) {
+	public Proveedor buscar(long cod) {
 		return daoProveedor.fin(cod);
 		
 	}
@@ -31,7 +31,7 @@ public class ProveedorService {
 		
 	}
 	
-	public int eliminar(int cod) {
+	public int eliminar(long cod) {
 		return daoProveedor.delete(cod);
 	}
 	

@@ -70,42 +70,53 @@
 	    rules: {
 	    	codigo:{
 	    		required:true,
+	    		digits:true,
+	    		pattern:'[\\d]{11}'
 	    	},
 	    	nombre:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,25}'
 	    	},
 	    	apellido:{
 	    		required:true,
-	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,200}'
+	    		pattern:'[a-zA-Z\\s\\Ñ\\ñ]{1,25}'
 	    	},
 	    	telefono:{
-	    		required:true
+	    		required:true,
+	    		digits:true,
+	    		pattern:'[\\d]{7}||[\\d]{9}'
 	    	},
 	    	email:{
-	    		required:true
+	    		required:true,
+	    		pattern:'^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@' +
+	    		      '[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$'
 	    		
 	    	}
 	    },
 	    messages:{
 	    	codigo:{
-	    		required:'Ingresar codigo',
-	    		pattern:'Campo descripcion solo letras'
+	    		required:'Ingresar RUC',
+	    		digits:'Solo digitos',
+	    		pattern:'Campo RUC con 11 digitos'
 	    	},
 	    	nombre:{
-	    		required:'ingresar nombre',
-	    		pattern:'Campo origen solo letras'
+	    		required:'Ingresar nombre',
+	    		pattern:'Campo nombre solo letras con un maximo de 25 caracteres'
 	    	},
 	    	apellido:{
-	    		required:'ingresar apellido',
-	    		pattern:'Campo area solo letras'
+	    		required:'Ingresar apellido',
+	    		pattern:'Campo apellido solo letras con un maximo de 25 caracteres'
 	    	
 	    	},
 	    	telefono:{
-	    		required:'ingresar telefono'
+	    		required:'Ingresar telefono',
+	    		digits:'Solo digitos',
+	    		pattern:'Campo telefono con 7 o 9 digitos'
+	    		
 	    	},
 	    	email:{
-	    		required:'ingresar email'
+	    		required:'Ingresar email',
+	    		pattern:'Campo email en minúscula, respetando el formato de un correo electronico'
 	    	}
 	    },
 	    errorElement: 'span',

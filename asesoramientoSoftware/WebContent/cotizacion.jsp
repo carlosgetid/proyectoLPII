@@ -91,7 +91,7 @@
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Cantidad</label>
+		                                        <label class="col-lg-3 control-label" name="canti" for="id_reg_nombre">Cantidad</label>
 		                                        <div class="col-lg-5">
 													<input class="form-control" id="idCantidad"/>
 		                                        </div>
@@ -360,6 +360,46 @@
 		
 		
 	</script>
+	
+	
+		<script>    
+	  $('#id_registrar').validate({
+	    rules: {
+	    	numero:{
+	    		required:true,
+	    		digits:true
+	    	},
+	    	canti:{
+	    		required:true,
+	    		digits:true
+	    		
+	    	}
+	    },
+	    messages:{
+	    	numero:{
+	    		required:'Ingresar RUC',
+	    		digits:'Solo digitos'
+	    		
+	    	},
+	    	canti:{
+	    		required:'Ingresar nombre',
+	    		digits:'Solo digitos'
+	    		
+	    	}
+	    },
+	    errorElement: 'span',
+	    errorPlacement: function (error, element) {
+	        error.addClass('invalid-feedback');
+	        element.closest('.form-group').append(error);
+	    },
+	    highlight: function (element, errorClass, validClass) {
+	        $(element).addClass('is-invalid');
+	    },
+	    unhighlight: function (element, errorClass, validClass) {
+	        $(element).removeClass('is-invalid');
+	    },
+	})
+	</script>	
 </body>
 </html>
 
