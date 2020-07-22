@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.consorcio.entidad.Informe;
+import net.consorcio.entidad.InformeTecnico;
 import net.consorcio.interfaces.InformeDAO;
 import net.consorcio.utils.MySqlBDConexion;
 
 public class MySqlInformeDAO implements InformeDAO {
 
 	@Override
-	public Informe find(int cod) {
-		Informe bean=null;
+	public InformeTecnico find(int cod) {
+		InformeTecnico bean=null;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
@@ -25,7 +25,7 @@ public class MySqlInformeDAO implements InformeDAO {
 			pstm.setInt(1, cod);
 			rs=pstm.executeQuery();
 			if(rs.next()) {
-				bean=new Informe();
+				bean=new InformeTecnico();
 				bean.setCodigo(rs.getInt(1));
 				bean.setIntroduccion(rs.getString(2));
 				bean.setAntecedentes(rs.getString(3));
@@ -50,9 +50,9 @@ public class MySqlInformeDAO implements InformeDAO {
 	}
 
 	@Override
-	public List<Informe> listAll() {
-		List<Informe> lista=new ArrayList<Informe>();
-		Informe bean=null;
+	public List<InformeTecnico> listAll() {
+		List<InformeTecnico> lista=new ArrayList<InformeTecnico>();
+		InformeTecnico bean=null;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
@@ -62,7 +62,7 @@ public class MySqlInformeDAO implements InformeDAO {
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
-				bean=new Informe();
+				bean=new InformeTecnico();
 				bean.setCodigo(rs.getInt(1));
 				bean.setIntroduccion(rs.getString(2));
 				bean.setAntecedentes(rs.getString(3));
@@ -89,20 +89,20 @@ public class MySqlInformeDAO implements InformeDAO {
 	}
 
 	@Override
-	public int save(Informe bean) {
+	public int save(InformeTecnico bean) {
 		int estado=-1;
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_informe values(null,?,?,?,?,?,?,null,null)";
+			String sql="insert into tb_informe values(null,?,?,?,?,?,1,null,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getIntroduccion());
 			pstm.setString(2, bean.getAntecedentes());
 			pstm.setString(3, bean.getAnalisis());
 			pstm.setString(4, bean.getConclusiones());
 			pstm.setString(5, bean.getRecomendaciones());
-			pstm.setString(6, bean.getEstado());
+			pstm.setInt(6, bean.getCodigoUsuario());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +119,7 @@ public class MySqlInformeDAO implements InformeDAO {
 	}
 
 	@Override
-	public int update(Informe bean) {
+	public int update(InformeTecnico bean) {
 		int estado=-1;
 		Connection cn=null;
 		PreparedStatement pstm=null;

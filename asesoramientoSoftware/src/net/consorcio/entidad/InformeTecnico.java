@@ -1,8 +1,7 @@
 package net.consorcio.entidad;
 
-import java.io.InputStream;
 
-public class Informe {
+public class InformeTecnico {
 
 		private int codigo;
 		private String introduccion;
@@ -10,9 +9,9 @@ public class Informe {
 		private String analisis;
 		private String conclusiones;
 		private String recomendaciones;
-		private String estado;
-		private InputStream documento;
-		
+		private int codigoEstado;
+		private String nombreEstado;
+		private int codigoUsuario;
 		public int getCodigo() {
 			return codigo;
 		}
@@ -49,22 +48,24 @@ public class Informe {
 		public void setRecomendaciones(String recomendaciones) {
 			this.recomendaciones = recomendaciones;
 		}
-		public String getEstado() {
-			return estado;
+		public int getCodigoEstado() {
+			return codigoEstado;
 		}
-		public void setEstado(String estado) {
-			this.estado = estado;
+		public void setCodigoEstado(int codigoEstado) {
+			this.codigoEstado = codigoEstado;
 		}
-		public InputStream getDocumento() {
-			return documento;
+		public String getNombreEstado() {
+			return nombreEstado;
 		}
-		public void setDocumento(InputStream documento) {
-			this.documento = documento;
+		public void setNombreEstado(String nombreEstado) {
+			this.nombreEstado = nombreEstado;
 		}
-		
-		
-
-	
+		public int getCodigoUsuario() {
+			return codigoUsuario;
+		}
+		public void setCodigoUsuario(int codigoUsuario) {
+			this.codigoUsuario = codigoUsuario;
+		}
 		
 		
 }
