@@ -1,3 +1,5 @@
+drop database asesoramiento_ml;
+
 create database asesoramiento_ml;
 
 use asesoramiento_ml;
@@ -90,15 +92,17 @@ CREATE TABLE `tb_proveedor` (
 ######################### añadi llave foranea
 CREATE TABLE tb_cotizacion (
   cod_coti int(11) NOT NULL,
-  ruc_prov int(11) DEFAULT NULL,
+  ruc_prov bigint(11) DEFAULT NULL,
   cod_usu int(11) DEFAULT NULL,
   fecha date DEFAULT NULL,
   monto double DEFAULT NULL,
+  cod_est int,
   fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   cod_inf int(11) NOT NULL,
   PRIMARY KEY (cod_coti),
   CONSTRAINT `tb_cotizacion_ibfk_1` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
-  CONSTRAINT `tb_cotizacion_ibfk_2` FOREIGN KEY (cod_inf) REFERENCES `tb_informe` (cod_inf)
+  CONSTRAINT `tb_cotizacion_ibfk_2` FOREIGN KEY (cod_inf) REFERENCES `tb_informe` (cod_inf),
+  CONSTRAINT `tb_cotizacion_ibfk_3` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ############################# cambio de nombre fec
@@ -195,4 +199,5 @@ insert into tb_acceso values (5,3);
 insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
+insert into tb_acceso values (9,5);
 insert into tb_acceso values (9,5);

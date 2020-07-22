@@ -17,16 +17,13 @@
 		<button type="button" class="btn btn-primary">Nuevo</button>
 	
 			<table id="table_id" class="table-bordered">
-			    <thead>	
+			    <thead>
 			        <tr>
 			            <th>Código</th>
-			            <th>Introduccion</th>
-			            <th>Antecedentes</th>
-			            <th>Analisis</th>
-			            <th>Conclusiones</th>
-			            <th>Recomendaciones</th>
-			            <th>Estado</th>
-			            <th></th>
+			            <th>Ruc</th>
+			            <th>Usuario</th>
+			            <th>Fecha</th>
+			            <th>Monto</th>
 			            <th></th>
 			            <th></th>
 			           
@@ -53,23 +50,21 @@ $(document).ready( function () {
     //$('#table_id').DataTable();
 } );
 $(".btn-primary").click(function(){
-	window.location.href="cotizacion.jsp";
+	window.location.href="requerimiento.jsp";
 })
 
 function tabla(){
-		$.getJSON("ServletInforme",{accion:"LISTAR"},function(response){
+		$.getJSON("ServletRequerimiento",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-				var editar= "<a href='ServletInforme?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
-				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
+				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
-												item.introduccion+"</td><td>"+
-												item.antecedentes +"</td><td>"+
-												item.analisis +"</td><td>"+
-												item.conclusiones +"</td><td>"+
-												item.recomendaciones +"</td><td>"+
-												item.nombreEstado +"</td><td>"+editar+"</td><td>"+consultar+"</td></tr>")
+												item.descripcion+"</td><td>"+
+												item.origen +"</td><td>"+
+												item.area +"</td><td>"+
+												item.criticidad +"</td><td>"+
+												item.estado +"</td><td>"+editar+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		
