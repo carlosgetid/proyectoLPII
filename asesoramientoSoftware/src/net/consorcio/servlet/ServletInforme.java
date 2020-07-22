@@ -12,8 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import net.consorcio.entidad.Informe;
+import net.consorcio.entidad.InformeTecnico;
+import net.consorcio.entidad.Usuario;
 import net.consorcio.service.InformeService;
 
 
@@ -48,11 +50,11 @@ public class ServletInforme extends HttpServlet {
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//crear un objeto de tipo arreglo de objeto de la clase Distrito
-				List<Informe> lista=servicioInforme.listar();
+				List<InformeTecnico> lista=servicioInforme.listar();
 				//crear un objeto que contenga todo el JSON
 				JsonArrayBuilder arreglo=Json.createArrayBuilder();
 				//bucle
-				for(Informe bean: lista) {
+				for(InformeTecnico bean: lista) {
 					//crear cada fila
 					JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 															  add("introduccion", bean.getIntroduccion()).
@@ -72,7 +74,7 @@ public class ServletInforme extends HttpServlet {
 
 
 	private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Informe bean;
+		InformeTecnico bean;
 		String cod;
 		cod=request.getParameter("codigo");
 		bean=servicioInforme.buscar(Integer.parseInt(cod));
@@ -110,7 +112,7 @@ public class ServletInforme extends HttpServlet {
 				rec=request.getParameter("recomendaciones");
 				est=request.getParameter("estado");
 				//crear un objeto de la clase Docente
-				Informe bean=new Informe();
+				InformeTecnico bean=new InformeTecnico();
 				//setear los atributos del objeto "bean"
 				bean.setCodigo(Integer.parseInt(cod));
 				bean.setIntroduccion(intr);
@@ -135,23 +137,28 @@ public class ServletInforme extends HttpServlet {
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
-		String intr,ant,ana,con,rec,est;
+		String intr,ant,ana,con,rec;
 		intr=request.getParameter("introduccion");
 		ant=request.getParameter("antecedentes");
 		ana=request.getParameter("analisis");
 		con=request.getParameter("conclusiones");
 		rec=request.getParameter("recomendaciones");
-		est=request.getParameter("estado");
+		
+		//objeto tipo sesion
+        HttpSession session=request.getSession();
+		
+		//recuperar el atributo usuario
+        Usuario usu=(Usuario) session.getAttribute("usuario");
 		
 		//crear un objeto de la clase Docente
-		Informe bean=new Informe();
+		InformeTecnico bean=new InformeTecnico();
 		//setear los atributos del objeto "bean"
 		bean.setIntroduccion(intr);
 		bean.setAntecedentes(ant);
 		bean.setAnalisis(ana);
 		bean.setConclusiones(con);
 		bean.setRecomendaciones(rec);
-		bean.setEstado(est);
+		bean.setCodigoUsuario(usu.getCodigo());
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioInforme.registrar(bean);
@@ -160,7 +167,7 @@ public class ServletInforme extends HttpServlet {
 		else
 			request.setAttribute("MENSAJE", "Error en el registro");
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/informe.jsp").forward(request, response);
+		request.getRequestDispatcher("/informeTecnico.jsp").forward(request, response);
 		
 	}
 
