@@ -40,6 +40,8 @@ public class ServletCotizacion extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tipo=request.getParameter("accion");
+		if(tipo.equals("NUEVO"))
+			nuevo(request,response);
 		if(tipo.equals("CONSULTA_PROVEEDOR"))
 			consultaProveedor(request,response);
 		else if(tipo.equals("CONSULTA_SOFTWARE"))
@@ -48,6 +50,14 @@ public class ServletCotizacion extends HttpServlet {
 			adicionarSoftware(request,response);
 		else if(tipo.equals("REGISTRAR_COTIZACION"))
 			registrarCotizacion(request,response);
+	}
+
+
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod=request.getParameter("codigo");
+		request.setAttribute("codigoInformeTecnico", cod);
+		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
+		
 	}
 
 

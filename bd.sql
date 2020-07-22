@@ -1,4 +1,3 @@
-drop database asesoramiento_ml;
 
 create database asesoramiento_ml;
 
@@ -199,3 +198,10 @@ insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
 insert into tb_acceso values (9,5);
+
+
+INSERT INTO `asesoramiento_ml`.`tb_menu` (`cod_men`, `des_men`, `url_men`) VALUES ('10', 'Registrar Cotización', 'listaInformeTecnicoLog.jsp');
+
+UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='10' WHERE `cod_men`='8' and`cod_usu`='4';
+UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='8' WHERE `cod_men`='7' and`cod_usu`='4';
+UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='7' WHERE `cod_men`='6' and`cod_usu`='4';
