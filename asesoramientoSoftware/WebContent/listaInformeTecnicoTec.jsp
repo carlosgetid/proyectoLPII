@@ -57,7 +57,7 @@ function tabla(){
 		$.getJSON("ServletInforme",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
+				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
 				var eliminar= "<a href='ServletInforme?accion=ELIMINAR&codigo="+item.codigo+"'>Eliminar</a>"
 						
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
