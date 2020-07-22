@@ -41,15 +41,15 @@
 			    <label for="exampleFormControlTextarea1">Recomendaciones</label>
 			    <textarea  class="form-control" id="exampleFormControlTextarea1" name="recomendaciones" placeholder="Ingresar recomendaciones" rows="3"></textarea>
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Estado</label>
-			    <select class="form-control" name="estado">
-			      <option>[Seleccione]</option>
-			      <option value="Pendiente">Pendiente</option>
-			      <option value="Aceptado">Aceptado</option>
-			       <option value="Rechazado">Rechazado</option>
-			    </select>
-			  </div>
+<!-- 			  <div class="form-group"> -->
+<!-- 			    <label for="exampleFormControlSelect1">Estado</label> -->
+<!-- 			    <select class="form-control" name="estado"> -->
+<!-- 			      <option>[Seleccione]</option> -->
+<!-- 			      <option value="Pendiente">Pendiente</option> -->
+<!-- 			      <option value="Aceptado">Aceptado</option> -->
+<!-- 			       <option value="Rechazado">Rechazado</option> -->
+<!-- 			    </select> -->
+<!-- 			  </div> -->
 				
 		  <button type="submit" class="btn btn-primary">Grabar</button>
 		  <button type="button" class="btn btn-success">Listar</button>
