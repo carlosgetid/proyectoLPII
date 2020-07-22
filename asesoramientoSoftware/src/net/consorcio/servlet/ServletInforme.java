@@ -168,7 +168,7 @@ public class ServletInforme extends HttpServlet {
 		bean.setConclusiones(con);
 		bean.setRecomendaciones(rec);
 		bean.setCodigoUsuario(usu.getCodigo());
-		bean.setCodigoRequerimiento(Long.parseLong(codReq));
+		bean.setCodigoRequerimiento(Integer.parseInt(codReq));
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioInforme.registrar(bean);
