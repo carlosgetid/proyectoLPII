@@ -59,7 +59,7 @@ CREATE TABLE `tb_requerimiento` (
   CONSTRAINT `tb_requerimiento_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
   CONSTRAINT `tb_requerimiento_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
-
+############################# añadi llave foranea
 CREATE TABLE `tb_informe` (
   `cod_inf` int(11) NOT NULL AUTO_INCREMENT,
   `introduccion_inf` varchar(200) DEFAULT NULL,
@@ -69,13 +69,14 @@ CREATE TABLE `tb_informe` (
   `recomendaciones_inf` varchar(200) DEFAULT NULL,
   cod_est int,
   fec_info_tec timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-  file_info_tec mediumblob,
+  cod_usu int(11) NOT NULL,
   PRIMARY KEY (`cod_inf`),
-  CONSTRAINT `tb_informe_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
+  CONSTRAINT `tb_informe_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
+  CONSTRAINT `tb_informe_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
 
 CREATE TABLE `tb_proveedor` (
-  `ruc_prov` int(11) NOT NULL,
+  ruc_prov bigint(11) NOT NULL,
   `nom_prov` varchar(25) DEFAULT NULL,
   `ape_prov` varchar(25) DEFAULT NULL,
   `tel_prov` varchar(9) DEFAULT NULL,
@@ -84,7 +85,7 @@ CREATE TABLE `tb_proveedor` (
 );
 
 
-
+######################### añadi llave foranea
 CREATE TABLE tb_cotizacion (
   cod_coti int(11) NOT NULL,
   ruc_prov int(11) DEFAULT NULL,
@@ -92,17 +93,19 @@ CREATE TABLE tb_cotizacion (
   fecha date DEFAULT NULL,
   monto double DEFAULT NULL,
   fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-  PRIMARY KEY (cod_coti)
+  PRIMARY KEY (cod_coti),
+  CONSTRAINT `tb_cotizacion_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+############################# cambio de nombre fec
 CREATE TABLE tb_detalle_coti (
   cod_coti int(11) DEFAULT NULL,
   cod_soft int(11) DEFAULT NULL,
   cant int(11) DEFAULT NULL,
-  fec_soft timestamp default current_timestamp#fecha y hora del sistema cuando se envia a la BD
+  fec_det_coti timestamp default current_timestamp#fecha y hora del sistema cuando se envia a la BD
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+########################## quite mediumblob
 create table tb_sol_certificado
 (
 	cod_sol_cert int primary key auto_increment,
@@ -110,17 +113,24 @@ create table tb_sol_certificado
     monto_sol_cert decimal(8,2),
     area_sol_cert varchar(50),
     fec_sol_cert timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-    file_sol_cert mediumblob
+    cod_est int,
+    cod_usu int(11) NOT NULL,
+    CONSTRAINT `tb_sol_certificado_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
+    CONSTRAINT `tb_sol_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
 
-
+###################### cambio nombre fec
 create table tb_certificado
 (
 	cod_cert int primary key auto_increment,
     fec_sub_cert date,#fecha y hora de la subida del documento
     url_cert varchar(250),
     nom_cert varchar(50),
-    fec_soft timestamp default current_timestamp#fecha y hora del sistema cuando se envia a la BD
+    fec_cert timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
+    cod_est int,
+    cod_usu int(11) NOT NULL,
+    CONSTRAINT `tb_certificado_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
+    CONSTRAINT `tb_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
 
 CREATE TABLE tb_software (
@@ -131,7 +141,7 @@ CREATE TABLE tb_software (
   PRIMARY KEY (cod_soft)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
-
+#########################3 añadido codigo usuario
 create table tb_informe_instalacion
 (
 	cod_info_insta int primary key auto_increment,
@@ -141,8 +151,9 @@ create table tb_informe_instalacion
     hora_insta time,#hora del momento de la instalacion
     fec_info_insta timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
 	cod_est int,
-    file_info_insta mediumblob,
-	CONSTRAINT `tb_informe_instalacion_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est)
+	cod_usu int(11) NOT NULL,
+    CONSTRAINT `tb_informe_instalacion_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
+    CONSTRAINT `tb_informe_instalacion_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
 );
 
 #Insertando usuarios

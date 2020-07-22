@@ -160,7 +160,7 @@ public class ServletInforme extends HttpServlet {
 		else
 			request.setAttribute("MENSAJE", "Error en el registro");
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/informe.jsp").forward(request, response);
+		request.getRequestDispatcher("/informeTecnico.jsp").forward(request, response);
 		
 	}
 
