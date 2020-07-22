@@ -95,7 +95,7 @@ public class MySqlInformeDAO implements InformeDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_informe values(null,?,?,?,?,?,1,null,?)";
+			String sql="insert into tb_informe values(null,?,?,?,?,?,1,null,?,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getIntroduccion());
 			pstm.setString(2, bean.getAntecedentes());
@@ -103,6 +103,7 @@ public class MySqlInformeDAO implements InformeDAO {
 			pstm.setString(4, bean.getConclusiones());
 			pstm.setString(5, bean.getRecomendaciones());
 			pstm.setInt(6, bean.getCodigoUsuario());
+			pstm.setLong(7, bean.getCodigoRequerimiento());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

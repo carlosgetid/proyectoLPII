@@ -34,8 +34,9 @@ public class ServletInforme extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo=request.getParameter("accion");
-		
-		if(tipo.equals("REGISTRAR"))
+		if(tipo.equals("NUEVO"))
+			nuevo(request,response);
+		else if(tipo.equals("REGISTRAR"))
 			registrar(request,response);
 		else if(tipo.equals("ACTUALIZAR"))
 			actualizar(request,response);
@@ -45,6 +46,13 @@ public class ServletInforme extends HttpServlet {
 			buscar(request,response); 
 		else if(tipo.equals("LISTAR"))
 			listar(request,response);
+	}
+
+
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod=request.getParameter("codigo");
+		request.setAttribute("codigoRequerimiento", cod);
+		request.getRequestDispatcher("/informeTecnico.jsp").forward(request, response);
 	}
 
 
@@ -137,12 +145,13 @@ public class ServletInforme extends HttpServlet {
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
-		String intr,ant,ana,con,rec;
+		String intr,ant,ana,con,rec,codReq;
 		intr=request.getParameter("introduccion");
 		ant=request.getParameter("antecedentes");
 		ana=request.getParameter("analisis");
 		con=request.getParameter("conclusiones");
 		rec=request.getParameter("recomendaciones");
+		codReq=request.getParameter("codigoRequerimiento");
 		
 		//objeto tipo sesion
         HttpSession session=request.getSession();
@@ -159,6 +168,7 @@ public class ServletInforme extends HttpServlet {
 		bean.setConclusiones(con);
 		bean.setRecomendaciones(rec);
 		bean.setCodigoUsuario(usu.getCodigo());
+		bean.setCodigoRequerimiento(Long.parseLong(codReq));
 		
 		//invocar al m�todo registrarDocente
 		int salida=servicioInforme.registrar(bean);

@@ -133,7 +133,7 @@ public class MySqlRequerimientoDAO implements RequerimientoDAO {
 			pstm.setString(3, bean.getArea());
 			pstm.setString(4, bean.getCriticidad());
 			pstm.setInt(5, bean.getCodigoEstado());
-			pstm.setInt(6, bean.getCodigo());
+			pstm.setLong(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
