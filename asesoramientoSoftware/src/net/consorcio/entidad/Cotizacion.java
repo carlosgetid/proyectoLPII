@@ -9,8 +9,8 @@ public class Cotizacion {
 	private int codUsu;
 	private Date fecha;
 	private double monto;
-	private InputStream documento;
-
+    private int codigoInforme;
+    
 	public int getCodigo() {
 		return codigo;
 	}
@@ -51,12 +51,13 @@ public class Cotizacion {
 		this.monto = monto;
 	}
 
-	public InputStream getDocumento() {
-		return documento;
+	public int getCodigoInforme() {
+		return codigoInforme;
 	}
 
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
+	public void setCodigoInforme(int codigoInforme) {
+		this.codigoInforme = codigoInforme;
 	}
 
+	
 }

@@ -90,7 +90,7 @@ CREATE TABLE `tb_proveedor` (
 
 
 ######################### añadi llave foranea
-CREATE TABLE tb_cotizacion (
+CREATE TABLE `tb_cotizacion` (
   cod_coti int(11) NOT NULL,
   ruc_prov bigint(11) DEFAULT NULL,
   cod_usu int(11) DEFAULT NULL,
@@ -199,5 +199,4 @@ insert into tb_acceso values (5,3);
 insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
-insert into tb_acceso values (9,5);
 insert into tb_acceso values (9,5);
