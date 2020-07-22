@@ -17,8 +17,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.consorcio.entidad.InformeInstalacion;
+import net.consorcio.entidad.Usuario;
 import net.consorcio.service.InformeInstalacionService;
 
 @WebServlet("/ServletInformeInstalacion")
@@ -52,6 +54,15 @@ public class ServletInformeInstalacion extends HttpServlet {
 			buscar(request, response);
 		else if (tipo.equals("LISTAR"))
 			listar(request, response);
+		else if (tipo.equals("NUEVO"))
+			nuevo(request, response);
+	}
+
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod=request.getParameter("codigo");
+		request.setAttribute("codigoSoftware", cod);
+		request.getRequestDispatcher("/informeInstalacion.jsp").forward(request, response);
+		
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -64,8 +75,7 @@ public class ServletInformeInstalacion extends HttpServlet {
 														add("lugar", bean.getLugar()).
 														add("area", bean.getNombreArea()).
 														add("fechaInstalacion", sdf.format(bean.getFechaInstalacion())).
-														add("horaInstalacion", sdf.format(bean.getHoraInstalacion())).
-														add("estado", bean.getEstado()).build();
+														add("nombreEstado", bean.getNombreEstado()).build();
 			arreglo.add(obj);
 		}
 		
@@ -100,13 +110,19 @@ public class ServletInformeInstalacion extends HttpServlet {
 	private void registrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 
-		String lug, area, fecIn, horIn;
+		String lug, area, fecIn, horIn, codSoft;
 		lug = request.getParameter("lugar");
 		area = request.getParameter("area");
 		fecIn = request.getParameter("fechaInstalacion");
 		horIn = request.getParameter("horaInstalacion");
+		codSoft = request.getParameter("codigoSoftware");
 
-
+		//objeto tipo sesion
+        HttpSession session=request.getSession();
+		
+		//recuperar el atributo usuario
+        Usuario usu=(Usuario) session.getAttribute("usuario");
+		
 //		Convertir una cadena a Date.util y luego lo convierte Date.sql
 		Date sqlFecIn = new Date(sdf.parse(fecIn).getTime());
 
@@ -119,6 +135,9 @@ public class ServletInformeInstalacion extends HttpServlet {
 		bean.setNombreArea(area);
 		bean.setFechaInstalacion(sqlFecIn);
 		bean.setHoraInstalacion(sqlHorIn);
+		bean.setCodigoUsuario(usu.getCodigo());
+		bean.setCodigoSoftware(Integer.parseInt(codSoft));
+		
 
 		int salida = servicioInformeInstalacion.registrar(bean);
 		if (salida != -1)
