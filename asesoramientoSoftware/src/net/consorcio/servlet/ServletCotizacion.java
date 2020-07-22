@@ -1,14 +1,22 @@
 package net.consorcio.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +27,14 @@ import javax.servlet.http.HttpSession;
 
 import net.consorcio.entidad.Cotizacion;
 import net.consorcio.entidad.Detalle;
+import net.consorcio.entidad.InformeTecnico;
 import net.consorcio.entidad.Proveedor;
 import net.consorcio.entidad.Software;
 import net.consorcio.entidad.Usuario;
 import net.consorcio.service.CotizacionService;
+import net.consorcio.utils.MySqlBDConexion;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 
 @WebServlet("/ServletCotizacion")
@@ -30,6 +42,10 @@ public class ServletCotizacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    private CotizacionService cotizacionService;
+   
+	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+   
     public ServletCotizacion() {
      
     	super();
@@ -48,15 +64,75 @@ public class ServletCotizacion extends HttpServlet {
 			adicionarSoftware(request,response);
 		else if(tipo.equals("REGISTRAR_COTIZACION"))
 			registrarCotizacion(request,response);
+		else if(tipo.equals("BUSCAR"))
+			listarCotizaciones(request,response);
 		else if(tipo.equals("NUEVO"))
 			nuevoCoti(request,response);
+		else if(tipo.equals("CONSULTAR"))
+			try {
+				consultar(request,response);
+			} catch (JRException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+	private void consultar(HttpServletRequest request, HttpServletResponse response) throws JRException, IOException {		
+		ServletContext application=request.getServletContext();
+		
+		File reportfile = new File (application.getRealPath("requerimiento.jasper"));
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		
+		String valor = request.getParameter("codigo");
+		
+		int nvalor = Integer.parseInt(valor);
+		
+		parameter.put("cod",nvalor);
+		
+		Connection cn=MySqlBDConexion.getConexion();
+		
+		
+		
+		byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter, cn);
+		
+//	 	indicar que la salida sera en formato pdf
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(bytes,0,bytes.length);
+		
+//	 	limpiar flujos de salida
+		outputStream.flush();
+		outputStream.close();
+	}
+
+	private void listarCotizaciones(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	        
+		List<Cotizacion> lista=cotizacionService.listAll();
+		//crear un objeto que contenga todo el JSON
+		JsonArrayBuilder arreglo=Json.createArrayBuilder();
+		//bucle
+		for(Cotizacion bean: lista) {
+			//crear cada fila
+			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
+													  add("ruc", bean.getRucPro()).
+													  add("fecha", formatter.format(bean.getFecha())).
+													  add("monto", bean.getMonto()).
+													  add("codEst", bean.getCod_est()).build();
+			//enviar el objeto "obj" al arreglo
+			arreglo.add(obj);
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter salida=response.getWriter();
+		salida.println(arreglo.build());
+		
 	}
 
 
 	private void nuevoCoti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod=request.getParameter("codigo");
 		request.setAttribute("codigoInformeTecnico", cod);
-		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
+		request.getRequestDispatcher("/s.jsp").forward(request, response);
 		
 	}
 

@@ -21,10 +21,9 @@
 			        <tr>
 			            <th>Código</th>
 			            <th>Ruc</th>
-			            <th>Usuario</th>
 			            <th>Fecha</th>
 			            <th>Monto</th>
-			            <th></th>
+			            <th>Estado</th>
 			            <th></th>
 			           
 			        </tr>
@@ -57,14 +56,14 @@ function tabla(){
 		$.getJSON("ServletRequerimiento",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
+				var consultar= "<a href='ServletCotizacion?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
+				var nuevo= "<a href='ServletCotizacion?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
-												item.descripcion+"</td><td>"+
-												item.origen +"</td><td>"+
-												item.area +"</td><td>"+
-												item.criticidad +"</td><td>"+
-												item.estado +"</td><td>"+editar+"</td></tr>")
+												item.ruc+"</td><td>"+
+												item.fecha+"</td><td>"+
+												item.monto +"</td><td>"+
+												item.codEst +"</td><td>"+"</td><td>"+editar+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		
