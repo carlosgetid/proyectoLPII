@@ -151,7 +151,8 @@ CREATE TABLE tb_software (
   cod_cert int,
   PRIMARY KEY (cod_soft),
     CONSTRAINT `tb_software_ibfk_1` FOREIGN KEY (cod_cert) REFERENCES `tb_certificado` (cod_cert)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+);
+#ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 #########################3 añadido codigo usuario
 create table tb_informe_instalacion
@@ -199,14 +200,36 @@ insert into tb_acceso values (6,4);
 insert into tb_acceso values (7,4);
 insert into tb_acceso values (8,4);
 insert into tb_acceso values (9,5);
-insert into tb_acceso values (11,4);
+#insert into tb_acceso values (11,4);
 
 
-INSERT INTO `asesoramiento_ml`.`tb_menu` (`cod_men`, `des_men`, `url_men`) VALUES ('10', 'Registrar Cotización', 'listaInformeTecnicoLog.jsp');
+#INSERT INTO `asesoramiento_ml`.`tb_menu` (`cod_men`, `des_men`, `url_men`) VALUES ('10', 'Registrar Cotización', 'listaInformeTecnicoLog.jsp');
 
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='10' WHERE `cod_men`='8' and`cod_usu`='4';
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='8' WHERE `cod_men`='7' and`cod_usu`='4';
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='7' WHERE `cod_men`='6' and`cod_usu`='4';
 
 UPDATE `asesoramiento_ml`.`tb_menu` SET `url_men`='listarCotizacion.jsp' WHERE `cod_men`='7';
+
+
+
+
+
+#Registros necesarios para el funcionamiento de la pagina
+INSERT INTO `asesoramiento_ml`.`tb_requerimiento` (`descripcion_req`, `origen_req`, `area_req`, `criticidad_req`, `cod_est`, `cod_usu`) VALUES ('assa', 'asda', 'asda', 'asa', '1', '1');
+INSERT INTO `asesoramiento_ml`.`tb_informe` (`introduccion_inf`, `antecedentes_inf`, `analisis_inf`, `conclusiones_inf`, `recomendaciones_inf`, `cod_est`, `cod_usu`, `cod_req`) VALUES ('asd', 'asd', 'asd', 'asd', 'asd', '1', '2', '1');
+INSERT INTO `asesoramiento_ml`.`tb_proveedor` (`ruc_prov`, `nom_prov`, `ape_prov`, `tel_prov`, `ema_prov`) VALUES ('1232132', 'asdasdads', 'asdas', '12321', 'asdsad');
+INSERT INTO `asesoramiento_ml`.`tb_cotizacion` (`cod_coti`, `ruc_prov`, `cod_usu`, `monto`, `cod_est`, `cod_inf`) VALUES ('121', '12312', '4', '122', '1', '1');
+INSERT INTO `asesoramiento_ml`.`tb_sol_certificado` (`obj_sol_cert`, `monto_sol_cert`, `area_sol_cert`, `cod_est`, `cod_usu`, `cod_coti`) VALUES ('asdsad', '212', 'asdas', '1', '4', '121');
+INSERT INTO `asesoramiento_ml`.`tb_certificado` (`url_cert`, `nom_cert`, `cod_est`, `cod_usu`, `cod_sol_cert`) VALUES ('asdsad', 'sadasd', '1', '1', '1');
+INSERT INTO `asesoramiento_ml`.`tb_software` (`nom_soft`, `pre_soft`, `cod_cert`) VALUES ('asdasd', '123', '1');
+
+
+
+
+
+
+
+
+
 
