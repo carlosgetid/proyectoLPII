@@ -72,7 +72,7 @@ public class MySqlSolicitudDAO implements SolicitudDAO {
 			pstm.setDouble(2, bean.getMonto());
 			pstm.setString(3, bean.getArea());
 			pstm.setInt(4, bean.getCodigoUsuario());
-			pstm.setLong(5, bean.getCodigoCotizacion());
+			pstm.setInt(5, bean.getCodigoCotizacion());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

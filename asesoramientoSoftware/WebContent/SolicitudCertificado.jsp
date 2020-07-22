@@ -69,7 +69,6 @@
 	    	},
 	    	monto:{
 	    		required:true,
-	    		digits:true,
 	    		pattern:'\\d{1,5}||\\d{1-5}[.]\\d{1,2}'
 	    	},
 	    	area:{
@@ -85,7 +84,6 @@
 	    	},
 	    	monto:{
 	    		required:'Ingresar origen',
-	    		digits:'Solo digitos',
 	    		pattern:'Campo "monto" puede ser entero con un maximo de 5 digitos enteros con 2 decimales'
 	    	},
 	    	area:{
