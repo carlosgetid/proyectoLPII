@@ -9,6 +9,7 @@ import java.util.List;
 
 import net.consorcio.entidad.Cotizacion;
 import net.consorcio.entidad.Detalle;
+import net.consorcio.entidad.Requerimiento;
 import net.consorcio.entidad.Cotizacion;
 import net.consorcio.interfaces.CotizacionDAO;
 import net.consorcio.utils.MySqlBDConexion;
@@ -80,16 +81,16 @@ public class MySqlCotizacionDAO implements CotizacionDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select cod_coti, ruc_prov, monto, fec_coti from tb_Cotizacion";
+			String sql="select c.cod_coti, c.ruc_prov, c.monto, c.fec_coti, e.nom_est from tb_cotizacion c inner join tb_estado e on c.cod_est=e.cod_est";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
 				bean=new Cotizacion();
 				bean.setCodigo(rs.getInt(1));
 				bean.setRucPro(rs.getLong(2));
-				bean.setFecha(rs.getDate(3));
-				bean.setMonto(rs.getDouble(4));		
-				bean.setCod_est(rs.getInt(5));
+				bean.setMonto(rs.getDouble(3));		
+				bean.setFecha(rs.getDate(4));
+				bean.setNombreEstado(rs.getString(5));
 				lista.add(bean);
 				
 			}
@@ -106,6 +107,77 @@ public class MySqlCotizacionDAO implements CotizacionDAO {
 			}
 		}
 		return lista;
+	}
+
+	@Override
+	public Cotizacion find(int cod) {
+		Cotizacion bean=null;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		ResultSet rs=null;
+		try {
+			cn=MySqlBDConexion.getConexion();
+			String sql="select *from tb_cotizacion where cod_coti=?";
+			pstm=cn.prepareStatement(sql);
+			pstm.setInt(1, cod);
+			rs=pstm.executeQuery();
+			if(rs.next()) {
+				bean=new Cotizacion();
+				bean.setCodigo(rs.getInt(1));
+				bean.setRucPro(rs.getLong(2));
+				bean.setCodUsu(rs.getInt(3));
+				bean.setMonto(rs.getDouble(4));;
+				bean.setCod_est(rs.getInt(5));
+				bean.setFecha(rs.getDate(6));
+				bean.setCodigoInforme(rs.getInt(7));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return bean;
+	}
+
+	@Override
+	public int update(Cotizacion bean) {
+		
+		int estado=-1;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		try {
+			cn=MySqlBDConexion.getConexion();
+			String sql="update tb_cotizacion set monto=?,cod_est=? where cod_cot=?";
+			pstm=cn.prepareStatement(sql);
+			pstm.setDouble(1, bean.getMonto());
+			pstm.setDouble(2, bean.getCod_est());
+			pstm.setLong(3, bean.getCodigo());
+			estado=pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return estado;
+	}
+
+	@Override
+	public int delete(int cod) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
