@@ -71,7 +71,7 @@
 	
 	<script>
 	$(".btn-success").click(function(){
-		window.location.href='listaInformeTecnico.jsp';
+		window.location.href='listaInformeTecnicoTec.jsp';
 	})
 	</script>
   	
