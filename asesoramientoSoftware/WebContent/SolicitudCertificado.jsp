@@ -56,7 +56,7 @@
 	
 	<script>
 	$(".btn-success").click(function(){
-		window.location.href='listaSolicitud.jsp';
+		window.location.href='listaSolCertPresupLog.jsp';
 	})
 	</script>
   	

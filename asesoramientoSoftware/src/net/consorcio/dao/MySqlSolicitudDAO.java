@@ -29,7 +29,7 @@ public class MySqlSolicitudDAO implements SolicitudDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select s.cod_sol_cert, s.obj_sol_cert, s.monto_sol_cert, s.area_sol.cert, s.fec_sol_cert, e.nom_est from tb_sol_certificado s inner join tb_estado e on s.cod_sol_cert=e.cod_est";
+			String sql="select s.cod_sol_cert, s.obj_sol_cert, s.monto_sol_cert, s.area_sol_cert, s.fec_sol_cert, e.nom_est from tb_sol_certificado s inner join tb_estado e on s.cod_sol_cert=e.cod_est";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
@@ -66,7 +66,7 @@ public class MySqlSolicitudDAO implements SolicitudDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_sol_certificado values(null,?,?,?,null,?,?)";
+			String sql="insert into tb_sol_certificado values(null,?,?,?,null,1,?,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getObjetivo());
 			pstm.setDouble(2, bean.getMonto());

@@ -64,7 +64,7 @@ function tabla(){
 					
 				var editar= "<a href='ServletCotizacion?accion=BUSCAR&codigo="+item.codigo+"'>Actualizar</a>"
 				var consultar= "<a href='ServletCotizacion?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
-				var nuevo= "<a href='ServletInforme?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
+				var nuevo= "<a href='ServletSolicitud?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.ruc+"</td><td>"+
