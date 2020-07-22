@@ -1,12 +1,11 @@
 package net.consorcio.entidad;
 
-import java.io.InputStream;
 
 public class Software {
 	private int codigo;
 	private String nombre;
 	private double precio;
-	private InputStream documento;
+	
 	
 	
 	public int getCodigo() {
@@ -27,13 +26,6 @@ public class Software {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public InputStream getDocumento() {
-		return documento;
-	}
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
-	}
-	
 	
 	
 }

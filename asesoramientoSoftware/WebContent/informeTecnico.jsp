@@ -105,25 +105,25 @@
 	    messages:{
 	    	introduccion:{
 	    		required:'Ingresar introduccion',
-	    		pattern:'Campo descripcion solo letras'
+	    		pattern:'Campo introduccion solo letras con un maximo de 200 caracteres'
 	    	},
 	    	antecedentes:{
-	    		required:'ingresar antecedentes',
-	    		pattern:'Campo origen solo letras'
+	    		required:'Ingresar antecedentes',
+	    		pattern:'Campo antecedentes solo letras con un maximo de 200 caracteres'
 	    	},
 	    	analisis:{
-	    		required:'ingresar analisis',
-	    		pattern:'Campo area solo letras'
+	    		required:'Ingresar analisis',
+	    		pattern:'Campo analisis solo letras con un maximo de 200 caracteres'
 	    	
 	    	},
 	    	conclusiones:{
-	    		required:'ingresar conclusiones',
-	    		pattern:'Campo area solo letras'
+	    		required:'Ingresar conclusiones',
+	    		pattern:'Campo conclusiones solo letras con un maximo de 200 caracteres'
 	    	
 	    	},
 	    	recomendaciones:{
-	    		required:'ingresar recomendaciones',
-	    		pattern:'Campo area solo letras'
+	    		required:'Ingresar recomendaciones',
+	    		pattern:'Campo recomendaciones solo letras con un maximo de 200 caracteres'
 	    	
 	    	},
 	    	estado:{

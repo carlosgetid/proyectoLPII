@@ -70,9 +70,11 @@ CREATE TABLE `tb_informe` (
   cod_est int,
   fec_info_tec timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
   cod_usu int(11) NOT NULL,
+  cod_req int(11) NOT NULL,
   PRIMARY KEY (`cod_inf`),
   CONSTRAINT `tb_informe_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
-  CONSTRAINT `tb_informe_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
+  CONSTRAINT `tb_informe_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
+  CONSTRAINT `tb_informe_ibfk_3` FOREIGN KEY (cod_req) REFERENCES `tb_requerimiento` (cod_req)
 );
 
 CREATE TABLE `tb_proveedor` (
@@ -93,8 +95,10 @@ CREATE TABLE tb_cotizacion (
   fecha date DEFAULT NULL,
   monto double DEFAULT NULL,
   fec_coti timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
+  cod_inf int(11) NOT NULL,
   PRIMARY KEY (cod_coti),
-  CONSTRAINT `tb_cotizacion_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
+  CONSTRAINT `tb_cotizacion_ibfk_1` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
+  CONSTRAINT `tb_cotizacion_ibfk_2` FOREIGN KEY (cod_inf) REFERENCES `tb_informe` (cod_inf)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ############################# cambio de nombre fec
@@ -115,8 +119,10 @@ create table tb_sol_certificado
     fec_sol_cert timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
     cod_est int,
     cod_usu int(11) NOT NULL,
+    cod_coti int(11) NOT NULL,
     CONSTRAINT `tb_sol_certificado_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
-    CONSTRAINT `tb_sol_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
+    CONSTRAINT `tb_sol_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
+    CONSTRAINT `tb_sol_certificado_ibfk_3` FOREIGN KEY (cod_coti) REFERENCES `tb_cotizacion` (cod_coti)
 );
 
 ###################### cambio nombre fec
@@ -129,8 +135,10 @@ create table tb_certificado
     fec_cert timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
     cod_est int,
     cod_usu int(11) NOT NULL,
+    cod_sol_cert int,
     CONSTRAINT `tb_certificado_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
-    CONSTRAINT `tb_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
+    CONSTRAINT `tb_certificado_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
+     CONSTRAINT `tb_certificado_ibfk_3` FOREIGN KEY (cod_sol_cert) REFERENCES `tb_sol_certificado` (cod_sol_cert)
 );
 
 CREATE TABLE tb_software (
@@ -138,7 +146,9 @@ CREATE TABLE tb_software (
   nom_soft varchar(35) DEFAULT NULL,
   pre_soft double DEFAULT NULL,
   fec_soft timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
-  PRIMARY KEY (cod_soft)
+  cod_cert int,
+  PRIMARY KEY (cod_soft),
+    CONSTRAINT `tb_software_ibfk_1` FOREIGN KEY (cod_cert) REFERENCES `tb_certificado` (cod_cert)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 #########################3 añadido codigo usuario
@@ -152,8 +162,10 @@ create table tb_informe_instalacion
     fec_info_insta timestamp default current_timestamp,#fecha y hora del sistema cuando se envia a la BD
 	cod_est int,
 	cod_usu int(11) NOT NULL,
+    cod_soft int(11) NOT NULL,
     CONSTRAINT `tb_informe_instalacion_ibfk_1` FOREIGN KEY (cod_est) REFERENCES `tb_estado` (cod_est),
-    CONSTRAINT `tb_informe_instalacion_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu)
+    CONSTRAINT `tb_informe_instalacion_ibfk_2` FOREIGN KEY (cod_usu) REFERENCES `tb_usuario` (cod_usu),
+    CONSTRAINT `tb_informe_instalacion_ibfk_3` FOREIGN KEY (cod_soft) REFERENCES `tb_software` (cod_soft)
 );
 
 #Insertando usuarios

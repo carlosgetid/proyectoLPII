@@ -27,6 +27,8 @@
 			            <th>Recomendaciones</th>
 			            <th>Estado</th>
 			            <th></th>
+			            <th></th>
+			            <th></th>
 			           
 			        </tr>
 			    </thead>
@@ -59,6 +61,7 @@ function tabla(){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
 				var editar= "<a href='ServletInforme?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
+				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
 				
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.introduccion+"</td><td>"+
@@ -66,7 +69,7 @@ function tabla(){
 												item.analisis +"</td><td>"+
 												item.conclusiones +"</td><td>"+
 												item.recomendaciones +"</td><td>"+
-												item.estado +"</td><td>"+editar+"</td></tr>")
+												item.nombreEstado +"</td><td>"+editar+"</td><td>"+consultar+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		

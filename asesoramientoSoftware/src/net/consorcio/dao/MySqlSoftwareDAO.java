@@ -29,7 +29,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 				bean.setCodigo(rs.getInt(1));
 				bean.setNombre(rs.getString(2));
 				bean.setPrecio(rs.getDouble(3));
-//				bean.setDocumento((InputStream) rs.getBlob(4));
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_software values(null,?,?,null,null)";
+			String sql="insert into tb_software values(null,?,?,curdate())";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getNombre());
 			pstm.setDouble(2, bean.getPrecio());

@@ -58,7 +58,7 @@ public class MySqlInformeDAO implements InformeDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_informe";
+			String sql="select t.cod_inf, t.introduccion_inf, t.antecedentes_inf, t.analisis_inf, t.conclusiones_inf, t.recomendaciones_inf, e.nom_est from tb_informe t inner join tb_estado e on t.cod_est=e.cod_est";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
@@ -69,7 +69,7 @@ public class MySqlInformeDAO implements InformeDAO {
 				bean.setAnalisis(rs.getString(4));
 				bean.setConclusiones(rs.getString(5));
 				bean.setRecomendaciones(rs.getString(6));
-				bean.setEstado(rs.getString(7));
+				bean.setNombreEstado(rs.getString(6));
 				
 				lista.add(bean);
 			}

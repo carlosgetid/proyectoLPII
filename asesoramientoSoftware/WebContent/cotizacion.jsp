@@ -352,6 +352,7 @@
 															item.precio+"</td><td>"+
 															item.cantidad+"</td><td>"+
 															item.importe+"</td></tr>");
+															
 				})
 				$("#idTotal").text(suma);
 			})
