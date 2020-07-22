@@ -15,6 +15,7 @@
 	<div class="container">
 		<h1>Listado</h1>
 	
+	
 			<table id="table_id" class="table-bordered">
 			    <thead>	
 			        <tr>
@@ -24,7 +25,8 @@
 			            <th>Estado</th>
 			            <th></th>
 			            <th></th>
-			                    
+			            <th></th>
+			           
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -55,18 +57,15 @@ function tabla(){
 		$.getJSON("ServletInforme",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-
-				var editar= "<a href='ServletInforme?accion=BUSCAR&codigo="+item.codigo+"'>Actualizar</a>"
-				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
-				var nuevo= "<a href='ServletCotizacion?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
-
+				var consultar= "<a href='ServletInforme?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Consultar</a>"
+				var eliminar= "<a href='ServletInforme?accion=ELIMINAR&codigo="+item.codigo+"'>Eliminar</a>"
 						
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.introduccion+"</td><td>"+
 												item.fecha +"</td><td>"+
 												item.nombreEstado +"</td><td>"+
-												editar+"</td><td>"+
-												consultar+"</td><td>")
+												consultar+"</td><td>"+
+												eliminar+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		

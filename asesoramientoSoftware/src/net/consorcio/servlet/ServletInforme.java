@@ -70,6 +70,7 @@ public class ServletInforme extends HttpServlet {
 	}
 
 
+
 	private void consultar(HttpServletRequest request, HttpServletResponse response) throws JRException, IOException {
 ServletContext application=request.getServletContext();
 		
@@ -153,7 +154,7 @@ ServletContext application=request.getServletContext();
 		else
 			request.setAttribute("MENSAJE", "Error en la eliminacionr del registro");
 		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
-		request.getRequestDispatcher("/actualizarInforme.jsp").forward(request, response);
+		request.getRequestDispatcher("/listaInformeTecnicoTec.jsp").forward(request, response);
 		
 	}
 

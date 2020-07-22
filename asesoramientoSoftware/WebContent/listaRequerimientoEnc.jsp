@@ -63,7 +63,7 @@ function tabla(){
 			$.each(response,function(index,item){
 				
 					
-				var editar= "<a href='ServletRequerimiento?accion=BUSCAR&codigo="+item.codigo+"'>Actualizar</a>"
+				
 				var consultar= "<a href='ServletRequerimiento?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
 				var eliminar= "<a href='ServletRequerimiento?accion=ELIMINAR&codigo="+item.codigo+"'>Eliminar</a>"
 				
@@ -72,8 +72,7 @@ function tabla(){
 												item.origen +"</td><td>"+
 												item.area +"</td><td>"+
 												item.criticidad +"</td><td>"+
-												item.nombreEstado +"</td><td>"+
-												editar+"</td><td>"+
+												item.nombreEstado +"</td><td>"+											
 												consultar+"</td><td>"+
 												eliminar+"</td><td>")
 			});

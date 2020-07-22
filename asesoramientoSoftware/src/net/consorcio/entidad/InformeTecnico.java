@@ -15,6 +15,8 @@ public class InformeTecnico {
 		private Timestamp fecha;
 		private int codigoUsuario;
 		private int codigoRequerimiento;
+		
+		
 		public int getCodigo() {
 			return codigo;
 		}

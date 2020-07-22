@@ -50,6 +50,16 @@ public class ServletCotizacion extends HttpServlet {
 			adicionarSoftware(request,response);
 		else if(tipo.equals("REGISTRAR_COTIZACION"))
 			registrarCotizacion(request,response);
+		else if(tipo.equals("NUEVO"))
+			nuevoCoti(request,response);
+	}
+
+
+	private void nuevoCoti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod=request.getParameter("codigo");
+		request.setAttribute("codigoRequerimiento", cod);
+		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
+		
 	}
 
 
