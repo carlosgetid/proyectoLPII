@@ -45,9 +45,6 @@
 			    </select>
 			  </div>  
 	
-	
-
-
 		  <button type="submit" class="btn btn-primary">Grabar</button>
 		  <button type="button" class="btn btn-success">Listar</button>
 		</form>
