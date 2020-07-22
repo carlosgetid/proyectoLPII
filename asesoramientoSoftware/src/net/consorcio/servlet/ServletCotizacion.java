@@ -29,6 +29,7 @@ import net.consorcio.entidad.Cotizacion;
 import net.consorcio.entidad.Detalle;
 import net.consorcio.entidad.InformeTecnico;
 import net.consorcio.entidad.Proveedor;
+import net.consorcio.entidad.Requerimiento;
 import net.consorcio.entidad.Software;
 import net.consorcio.entidad.Usuario;
 import net.consorcio.service.CotizacionService;
@@ -66,10 +67,12 @@ public class ServletCotizacion extends HttpServlet {
 			adicionarSoftware(request,response);
 		else if(tipo.equals("REGISTRAR_COTIZACION"))
 			registrarCotizacion(request,response);
-		else if(tipo.equals("BUSCAR"))
+		else if(tipo.equals("LISTAR"))
 			listarCotizaciones(request,response);
-		else if(tipo.equals("NUEVO"))
-			nuevoCoti(request,response);
+		else if(tipo.equals("BUSCAR"))
+			buscar(request,response);
+//		else if(tipo.equals("NUEVO"))
+//			nuevoCoti(request,response);
 		else if(tipo.equals("CONSULTAR"))
 			try {
 				consultar(request,response);
@@ -78,6 +81,18 @@ public class ServletCotizacion extends HttpServlet {
 				e.printStackTrace();
 			}
 	}
+
+	private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cotizacion bean;
+		String cod;
+		cod=request.getParameter("codigo");
+		bean=cotizacionService.buscar(Integer.parseInt(cod));
+		request.setAttribute("cotizacion", bean);
+		//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
+		request.getRequestDispatcher("/actualizarCotizacion.jsp").forward(request, response);
+		
+	}
+
 
 	private void consultar(HttpServletRequest request, HttpServletResponse response) throws JRException, IOException {		
 		ServletContext application=request.getServletContext();
@@ -118,9 +133,9 @@ public class ServletCotizacion extends HttpServlet {
 			//crear cada fila
 			JsonObject obj=Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 													  add("ruc", bean.getRucPro()).
-													  add("fecha", formatter.format(bean.getFecha())).
 													  add("monto", bean.getMonto()).
-													  add("codEst", bean.getCod_est()).build();
+													  add("fecha", formatter.format(bean.getFecha())).
+													  add("nombreEstado", bean.getNombreEstado()).build();
 			//enviar el objeto "obj" al arreglo
 			arreglo.add(obj);
 		}
@@ -131,12 +146,12 @@ public class ServletCotizacion extends HttpServlet {
 	}
 
 
-	private void nuevoCoti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cod=request.getParameter("codigo");
-		request.setAttribute("codigoInformeTecnico", cod);
-		request.getRequestDispatcher("/s.jsp").forward(request, response);
-		
-	}
+//	private void nuevoCoti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String cod=request.getParameter("codigo");
+//		request.setAttribute("codigoInformeTecnico", cod);
+//		request.getRequestDispatcher("/s.jsp").forward(request, response);
+//		
+//	}
 
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

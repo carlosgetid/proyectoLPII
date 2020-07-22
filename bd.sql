@@ -205,3 +205,6 @@ INSERT INTO `asesoramiento_ml`.`tb_menu` (`cod_men`, `des_men`, `url_men`) VALUE
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='10' WHERE `cod_men`='8' and`cod_usu`='4';
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='8' WHERE `cod_men`='7' and`cod_usu`='4';
 UPDATE `asesoramiento_ml`.`tb_acceso` SET `cod_men`='7' WHERE `cod_men`='6' and`cod_usu`='4';
+
+UPDATE `asesoramiento_ml`.`tb_menu` SET `url_men`='listarCotizacion.jsp' WHERE `cod_men`='7';
+

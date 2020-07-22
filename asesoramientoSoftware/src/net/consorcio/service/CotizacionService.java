@@ -34,4 +34,8 @@ public class CotizacionService {
 	public List<Cotizacion> listAll() {
 		return daoCotizacion.listAll();
 	}
+	
+	public Cotizacion buscar(int cod) {
+		return daoCotizacion.find(cod);
+	}
 }
