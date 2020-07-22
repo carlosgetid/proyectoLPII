@@ -11,7 +11,7 @@ public class SolicitudCertificado {
 	private int codigoEstado;
 	private String nombreEstado;
 	private int codigoUsuario;
-	
+	private int codigoCotizacion;
 	
 	
 	public int getCodigo() {
@@ -61,6 +61,12 @@ public class SolicitudCertificado {
 	}
 	public void setCodigoUsuario(int codigoUsuario) {
 		this.codigoUsuario = codigoUsuario;
+	}
+	public int getCodigoCotizacion() {
+		return codigoCotizacion;
+	}
+	public void setCodigoCotizacion(int codigoCotizacion) {
+		this.codigoCotizacion = codigoCotizacion;
 	}
 	
 	
