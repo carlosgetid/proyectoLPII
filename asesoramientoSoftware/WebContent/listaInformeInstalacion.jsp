@@ -27,7 +27,6 @@
 					<th>Lugar de instalacion</th>
 					<th>Area laboral</th>
 					<th>Fecha de instalacion</th>
-					<th>Hora de instalacion</th>
 					<th>Estado</th>
 					<th></th>
 					<th></th>
@@ -62,14 +61,13 @@
 		$.getJSON("ServletInformeInstalacion",{accion:"LISTAR"},function(response){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
-				var editar= "<a href='ServletInformeInstalacion?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
+				var editar= "<a href='ServletInformeInstalacion?accion=BUSCAR&codigo="+item.codigo+"'>Actualizar</a>"
 				var consultar= "<a href='ServletInformeInstalacion?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
 						
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.lugar+"</td><td>"+
 												item.area +"</td><td>"+
 												item.fechaInstalacion +"</td><td>"+
-												item.horaInstalacion +"</td><td>"+
 												item.nombreEstado +"</td><td>"+editar+"</td><td>"+
 												consultar+"</td></tr>")
 			});
