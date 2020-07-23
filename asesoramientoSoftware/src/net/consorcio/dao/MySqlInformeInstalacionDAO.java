@@ -32,7 +32,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 				bean.setNombreArea(rs.getString(3));
 				bean.setFechaInstalacion(rs.getDate(4));
 				bean.setHoraInstalacion(rs.getTime(5));
-				bean.setEstado(rs.getInt(6));
+				bean.setCodigoEstado(rs.getInt(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

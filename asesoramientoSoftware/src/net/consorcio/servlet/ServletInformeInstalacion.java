@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.consorcio.entidad.InformeInstalacion;
+import net.consorcio.entidad.Requerimiento;
 import net.consorcio.entidad.Usuario;
 import net.consorcio.service.InformeInstalacionService;
 
@@ -47,7 +48,12 @@ public class ServletInformeInstalacion extends HttpServlet {
 				e.printStackTrace();
 			}
 		else if (tipo.equals("ACTUALIZAR"))
-			actualizar(request, response);
+			try {
+				actualizar(request, response);
+			} catch (ServletException | IOException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		else if (tipo.equals("ELIMINAR"))
 			eliminar(request, response);
 		else if (tipo.equals("BUSCAR"))
@@ -85,26 +91,57 @@ public class ServletInformeInstalacion extends HttpServlet {
 		salida.println(arreglo.build());
 	}
 
-	private void buscar(HttpServletRequest request, HttpServletResponse response) {
+	private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InformeInstalacion bean;
 		String cod;
-		cod = request.getParameter("codigo");
-		bean = servicioInformeInstalacion.buscar(Integer.parseInt(cod));
-		request.setAttribute("InformeInstalacion", bean);
+		cod=request.getParameter("codigo");
+		bean=servicioInformeInstalacion.buscar(Integer.parseInt(cod));
+		request.setAttribute("informeInstalacion", bean);
+		request.getRequestDispatcher("/actualizarInformeInstalacion.jsp").forward(request, response);
 	}
 
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
 		
 	}
 
-	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
-//		String cod, lug, area, fecIn, horIn;
-//		cod = request.getParameter("codigo");
-//		lug = request.getParameter("lugar");
-//		area = request.getParameter("area");
-//		fecIn = request.getParameter("fechaInstalacion");
-//		horIn = request.getParameter("horaInstalacion");
-//		
+	private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
+
+		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
+		String cod, lug, area, fecIn, horIn, est;
+				cod=request.getParameter("codigo");
+				lug = request.getParameter("lugar");
+				area = request.getParameter("area");
+				fecIn = request.getParameter("fechaInstalacion");
+				horIn = request.getParameter("horaInstalacion");
+				est=request.getParameter("nombreEstado");
+				
+				int nest = Integer.parseInt(est);
+				
+//				Convertir una cadena a Date.util y luego lo convierte Date.sql
+				Date sqlFecIn = new Date(sdf.parse(fecIn).getTime());
+
+//				Convertir una cadena a Date.util y luego lo convierte Time.sql
+				Time sqlHorIn = new Time(sdf2.parse(horIn).getTime());
+				
+				//crear un objeto de la clase Docente
+				InformeInstalacion bean=new InformeInstalacion();
+				//setear los atributos del objeto "bean"
+				bean.setCodigo(Integer.parseInt(cod));
+				bean.setLugar(lug);
+				bean.setNombreArea(area);
+				bean.setFechaInstalacion(sqlFecIn);
+				bean.setHoraInstalacion(sqlHorIn);
+				bean.setCodigoEstado(nest);
+				
+				//invocar al m�todo registrarDocente
+				int salida=servicioInformeInstalacion.actualizar(bean);
+				if(salida!=-1)
+					request.setAttribute("MENSAJE", "Registro actualizado correctamente");
+				else
+					request.setAttribute("MENSAJE", "Error al actualizar el registro");
+				//direccionar a la p�gina docente.jsp y enviar el atributo MENSAJE 
+				request.getRequestDispatcher("/actualizarInformeInstalacion.jsp").forward(request, response);
+		
 	}
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response)
