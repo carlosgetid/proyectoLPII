@@ -134,8 +134,8 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 			pstm.setString(2, bean.getNombreArea());
 			pstm.setDate(3, bean.getFechaInstalacion());
 			pstm.setTime(4, bean.getHoraInstalacion());
-			pstm.setInt(5, bean.getEstado());
-			pstm.setBlob(5, bean.getDocumento());
+//			pstm.setInt(5, bean.getEstado());
+//			pstm.setBlob(5, bean.getDocumento());
 			pstm.setInt(6, bean.getCodigo());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
