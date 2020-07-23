@@ -13,17 +13,19 @@
 	  <div class="navbar-header">
 	      <a class="navbar-brand" href="#">SERPRODAT</a>
 	  </div>
+	  <div>
 	  <ul class="navbar-nav">
 		<c:forEach items="${sessionScope.lista}" var="row">
 		    <li class="nav-item">
 		      <a class="nav-link" href="${row.url}">${row.descripcion}</a>
 		    </li>
 		</c:forEach>
-	    
 	  </ul>
-	  Usuario: ${sessionScope.usuario.apellidos} ${sessionScope.usuario.nombres}
+	  </div>
+	  <div style="display: block; margin-left: 100px">
+	  <p style="color: white">Usuario: ${sessionScope.usuario.apellidos} ${sessionScope.usuario.nombres}</p>
 	 <a  href="ServletUsuario?accion=CERRAR"> Cerrar Sesion</a>
-	  
+	  </div>
 	</nav>
 <div class="container">
 
