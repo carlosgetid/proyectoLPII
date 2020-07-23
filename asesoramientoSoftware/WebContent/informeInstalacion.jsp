@@ -28,6 +28,7 @@
 		<form method="post"
 			action="ServletInformeInstalacion?accion=REGISTRAR" method="post"
 			id="id_registrar">
+			<input type="hidden" value="${requestScope.codigoSoftware}" name="codigoSoftware">
 			<div class="form-group">
 				<label for="exampleFormControlTextarea1">Lugar de instalacion</label> <input
 					type="text" class="form-control" id="exampleFormControlTextarea1"

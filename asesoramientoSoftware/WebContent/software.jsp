@@ -21,6 +21,7 @@
 	</c:if>
 	<div class="container">
   		<form method="post" action="ServletSoftware?accion=REGISTRAR" method="post" id="id_registrar">
+  		
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Nombre</label>
 			    <input  class="form-control" id="exampleFormControlTextarea1" name="nombreSoftware" placeholder="Ingresar nombre" rows="3">

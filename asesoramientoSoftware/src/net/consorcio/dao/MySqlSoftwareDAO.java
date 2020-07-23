@@ -54,7 +54,7 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 	        ResultSet rs=null;
 	        try {
 	            cn=MySqlBDConexion.getConexion();
-	            String sql="select *from tb_software where nom_soft like ?";
+	            String sql="select * from tb_software where nom_soft like ?";
 	            pstm=cn.prepareStatement(sql);
 	            pstm.setString(1, nom+"%");
 	            rs=pstm.executeQuery();
@@ -63,6 +63,8 @@ public class MySqlSoftwareDAO implements SoftwareDAO {
 	                bean.setCodigo(rs.getInt(1));
 	                bean.setNombre(rs.getString(2));
 	                bean.setPrecio(rs.getDouble(3));
+	                bean.setFecha(rs.getTimestamp(4));
+	                bean.setCodigoCertificado(rs.getInt(5));
 
 
 	                lista.add(bean);

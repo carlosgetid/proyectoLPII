@@ -2,6 +2,7 @@ package net.consorcio.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.json.Json;
@@ -21,6 +22,9 @@ public class ServletSoftware extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private SoftwareService servicioSoftware;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
        
     public ServletSoftware() {
         super();
@@ -42,10 +46,7 @@ public class ServletSoftware extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String nom;
-		
-		nom=request.getParameter("nombreSoftware");
-		
+		String nom= "";
 		List<Software> lista = servicioSoftware.listSoftwareXNombre(nom);
 		
 		JsonArrayBuilder arreglo = Json.createArrayBuilder();
@@ -53,7 +54,8 @@ public class ServletSoftware extends HttpServlet {
 		for(Software bean:lista) {
 			JsonObject obj = Json.createObjectBuilder().add("codigo", bean.getCodigo()).
 														add("nombre", bean.getNombre()).
-														add("precio", bean.getPrecio()).build();
+														add("precio", bean.getPrecio()).
+														add("fecha", sdf.format(bean.getFecha())).build();
 			arreglo.add(obj);
 		}
 		

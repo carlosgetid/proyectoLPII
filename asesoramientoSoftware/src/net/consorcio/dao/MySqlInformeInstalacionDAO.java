@@ -58,7 +58,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 		ResultSet rs=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="select *from tb_informe_instalacion";
+			String sql="select i.cod_info_insta, i.lug_insta, i.area_lab, i.fec_insta, e.nom_est from tb_informe_instalacion i inner join tb_estado e on i.cod_est=e.cod_est";
 			pstm=cn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
@@ -67,9 +67,7 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 				bean.setLugar(rs.getString(2));
 				bean.setNombreArea(rs.getString(3));
 				bean.setFechaInstalacion(rs.getDate(4));
-				bean.setHoraInstalacion(rs.getTime(5));
-				bean.setEstado(rs.getInt(6));
-//				bean.setDocumento((InputStream) rs.getBlob(7));
+				bean.setNombreEstado(rs.getString(5));
 				
 				lista.add(bean);
 				
@@ -97,14 +95,14 @@ public class MySqlInformeInstalacionDAO implements InformeInstalacionDAO {
 		PreparedStatement pstm=null;
 		try {
 			cn=MySqlBDConexion.getConexion();
-			String sql="insert into tb_informe_instalacion values(null,?,?,?,?,null,?,?)";
+			String sql="insert into tb_informe_instalacion values(null,?,?,?,?,null,1,?,?)";
 			pstm=cn.prepareStatement(sql);
 			pstm.setString(1, bean.getLugar());
 			pstm.setString(2, bean.getNombreArea());
 			pstm.setDate(3, bean.getFechaInstalacion());
 			pstm.setTime(4, bean.getHoraInstalacion());
-			pstm.setInt(5, bean.getEstado());
-			pstm.setBlob(6, bean.getDocumento());
+			pstm.setInt(5, bean.getCodigoUsuario());
+			pstm.setInt(6, bean.getCodigoSoftware());
 			estado=pstm.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

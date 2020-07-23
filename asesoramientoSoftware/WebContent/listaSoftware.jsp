@@ -21,7 +21,10 @@
 			        <tr>
 			            <th>Código</th>
 			            <th>Nombre</th>
-			            <th>Versión</th>
+			            <th>Precio</th>
+			            <th>Fecha</th>
+			            <th></th>
+			            <th></th>
 			            <th></th>
 			           
 			        </tr>
@@ -55,10 +58,16 @@ function tabla(){
 			//bucle para realizar recorrido sobre response
 			$.each(response,function(index,item){
 				var editar= "<a href='ServletSoftware?accion=BUSCAR&codigo="+item.codigo+"'>Editar</a>"
-				
+				var consultar= "<a href='ServletSoftware?accion=CONSULTAR&codigo="+item.codigo+"' target='_blank'>Ver PDF</a>"
+				var nuevo= "<a href='ServletInformeInstalacion?accion=NUEVO&codigo="+item.codigo+"'>Nuevo</a>"
+						
 				$("#table_id").append("<tr><td>"+item.codigo +"</td><td>"+
 												item.nombre+"</td><td>"+
-												item.version +"</td><td>"+editar+"</td></tr>")
+												item.precio +"</td><td>"+
+												item.fecha +"</td><td>"+
+												editar+"</td><td>"+
+												consultar+"</td><td>"+
+												nuevo+"</td></tr>")
 			});
 			$('#table_id').DataTable();
 		})		

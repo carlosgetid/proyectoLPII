@@ -14,8 +14,10 @@ public class InformeInstalacion {
 	private Date fechaInstalacion;
 	private Time horaInstalacion;
 	
-	private int estado;
-	private InputStream documento;
+	private int codigoEstado;
+	private String nombreEstado;
+	private int codigoUsuario;
+	private int codigoSoftware;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -46,18 +48,31 @@ public class InformeInstalacion {
 	public void setHoraInstalacion(Time horaInstalacion) {
 		this.horaInstalacion = horaInstalacion;
 	}
-	public int getEstado() {
-		return estado;
+	public int getCodigoEstado() {
+		return codigoEstado;
 	}
-	public void setEstado(int estado) {
-		this.estado = estado;
+	public void setCodigoEstado(int codigoEstado) {
+		this.codigoEstado = codigoEstado;
 	}
-	public InputStream getDocumento() {
-		return documento;
+	public String getNombreEstado() {
+		return nombreEstado;
 	}
-	public void setDocumento(InputStream documento) {
-		this.documento = documento;
+	public void setNombreEstado(String nombreEstado) {
+		this.nombreEstado = nombreEstado;
 	}
+	public int getCodigoUsuario() {
+		return codigoUsuario;
+	}
+	public void setCodigoUsuario(int codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
+	}
+	public int getCodigoSoftware() {
+		return codigoSoftware;
+	}
+	public void setCodigoSoftware(int codigoSoftware) {
+		this.codigoSoftware = codigoSoftware;
+	}
+	
 	
 }
 	
