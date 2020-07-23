@@ -55,6 +55,14 @@ public class ServletCertificado extends HttpServlet {
 			buscar(request,response);
 		else if(tipo.equals("LISTAR"))
 			listar(request,response);
+		else if(tipo.equals("NUEVO"))
+			nuevo(request,response);
+	}
+
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cod=request.getParameter("codigo");
+		request.setAttribute("codigoSolicCerti", cod);
+		request.getRequestDispatcher("/certificado.jsp").forward(request, response);
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -97,6 +105,7 @@ public class ServletCertificado extends HttpServlet {
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException {
 		//variables para alacenar los valores de la cajas, utilizar la propiedad name de cada control
 //		String fecHor,url,nom;
+		String cod = request.getParameter("codigoSolicCerti");
 		Part doc;
 //		fecHor=request.getParameter("fechaHora");
 //		url=request.getParameter("url");
