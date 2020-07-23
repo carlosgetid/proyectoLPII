@@ -156,8 +156,8 @@ public class ServletCotizacion extends HttpServlet {
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod=request.getParameter("codigo");
-		request.setAttribute("codigoInformeTecnico", cod);
-		request.getRequestDispatcher("/cotizacion.jsp").forward(request, response);
+		request.setAttribute("codigoSolicCerti", cod);
+		request.getRequestDispatcher("/listaSolCertPresupGPPD.jsp").forward(request, response);
 		
 	}
 

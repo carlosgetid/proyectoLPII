@@ -30,6 +30,7 @@
 	<div class="container">
 		<form method="post" action="ServletCertificado?accion=REGISTRAR"
 			method="post" id="id_registrar" enctype="multipart/form-data">
+			  		 <input type="hidden" value="${requestScope.codigoSolicCerti}" name="codigoSolicCerti">
 			<div class="container mt-3">
 				<h2>Custom File</h2>
 				<p>To create a custom file upload, wrap a container element with
